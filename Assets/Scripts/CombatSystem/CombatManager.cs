@@ -71,8 +71,7 @@ namespace CombatSystem
         private void CombatLoop()
         {
             Fighter fighter = turnOrder.GetCurrentFighter();
-            Debug.Log("Taking turn");
-            fighter.RunTurn();
+            //Debug.Log("Taking turn");
 
             if (fighter.TurnIsOver())
             {
@@ -82,7 +81,6 @@ namespace CombatSystem
         }
 
         private void EndTurn() {
-            turnOrder.GetCurrentFighter().EndTurn();
             if (BattleIsStillGoing())
             {
                 ProgressTurn();
@@ -94,13 +92,11 @@ namespace CombatSystem
         }
 
 
-        public void AskQuestion() {
+        public void AskQuestion(QuizManager.SelectedAnswer awaitAnswerFunction) {
             quiz.AskQuestion();
-        }
-
-        public void AwaitAnswer(QuizManager.SelectedAnswer awaitAnswerFunction) {
             quiz.AwaitAnswer(awaitAnswerFunction);
         }
+        
 
 
 

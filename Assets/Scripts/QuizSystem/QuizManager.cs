@@ -17,6 +17,8 @@ namespace QuizSystem
 
         public List<Fighter> targets;
 
+        private bool askingQuestion = false;
+
 
         public delegate void SelectedAnswer(bool isCorrect);
         public event SelectedAnswer OnSelectAnswer;
@@ -40,9 +42,13 @@ namespace QuizSystem
 
         public void AskQuestion()
         {
-            SetNextQuestion();
-            SetupQuestionUI(currentQuestion);
-            EnableGUI();
+            if (!askingQuestion)
+            {
+                SetNextQuestion();
+                SetupQuestionUI(currentQuestion);
+                EnableGUI();
+                askingQuestion = true;
+            }
         }
 
         public void AwaitAnswer(SelectedAnswer awaitAnswerFunction)
@@ -63,6 +69,7 @@ namespace QuizSystem
                 Debug.Log("X Wrong!");
                 OnSelectAnswer?.Invoke(false);
             }
+            askingQuestion = false;
             DisableGUI();
         }
 

@@ -139,7 +139,9 @@ namespace QuizSystem
 
         private void AddQuestion(Question question) {
             sheet.questions.Add(question);
+            QuestionType type = question.type;
             newQuestion = new Question();
+            newQuestion.type = type;
             sheet.foldouts.Add(false);
         }
     }
