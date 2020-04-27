@@ -35,7 +35,7 @@ namespace ControllerSystem
         public override void SelectSkill(Fighter fighter, CombatManager battle)
         {
             fighter.state = FighterState.AnsweringQuestion;
-            battle.AskQuestion(fighter.AnsweredQuestion);
+           // battle.AskQuestion(fighter.AnsweredQuestion);
         }
     }
 }

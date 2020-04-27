@@ -33,6 +33,19 @@ namespace QuizSystem
             return solution.GetSolution();
         }
 
+        public int GetSolutionIndex(string[] choices) {
+            int index = -1;
+
+            for (int i = 0; i < choices.Length; i++) {
+                if (choices[i] == GetSolution()) {
+                    index = i;
+                    break;
+                }
+            }
+
+            return index;
+        }
+
         public void SetQuestionType(QuestionType newType) {
             type = newType;
             solution.type = newType;

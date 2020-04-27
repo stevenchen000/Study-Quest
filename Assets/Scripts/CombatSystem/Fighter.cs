@@ -25,9 +25,10 @@ namespace CombatSystem
         public FighterState state;
 
         protected Vector2 startingPosition;
+        protected Vector2 castingPosition;
         public float moveDistance = 1f;
         public float distanceThreshold = 0.1f;
-        protected bool movedRight = false;
+        protected bool movedToCastingPosition = false;
         protected bool animationDone = false;
         protected bool hasDealtDamage = false;
         protected float previousFrame = 0;
@@ -38,6 +39,7 @@ namespace CombatSystem
         void Start()
         {
             startingPosition = transform.position;
+            castingPosition = startingPosition + (Vector2)(transform.right * moveDistance);
             battle = CombatManager.battle;
             state = FighterState.AwaitingTurn;
         }
@@ -80,7 +82,7 @@ namespace CombatSystem
         public virtual void SelectSkill() {
             //Select a skill to use
             state = FighterState.AnsweringQuestion;
-            battle.AskQuestion(AnsweredQuestion);
+            //battle.AskQuestion(AnsweredQuestion);
         }
 
         private void AwaitAnswer() {
@@ -100,9 +102,9 @@ namespace CombatSystem
         protected virtual void RunTurn() {
             Tick();
 
-            if (!movedRight)
+            if (!movedToCastingPosition)
             {
-                MoveRight();
+                MoveToCastPosition();
             }
             else {
                 if (!hasDealtDamage) {
@@ -110,14 +112,14 @@ namespace CombatSystem
                     target.TakeDamage(this);
                     hasDealtDamage = true;
                 }
-                MoveLeft();
+                ReturnToStartingPosition();
             }
 
             if (animationDone)
             {
                 state = FighterState.EndingTurn;
                 animationDone = false;
-                movedRight = false;
+                movedToCastingPosition = false;
                 hasDealtDamage = false;
                 ResetTime();
             }
@@ -129,10 +131,14 @@ namespace CombatSystem
 
         protected virtual void EndTurn()
         {
-            state = FighterState.AwaitingTurn;
-            turnIsOver = true;
-            hasAnswered = false;
-            answeredCorrectly = false;
+            Tick();
+            if (WaitSeconds(2))
+            {
+                state = FighterState.AwaitingTurn;
+                turnIsOver = true;
+                hasAnswered = false;
+                answeredCorrectly = false;
+            }
         }
 
         public bool TurnIsOver() {
@@ -147,6 +153,8 @@ namespace CombatSystem
             Debug.Log($"{gameObject.name} took {damage} damage.");
 
             OnHealthChanged?.Invoke(currentHealth, maxHealth);
+
+            battle.ChangeGUIText($"{gameObject.name} took {damage} damage.");
         }
 
         public bool IsDead() {
@@ -168,7 +176,7 @@ namespace CombatSystem
         /// </summary>
         public void WarnOfAttack() {
             wasWarned = true;
-            battle.AskQuestion(AnsweredQuestion);
+            //battle.AskQuestion(AnsweredQuestion);
             state = FighterState.AnsweringQuestion;
         }
 
@@ -193,25 +201,31 @@ namespace CombatSystem
 
 
 
-        protected void MoveRight() {
-            Vector2 endPosition = startingPosition + (Vector2)transform.right * moveDistance;
-            transform.position = Vector2.Lerp(transform.position, endPosition, 0.2f);
-
-            float distanceDifference = (endPosition - (Vector2)transform.position).magnitude;
+        protected void MoveToCastPosition() {
+            GoToPosition(castingPosition);
+            float distanceDifference = (castingPosition - (Vector2)transform.position).magnitude;
             if (distanceDifference <= distanceThreshold)
             {
-                movedRight = true;
+                movedToCastingPosition = true;
             }
         }
 
-        protected void MoveLeft() {
-            transform.position = Vector2.Lerp(transform.position, startingPosition, 0.2f);
+        protected void ReturnToStartingPosition() {
+            GoToPosition(startingPosition);
             float distanceDifference = (startingPosition - (Vector2)transform.position).magnitude;
             if (distanceDifference <= distanceThreshold)
             {
-                movedRight = false;
+                movedToCastingPosition = false;
                 animationDone = true;
             }
+        }
+
+        protected void GoToPosition(Vector2 position) {
+            transform.position = Vector2.Lerp(transform.position, position, 0.2f);
+        }
+
+        protected bool WaitSeconds(float seconds) {
+            return currentFrame > seconds;
         }
     }
 }

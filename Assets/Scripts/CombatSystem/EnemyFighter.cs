@@ -15,11 +15,11 @@ namespace CombatSystem
 
         public override void SelectSkill()
         {
-            state = FighterState.AnsweringQuestion;
+            state = FighterState.RunningAbility;
             target = battle.GetRandomTarget(this);
             
-            target.WarnOfAttack();
-            battle.AskQuestion(AwaitingAnswer);
+            //target.WarnOfAttack();
+            //battle.AskQuestion(AwaitingAnswer);
         }
 
         protected override void Defend()
@@ -29,17 +29,27 @@ namespace CombatSystem
 
         protected override void RunTurn()
         {
-            state = FighterState.EndingTurn;
-            target.TakeDamage(this);
+            Tick();
+
+            if (WaitSeconds(1)) {
+                state = FighterState.EndingTurn;
+                target.TakeDamage(this);
+            }
         }
 
         protected override void EndTurn()
         {
-            state = FighterState.AwaitingTurn;
-            target.UnwarnOfAttack();
-            turnIsOver = true;
-            hasAnswered = false;
-            answeredCorrectly = false;
+            Tick();
+
+            if (WaitSeconds(2))
+            {
+                ResetTime();
+                state = FighterState.AwaitingTurn;
+                target.UnwarnOfAttack();
+                turnIsOver = true;
+                hasAnswered = false;
+                answeredCorrectly = false;
+            }
         }
 
         public override void TakeDamage(Fighter fighter)
@@ -51,6 +61,7 @@ namespace CombatSystem
             Debug.Log($"{gameObject.name} took {damage} damage.");
 
             OnHealthChanged?.Invoke(currentHealth, maxHealth);
+            battle.ChangeGUIText($"{gameObject.name} took {damage} damage.");
         }
 
         public void AwaitingAnswer(bool isCorrect) {

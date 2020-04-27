@@ -1,4 +1,5 @@
 ﻿using CombatSystem;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,21 +9,39 @@ namespace QuizSystem
     public class QuizManager : MonoBehaviour
     {
         public QuestionSheet questions;
+        public static QuizManager quizzer;
 
         public int currentIndex = -1;
         public Question currentQuestion;
 
-        public QuestionUI questionUI;
-        public ChoiceBoxesUI choicesUI;
+        public QuizUI questionUI;
 
         public List<Fighter> targets;
 
         private bool askingQuestion = false;
 
 
-        public delegate void SelectedAnswer(bool isCorrect);
-        public event SelectedAnswer OnSelectAnswer;
-        
+        public delegate void AskQuestionDelegate(Question question);
+        public delegate void ReceiveAnswerDelegate(bool isCorrect);
+        public delegate void SendAnswerDelegate(string answer);
+
+        public event AskQuestionDelegate OnQuestionAsked;
+        public event ReceiveAnswerDelegate OnAnswerReceived;
+        /// <summary>
+        /// Calls when incorrect answer is given
+        /// </summary>
+        public event SendAnswerDelegate ReceiveCorrectAnswer;
+
+        private void Awake()
+        {
+            if (quizzer == null)
+            {
+                quizzer = this;
+            }
+            else {
+                Destroy(this);
+            }
+        }
 
         // Start is called before the first frame update
         void Start()
@@ -30,30 +49,41 @@ namespace QuizSystem
             Debug.Log("Initting QuizManager");
             targets = new List<Fighter>();
             SetNextQuestion();
-            choicesUI.OnSelectAnswer += SelectAnswer;
-            DisableGUI();
+            //DisableGUI();
         }
 
         // Update is called once per frame
         void Update()
         {
-
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                AskQuestion();
+            }
         }
 
         public void AskQuestion()
         {
-            if (!askingQuestion)
+            Debug.Log("Attempting to ask question");
+            if (!askingQuestion || askingQuestion)
             {
                 SetNextQuestion();
-                SetupQuestionUI(currentQuestion);
-                EnableGUI();
+                //SetupQuestionUI(currentQuestion);
+                //EnableGUI();
                 askingQuestion = true;
+                OnQuestionAsked?.Invoke(currentQuestion);
+                Debug.Log("Question asked");
             }
         }
 
-        public void AwaitAnswer(SelectedAnswer awaitAnswerFunction)
-        {
-            OnSelectAnswer += awaitAnswerFunction;
+        public bool AnswerQuestion(string answer) {
+            bool isCorrect = currentQuestion.GetSolution().Equals(answer, StringComparison.InvariantCultureIgnoreCase);
+            OnAnswerReceived?.Invoke(isCorrect);
+            if (!isCorrect)
+            {
+                ReceiveCorrectAnswer?.Invoke(currentQuestion.GetSolution());
+            }
+
+            return isCorrect;
         }
 
 
@@ -63,11 +93,11 @@ namespace QuizSystem
             if (currentQuestion.CheckSolution(answer))
             {
                 Debug.Log("O Correct!");
-                OnSelectAnswer?.Invoke(true);
+                //OnSelectAnswer?.Invoke(true);
             }
             else {
                 Debug.Log("X Wrong!");
-                OnSelectAnswer?.Invoke(false);
+               // OnSelectAnswer?.Invoke(false);
             }
             askingQuestion = false;
             DisableGUI();
@@ -80,14 +110,12 @@ namespace QuizSystem
         private void DisableGUI() {
             gameObject.SetActive(false);
             questionUI.gameObject.SetActive(false);
-            choicesUI.gameObject.SetActive(false);
-            OnSelectAnswer = null;
+            //OnSelectAnswer = null;
         }
 
         private void EnableGUI() {
             gameObject.SetActive(true);
             questionUI.gameObject.SetActive(true);
-            choicesUI.gameObject.SetActive(true);
         }
 
         private void SetNextQuestion() {
@@ -96,9 +124,7 @@ namespace QuizSystem
         }
 
         private void SetupQuestionUI(Question question) {
-            questionUI.SetQuestion(question.question);
-            Debug.Log("Setting up choices");
-            choicesUI.SetChoices(question.GetAllChoices());
+            questionUI.SetQuestion(question);
         }
 
         private void AddTarget(Fighter fighter) {

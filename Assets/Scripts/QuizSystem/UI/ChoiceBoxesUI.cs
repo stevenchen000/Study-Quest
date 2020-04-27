@@ -11,9 +11,11 @@ namespace QuizSystem
 {
     public class ChoiceBoxesUI : MonoBehaviour
     {
-        public Button[] buttons;
-        public Text[] buttonTextBoxes;
-        public string[] text;
+        public List<ChoiceUI> buttons;
+        public string[] choices;
+        public int correctAnswerIndex = -1;
+
+        public GameObject buttonPrefab;
 
         public delegate void SelectAnswerDelegate(string answer);
         public event SelectAnswerDelegate OnSelectAnswer;
@@ -22,52 +24,69 @@ namespace QuizSystem
         {
             Debug.Log("Initting ChoiceBoxesGUI");
             InitButtons();
-            InitTextBoxes();
-            text = new string[4];
+            //DisableChoices();
+            choices = new string[4];
             InitListeners();
         }
 
-        public void SelectAnswer(int index)
+        private void SelectAnswer(string answer)
         {
-            OnSelectAnswer?.Invoke(text[index]);
+            OnSelectAnswer?.Invoke(answer);
+            FlashButtonColor(answer);
         }
 
 
         public void SetChoices(string[] newChoices) {
-            text = new string[4];
-            Debug.Log("Choices init");
+            choices = newChoices;
             
-            for (int i = 0; i < newChoices.Length; i++) {
-                text[i] = newChoices[i];
-                buttonTextBoxes[i].text = newChoices[i];
+            for (int i = 0; i < buttons.Count; i++) {
+                if (i < newChoices.Length)
+                {
+                    buttons[i].SetChoice(newChoices[i]);
+                    buttons[i].gameObject.SetActive(true);
+                }
+                else {
+                    buttons[i].gameObject.SetActive(false);
+                }
             }
         }
 
+        public void AddListener(SelectAnswerDelegate method) {
+            OnSelectAnswer += method;
+        }
+
+        public bool AnswerQuestion(string answer) {
+
+            return false;
+        }
 
 
 
         private void InitButtons() {
-            buttons = transform.GetComponentsInChildren<Button>();
+            buttons = new List<ChoiceUI>(4);
+            buttons.AddRange(transform.GetComponentsInChildren<ChoiceUI>());
         }
 
-        private void InitTextBoxes() {
-            Debug.Log("Text boxes init");
-            buttonTextBoxes = new Text[4];
-
-            for (int i = 0; i < buttons.Length; i++) {
-                buttonTextBoxes[i] = buttons[i].GetComponentInChildren<Text>();
-            }
-        }
 
         private void InitListeners() {
-            for (int i = 0; i < buttons.Length; i++) {
-                AddListenerAtIndex(i);
+            for (int i = 0; i < buttons.Count; i++) {
+                buttons[i].AddListener(SelectAnswer);
             }
         }
 
-        private void AddListenerAtIndex(int index)
-        {
-            buttons[index].onClick.AddListener(() => SelectAnswer(index));
+        public void DisableChoices() {
+            for (int i = 0; i < buttons.Count; i++) {
+                buttons[i].DisableChoice();
+            }
+        }
+
+        private void FlashButtonColor(string answer) {
+            for (int i = 0; i < buttons.Count; i++) {
+                if (buttons[i].isCorrect || buttons[i].text == answer)
+                {
+                    buttons[i].FlashButton();
+                }
+            }
         }
     }
 }

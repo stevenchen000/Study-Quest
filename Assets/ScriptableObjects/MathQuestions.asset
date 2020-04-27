@@ -13,27 +13,16 @@ MonoBehaviour:
   m_Name: MathQuestions
   m_EditorClassIdentifier: 
   questions:
-  - question: 5 x 7 = __
-    type: 1
+  - question: 5 x 7 = 35
+    type: 0
     wrongChoices:
     - 12
     - 15
     - 45
     solution:
-      type: 1
+      type: 0
       solution: 35
-      isTrue: 0
-    includesAllOfTheAbove: 0
-  - question: 6 x 9 = __
-    type: 1
-    wrongChoices:
-    - 45
-    - 15
-    - 63
-    solution:
-      type: 1
-      solution: 54
-      isTrue: 0
+      isTrue: 1
     includesAllOfTheAbove: 0
   - question: 8 x 5 = __
     type: 1
@@ -46,4 +35,15 @@ MonoBehaviour:
       solution: 40
       isTrue: 0
     includesAllOfTheAbove: 0
-  foldouts: 000000
+  - question: 5 + 5 = 7
+    type: 0
+    wrongChoices:
+    - 
+    - 
+    - 
+    solution:
+      type: 0
+      solution: 
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  foldouts: 000100

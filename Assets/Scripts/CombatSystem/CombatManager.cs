@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CombatSystem
 {
@@ -18,6 +19,8 @@ namespace CombatSystem
 
         public bool battleHasStarted = false;
         public TurnOrderManager turnOrder;
+
+        public Text guiText;
 
         public CombatState battleState;
 
@@ -35,6 +38,7 @@ namespace CombatSystem
         public void Start()
         {
             battleState = CombatState.StartTurn;
+            ChangeGUIText("Battle has begun!");
             _InitParties();
             InitTurnOrder();
         }
@@ -48,6 +52,8 @@ namespace CombatSystem
                     break;
                 case CombatState.StartTurn:
                     StartTurn();
+                    string name = turnOrder.GetCurrentFighter().name;
+                    ChangeGUIText($"{name}'s turn.");
                     break;
                 case CombatState.RunTurn:
                     CombatLoop();
@@ -56,7 +62,13 @@ namespace CombatSystem
                     EndTurn();
                     break;
                 case CombatState.BattleOver:
-                    Debug.Log("Battle over, play victory fanfare");
+                    if (EnemyPartyIsDead())
+                    {
+                        ChangeGUIText("You won!");
+                    }
+                    else {
+                        ChangeGUIText("You lost. Better luck next time!");
+                    }
                     break;
                 case CombatState.TransitionOut:
                     break;
@@ -92,10 +104,10 @@ namespace CombatSystem
         }
 
 
-        public void AskQuestion(QuizManager.SelectedAnswer awaitAnswerFunction) {
+        /*public void AskQuestion() {
             quiz.AskQuestion();
-            quiz.AwaitAnswer(awaitAnswerFunction);
-        }
+            quiz.AddListener(awaitAnswerFunction);
+        }*/
         
 
 
@@ -163,6 +175,11 @@ namespace CombatSystem
 
         private void InitTurnOrder() {
             turnOrder = new TurnOrderManager(playerParty, enemyParty);
+        }
+
+
+        public void ChangeGUIText(string newText) {
+            guiText.text = newText;
         }
 
     }
