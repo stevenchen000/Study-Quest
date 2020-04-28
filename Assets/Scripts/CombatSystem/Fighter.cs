@@ -43,6 +43,8 @@ namespace CombatSystem
             castingPosition = startingPosition + (Vector2)(transform.right * moveDistance);
             battle = CombatManager.battle;
             state = FighterState.AwaitingTurn;
+            
+            battle.AddListenerOnAnswerReceived(QuestionAnswered);
         }
 
         // Update is called once per frame
@@ -50,9 +52,6 @@ namespace CombatSystem
         {
             switch (state)
             {
-                case FighterState.StartingTurn:
-                    state = FighterState.SelectingSkill;
-                    break;
                 case FighterState.SelectingSkill:
                     SelectSkill();
                     break;
@@ -63,6 +62,7 @@ namespace CombatSystem
                     RunTurn();
                     break;
                 case FighterState.Defending:
+                    Defend();
                     break;
                 case FighterState.EndingTurn:
                     EndTurn();
@@ -72,8 +72,62 @@ namespace CombatSystem
             }
         }
 
+
+
+        //public functions
+
+        public bool TurnIsOver()
+        {
+            return turnIsOver;
+        }
+
+        public virtual void TakeDamage(Fighter fighter)
+        {
+            int damage = fighter.strength - defense;
+            damage = damage < 0 ? 0 : damage;
+            damage = answeredCorrectly ? damage / 2 : damage;
+            currentHealth -= damage;
+            Debug.Log($"{gameObject.name} took {damage} damage.");
+
+            OnHealthChanged?.Invoke(currentHealth, maxHealth);
+
+            battle.ChangeGUIText($"{gameObject.name} took {damage} damage.");
+        }
+
+        public bool IsDead()
+        {
+            return currentHealth <= 0;
+        }
+
+
+
+
+        //event functions
+
+        private void QuestionAnswered(bool isCorrect) {
+            switch (state)
+            {
+                case FighterState.AnsweringQuestion:
+                    state = FighterState.RunningAbility;
+                    answeredCorrectly = isCorrect;
+                    hasAnswered = true;
+                    break;
+                case FighterState.Defending:
+                    answeredCorrectly = isCorrect;
+                    break;
+            }
+        }
+
+
+
+
+
+
+
+        //combat functions
+
         public virtual void StartTurn() {
-            state = FighterState.StartingTurn;
+            state = FighterState.SelectingSkill;
             turnIsOver = false;
             hasAnswered = false;
             turnHasStarted = true;
@@ -143,35 +197,9 @@ namespace CombatSystem
             }
         }
 
-        public bool TurnIsOver() {
-            return turnIsOver;
-        }
+        
 
-        public virtual void TakeDamage(Fighter fighter) {
-            int damage = fighter.strength - defense;
-            damage = damage < 0 ? 0 : damage;
-            damage = answeredCorrectly ? damage / 2 : damage;
-            currentHealth -= damage;
-            Debug.Log($"{gameObject.name} took {damage} damage.");
-
-            OnHealthChanged?.Invoke(currentHealth, maxHealth);
-
-            battle.ChangeGUIText($"{gameObject.name} took {damage} damage.");
-        }
-
-        public bool IsDead() {
-            return currentHealth <= 0;
-        }
-
-
-        /// <summary>
-        /// Used for quiz events
-        /// </summary>
-        /// <param name="isCorrect"></param>
-        public void AnsweredQuestion(bool isCorrect) {
-            answeredCorrectly = isCorrect;
-            hasAnswered = true;
-        }
+        
 
         /// <summary>
         /// Called by enemy when about to attack

@@ -14,11 +14,7 @@ namespace ControllerSystem
         {
             
         }
-
-        public override void EndTurn(Fighter fighter, CombatManager battle)
-        {
-
-        }
+        
 
         public override void RunTurn(Fighter fighter, CombatManager battle)
         {

@@ -23,6 +23,7 @@ namespace CombatSystem
         public Text guiText;
 
         public CombatState battleState;
+        
 
         public void Awake()
         {
@@ -80,6 +81,7 @@ namespace CombatSystem
 
 
 
+
         //public functions
 
 
@@ -97,6 +99,33 @@ namespace CombatSystem
             }
 
             return result;
+        }
+
+        public void AddListenerOnQuestionAsked(QuizManager.AskQuestionDelegate method)
+        {
+            quiz.OnQuestionAsked += method;
+        }
+        public void RemoveListenerOnQuestionAsked(QuizManager.AskQuestionDelegate method)
+        {
+            quiz.OnQuestionAsked -= method;
+        }
+
+        public void AddListenerOnAnswerReceived(QuizManager.ReceiveAnswerDelegate method)
+        {
+            quiz.OnAnswerReceived += method;
+        }
+        public void RemoveListenerOnAnswerReceived(QuizManager.ReceiveAnswerDelegate method)
+        {
+            quiz.OnAnswerReceived -= method;
+        }
+
+        public void AddListenerReceiveCorrectAnswer(QuizManager.SendAnswerDelegate method)
+        {
+            quiz.ReceiveCorrectAnswer += method;
+        }
+        public void RemoveListenerReceiveCorrectAnswer(QuizManager.SendAnswerDelegate method)
+        {
+            quiz.ReceiveCorrectAnswer -= method;
         }
 
 
@@ -147,6 +176,9 @@ namespace CombatSystem
         }
 
 
+
+
+        
 
 
 
