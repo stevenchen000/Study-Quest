@@ -9,15 +9,11 @@ namespace QuizSystem
     public class QuizManager : MonoBehaviour
     {
         public QuestionSheet questions;
-        public static QuizManager quizzer;
+        public static QuizManager quiz;
 
         public int currentIndex = -1;
         public Question currentQuestion;
-
-        public QuizUI questionUI;
-
-        public List<Fighter> targets;
-
+        
         private bool askingQuestion = false;
 
 
@@ -34,9 +30,9 @@ namespace QuizSystem
 
         private void Awake()
         {
-            if (quizzer == null)
+            if (quiz == null)
             {
-                quizzer = this;
+                quiz = this;
             }
             else {
                 Destroy(this);
@@ -46,32 +42,29 @@ namespace QuizSystem
         // Start is called before the first frame update
         void Start()
         {
-            Debug.Log("Initting QuizManager");
-            targets = new List<Fighter>();
-            SetNextQuestion();
-            //DisableGUI();
+
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                AskQuestion();
-            }
+            
         }
+
+
+
+
+        //public functions
 
         public void AskQuestion()
         {
-            Debug.Log("Attempting to ask question");
-            if (!askingQuestion || askingQuestion)
+            //Debug.Log("Attempting to ask question");
+            if (!askingQuestion)
             {
                 SetNextQuestion();
-                //SetupQuestionUI(currentQuestion);
-                //EnableGUI();
                 askingQuestion = true;
                 OnQuestionAsked?.Invoke(currentQuestion);
-                Debug.Log("Question asked");
+                //Debug.Log("Question asked");
             }
         }
 
@@ -82,61 +75,54 @@ namespace QuizSystem
             {
                 ReceiveCorrectAnswer?.Invoke(currentQuestion.GetSolution());
             }
+            askingQuestion = false;
 
             return isCorrect;
         }
 
-
-
-
-        private void SelectAnswer(string answer) {
-            if (currentQuestion.CheckSolution(answer))
-            {
-                Debug.Log("O Correct!");
-                //OnSelectAnswer?.Invoke(true);
-            }
-            else {
-                Debug.Log("X Wrong!");
-               // OnSelectAnswer?.Invoke(false);
-            }
-            askingQuestion = false;
-            DisableGUI();
+        
+        public string GetCurrentSolution() {
+            return currentQuestion.GetSolution();
         }
 
 
 
 
 
-        private void DisableGUI() {
-            gameObject.SetActive(false);
-            questionUI.gameObject.SetActive(false);
-            //OnSelectAnswer = null;
+        //Listener functions
+
+        public void AddListenerOnQuestionAsked(AskQuestionDelegate method) {
+            OnQuestionAsked += method;
+        }
+        public void RemoveListenerOnQuestionAsked(AskQuestionDelegate method) {
+            OnQuestionAsked -= method;
         }
 
-        private void EnableGUI() {
-            gameObject.SetActive(true);
-            questionUI.gameObject.SetActive(true);
+        public void AddListenerOnAnswerReceived(ReceiveAnswerDelegate method) {
+            OnAnswerReceived += method;
         }
+        public void RemoveListenerOnAnswerReceived(ReceiveAnswerDelegate method) {
+            OnAnswerReceived -= method;
+        }
+
+        public void AddListenerReceiveCorrectAnswer(SendAnswerDelegate method) {
+            ReceiveCorrectAnswer += method;
+        }
+        public void RemoveListenerReceiveCorrectAnswer(SendAnswerDelegate method)
+        {
+            ReceiveCorrectAnswer -= method;
+        }
+
+
+
+
+        
+        //Helper Functions
 
         private void SetNextQuestion() {
             currentIndex = (currentIndex + 1) % questions.GetNumberOfQuestion();
             currentQuestion = questions.GetQuestionAt(currentIndex);
         }
-
-        private void SetupQuestionUI(Question question) {
-            questionUI.SetQuestion(question);
-        }
-
-        private void AddTarget(Fighter fighter) {
-            targets.Add(fighter);
-        }
-
-        private void AddTargets(List<Fighter> fighters) {
-            targets.AddRange(fighters);
-        }
-
-        private void ResetTargets() {
-            targets = new List<Fighter>();
-        }
+        
     }
 }

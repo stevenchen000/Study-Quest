@@ -41,6 +41,7 @@ namespace CombatSystem
             ChangeGUIText("Battle has begun!");
             _InitParties();
             InitTurnOrder();
+            quiz = QuizManager.quiz;
         }
 
         public void Update()
@@ -75,6 +76,35 @@ namespace CombatSystem
             }
         }
 
+
+
+
+
+        //public functions
+
+
+        public Fighter GetRandomTarget(Fighter fighter)
+        {
+            Fighter result = null;
+
+            if (FighterIsPlayer(fighter))
+            {
+                result = enemyParty.GetRandomLivingFighter();
+            }
+            else
+            {
+                result = playerParty.GetRandomLivingFighter();
+            }
+
+            return result;
+        }
+
+
+
+
+
+        //combat functions
+
         private void StartTurn() {
             turnOrder.GetCurrentFighter().StartTurn();
             battleState = CombatState.RunTurn;
@@ -104,40 +134,25 @@ namespace CombatSystem
         }
 
 
-        /*public void AskQuestion() {
-            quiz.AskQuestion();
-            quiz.AddListener(awaitAnswerFunction);
-        }*/
-        
-
-
-
-
-
-        public void ProgressTurn() {
+        private void ProgressTurn()
+        {
             turnOrder.GetNextFighter();
         }
 
-        public Fighter GetRandomTarget(Fighter fighter) {
-            Fighter result = null;
-            
-            if (FighterIsPlayer(fighter))
-            {
-                result = enemyParty.GetRandomLivingFighter();
-            }
-            else {
-                result = playerParty.GetRandomLivingFighter();
-            }
-            
-            return result;
-        }
 
-        public void UpdateLivingStatus() {
+        private void UpdateLivingStatus()
+        {
             playerParty.UpdatePartyLivingStatus();
             enemyParty.UpdatePartyLivingStatus();
         }
 
-        
+
+
+
+
+
+
+
         private void _InitParties()
         {
             playerParty = new Party();

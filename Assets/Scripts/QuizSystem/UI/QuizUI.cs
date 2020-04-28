@@ -12,6 +12,7 @@ namespace QuizSystem
         public Question currentQuestion;
         public Text questionText;
         public ChoiceBoxesUI multipleChoiceUI;
+        public FillInTheBlankUI fillInTheBlankUI;
 
         public string[] choices;
 
@@ -23,10 +24,18 @@ namespace QuizSystem
         private float timer = 0;
         private bool prepareToDisableTimer = false;
 
+
+        private QuizManager quiz;
+
         public void Start()
         {
-            QuizManager.quizzer.OnQuestionAsked += SetQuestion;
-            QuizManager.quizzer.OnAnswerReceived += StartUIDisableTimer;
+            quiz = QuizManager.quiz;
+            DisableGUI();
+
+            quiz.OnQuestionAsked += SetQuestion;
+            quiz.OnAnswerReceived += StartUIDisableTimer;
+            quiz.OnAnswerReceived += StopUIInteractions;
+            quiz.ReceiveCorrectAnswer += MarkCorrectAnswer;
         }
 
         private void Update()
@@ -38,57 +47,105 @@ namespace QuizSystem
                 {
                     DisableGUI();
                     ResetTimer();
+                    quiz.AskQuestion();
                 }
             }
         }
 
-        public void SetQuestion(Question question) {
+
+
+
+        //event functions
+
+        private void SetQuestion(Question question) {
+            EnableGUI();
             currentQuestion = question;
             questionText.text = question.question;
-            EnableGUI();
 
             switch (question.type)
             {
                 case QuestionType.TrueFalse:
-                    choices = question.GetAllChoices();
-                    multipleChoiceUI.SetChoices(choices);
-                    //correctIndex = currentQuestion.GetSolution() == "true" ? 0 : 1;
-                    //multipleChoiceUI.SetChoices(questions, correctIndex);
+                    SetupMultipleChoiceGUI();
                     break;
                 case QuestionType.MultipleChoice:
-                    choices = question.GetAllChoices();
-                    multipleChoiceUI.SetChoices(choices);
-                    /*Debug.Log("Test");
-                    questions = question.GetAllChoices();
-                    correctIndex = question.GetSolutionIndex(questions);
-                    Debug.Log(correctIndex);
-                    Debug.Log(questions);
-                    multipleChoiceUI.SetChoices(questions, correctIndex);
-                    Debug.Log("test2");*/
+                    SetupMultipleChoiceGUI();
                     break;
                 case QuestionType.FillInTheBlank:
+                    SetupFillInTheBlankGUI();
                     break;
             }
         }
 
-        private void StartUIDisableTimer(bool isCorrect) {
+        private void StopUIInteractions(bool isCorrect) {
+            switch (currentQuestion.type)
+            {
+                case QuestionType.TrueFalse:
+                    multipleChoiceUI.DisableChoiceInteractions();
+                    break;
+                case QuestionType.MultipleChoice:
+                    multipleChoiceUI.DisableChoiceInteractions();
+                    break;
+                case QuestionType.FillInTheBlank:
+                    fillInTheBlankUI.DisableInteraction();
+                    break;
+            }
+        }
+        
+        private void StartUIDisableTimer(bool isCorrect)
+        {
             timer = 0;
             prepareToDisableTimer = true;
         }
+
+        private void MarkCorrectAnswer(string answer) {
+            switch (currentQuestion.type)
+            {
+                case QuestionType.TrueFalse:
+                    multipleChoiceUI.MarkCorrectAnswer(answer);
+                    break;
+                case QuestionType.MultipleChoice:
+                    multipleChoiceUI.MarkCorrectAnswer(answer);
+                    break;
+                case QuestionType.FillInTheBlank:
+                    fillInTheBlankUI.MarkCorrectAnswer(answer);
+                    break;
+            }
+        }
+
+
+
+
+
+        //helper functions
+
 
         private void ResetTimer() {
             prepareToDisableTimer = false;
             timer = 0;
         }
 
-        public void DisableGUI()
+        private void DisableGUI()
         {
             gameObject.SetActive(false);
-            multipleChoiceUI.DisableChoices();
+            multipleChoiceUI.DisableGUI();
+            fillInTheBlankUI.DisableGUI();
         }
 
-        public void EnableGUI() {
+        private void EnableGUI() {
             gameObject.SetActive(true);
+        }
+
+        private void SetupMultipleChoiceGUI() {
+            choices = currentQuestion.GetAllChoices();
+            multipleChoiceUI.SetChoices(choices);
+            multipleChoiceUI.EnableGUI();
+            multipleChoiceUI.EnableChoiceInteractions();
+        }
+
+        private void SetupFillInTheBlankGUI()
+        {
+            fillInTheBlankUI.EnableGUI();
+            fillInTheBlankUI.EnableInteraction();
         }
     }
 }

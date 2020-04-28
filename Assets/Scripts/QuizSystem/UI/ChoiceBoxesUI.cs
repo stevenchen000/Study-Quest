@@ -17,24 +17,60 @@ namespace QuizSystem
 
         public GameObject buttonPrefab;
 
-        public delegate void SelectAnswerDelegate(string answer);
-        public event SelectAnswerDelegate OnSelectAnswer;
-
+        private QuizManager quiz;
+        
         public void Start()
         {
-            Debug.Log("Initting ChoiceBoxesGUI");
-            InitButtons();
-            //DisableChoices();
+            quiz = QuizManager.quiz;
+            //InitButtons();
             choices = new string[4];
-            InitListeners();
+
+            //add events here
         }
 
-        private void SelectAnswer(string answer)
+
+
+
+        //public functions
+
+        public void EnableGUI() {
+            gameObject.SetActive(true);
+        }
+
+        public void DisableGUI() {
+            gameObject.SetActive(false);
+        }
+        
+        public void DisableChoiceInteractions()
         {
-            OnSelectAnswer?.Invoke(answer);
-            FlashButtonColor(answer);
+            for (int i = 0; i < buttons.Count; i++)
+            {
+                buttons[i].DisableInteraction();
+            }
         }
 
+        public void EnableChoiceInteractions()
+        {
+            for (int i = 0; i < buttons.Count; i++)
+            {
+                buttons[i].EnableInteraction();
+            }
+        }
+
+        public void MarkCorrectAnswer(string answer) {
+            for (int i = 0; i < buttons.Count; i++) {
+                if (buttons[i].text.Equals(answer, StringComparison.InvariantCultureIgnoreCase)) {
+                    buttons[i].MarkCorrect();
+                    break;
+                }
+            }
+        }
+
+
+
+
+
+        //event functions
 
         public void SetChoices(string[] newChoices) {
             choices = newChoices;
@@ -43,50 +79,24 @@ namespace QuizSystem
                 if (i < newChoices.Length)
                 {
                     buttons[i].SetChoice(newChoices[i]);
-                    buttons[i].gameObject.SetActive(true);
+                    buttons[i].EnableChoice();
                 }
                 else {
-                    buttons[i].gameObject.SetActive(false);
+                    buttons[i].DisableChoice();
                 }
             }
         }
 
-        public void AddListener(SelectAnswerDelegate method) {
-            OnSelectAnswer += method;
-        }
-
-        public bool AnswerQuestion(string answer) {
-
-            return false;
-        }
 
 
 
-        private void InitButtons() {
+        //Helper functions
+
+        private void InitButtons()
+        {
             buttons = new List<ChoiceUI>(4);
             buttons.AddRange(transform.GetComponentsInChildren<ChoiceUI>());
         }
 
-
-        private void InitListeners() {
-            for (int i = 0; i < buttons.Count; i++) {
-                buttons[i].AddListener(SelectAnswer);
-            }
-        }
-
-        public void DisableChoices() {
-            for (int i = 0; i < buttons.Count; i++) {
-                buttons[i].DisableChoice();
-            }
-        }
-
-        private void FlashButtonColor(string answer) {
-            for (int i = 0; i < buttons.Count; i++) {
-                if (buttons[i].isCorrect || buttons[i].text == answer)
-                {
-                    buttons[i].FlashButton();
-                }
-            }
-        }
     }
 }

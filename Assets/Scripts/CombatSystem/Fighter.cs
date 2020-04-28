@@ -17,6 +17,7 @@ namespace CombatSystem
         public Fighter target;
         public bool hasAnswered = false;
         public bool answeredCorrectly = false;
+        public bool turnHasStarted = false;
         private bool wasWarned = false;
 
         public delegate void HealthChanged(float currentHealth, float maxHealth);
@@ -72,12 +73,13 @@ namespace CombatSystem
         }
 
         public virtual void StartTurn() {
-            if (state == FighterState.AwaitingTurn) {
-                state = FighterState.StartingTurn;
-                turnIsOver = false;
-                hasAnswered = false;
-            }
+            state = FighterState.StartingTurn;
+            turnIsOver = false;
+            hasAnswered = false;
+            turnHasStarted = true;
         }
+        
+
 
         public virtual void SelectSkill() {
             //Select a skill to use

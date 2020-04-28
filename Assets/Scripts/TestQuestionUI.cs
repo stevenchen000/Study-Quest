@@ -28,7 +28,7 @@ public class TestQuestionUI : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.T)) {
-            quiz.SetQuestion(sheet.GetQuestionAt(currentIndex));
+            //quiz.SetQuestion(sheet.GetQuestionAt(currentIndex));
             currentIndex = (currentIndex + 1) % sheet.GetNumberOfQuestion();
         }
     }
