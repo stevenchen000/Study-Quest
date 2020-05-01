@@ -128,15 +128,22 @@ namespace CombatSystem
             quiz.ReceiveCorrectAnswer -= method;
         }
 
-
+        public void AskQuestion()
+        {
+            quiz.AskQuestion();
+        }
 
 
 
         //combat functions
 
         private void StartTurn() {
-            turnOrder.GetCurrentFighter().StartTurn();
-            battleState = CombatState.RunTurn;
+            Fighter currentFighter = turnOrder.GetCurrentFighter();
+            currentFighter.StartTurn();
+            if (currentFighter.turnHasStarted)
+            {
+                battleState = CombatState.RunTurn;
+            }
         }
 
         private void CombatLoop()
@@ -147,6 +154,7 @@ namespace CombatSystem
             if (fighter.TurnIsOver())
             {
                 UpdateLivingStatus();
+                fighter.EndTurn();
                 battleState = CombatState.EndTurn;
             }
         }

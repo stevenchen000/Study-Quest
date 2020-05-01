@@ -46,9 +46,67 @@ namespace QuizSystem
             return index;
         }
 
+        public void SetSolutionText(string text)
+        {
+            solution.solution = text;
+        }
+
         public void SetQuestionType(QuestionType newType) {
             type = newType;
             solution.type = newType;
+        }
+
+        public void AddWrongChoice(string text)
+        {
+            int num = GetNumberOfWrongChoices();
+            if(QuestionDoesNotContainChoice(text) && num < 3)
+            {
+                wrongChoices[num] = text;
+            }
+        }
+
+        private bool QuestionDoesNotContainChoice(string text)
+        {
+            bool result = true;
+
+            if (GetSolution().Equals(text, StringComparison.InvariantCultureIgnoreCase))
+            {
+                result = false;
+            }
+
+            if (result)
+            {
+                int num = GetNumberOfWrongChoices();
+
+                for(int i = 0; i < num; i++)
+                {
+                    if(wrongChoices[i].Equals(text, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        result = false;
+                        break;
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        public int GetNumberOfWrongChoices()
+        {
+            int num = 0;
+            for(int i = 0; i < wrongChoices.Length; i++)
+            {
+                if(wrongChoices[i] == null)
+                {
+                    break;
+                }
+                else
+                {
+                    num++;
+                }
+            }
+
+            return num;
         }
 
 

@@ -1,4 +1,5 @@
 ﻿using QuizSystem;
+using SkillSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,6 +33,10 @@ namespace CombatSystem
         protected bool movedToCastingPosition = false;
         protected bool animationDone = false;
         protected bool hasDealtDamage = false;
+
+        protected bool hasSelectedSkill = false;
+        public Skill currentSkill;
+
         protected float previousFrame = 0;
         protected float currentFrame = 0;
 
@@ -127,30 +132,30 @@ namespace CombatSystem
         //combat functions
 
         public virtual void StartTurn() {
-            state = FighterState.SelectingSkill;
-            turnIsOver = false;
-            hasAnswered = false;
-            turnHasStarted = true;
+            MoveToCastPosition();
+
+            if (movedToCastingPosition)
+            {
+                state = FighterState.SelectingSkill;
+                hasAnswered = false;
+                turnHasStarted = true;
+            }
         }
         
 
 
         public virtual void SelectSkill() {
             //Select a skill to use
-            state = FighterState.AnsweringQuestion;
-            //battle.AskQuestion(AnsweredQuestion);
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                battle.AskQuestion();
+                state = FighterState.AnsweringQuestion;
+            }
         }
 
         private void AwaitAnswer() {
             if (hasAnswered) {
-                if (wasWarned)
-                {
-                    state = FighterState.Defending;
-                }
-                else
-                {
-                    state = FighterState.RunningAbility;
-                }
+                state = FighterState.RunningAbility;
             }
         }
 
@@ -158,16 +163,13 @@ namespace CombatSystem
         protected virtual void RunTurn() {
             Tick();
 
-            if (!movedToCastingPosition)
-            {
-                MoveToCastPosition();
+            if (WaitSeconds(1)) { 
+                target = battle.GetRandomTarget(this);
+                target.TakeDamage(this);
+                hasDealtDamage = true;
             }
-            else {
-                if (!hasDealtDamage) {
-                    target = battle.GetRandomTarget(this);
-                    target.TakeDamage(this);
-                    hasDealtDamage = true;
-                }
+
+            if (hasDealtDamage) {
                 ReturnToStartingPosition();
             }
 
@@ -177,6 +179,7 @@ namespace CombatSystem
                 animationDone = false;
                 movedToCastingPosition = false;
                 hasDealtDamage = false;
+                turnIsOver = true;
                 ResetTime();
             }
         }
@@ -185,15 +188,16 @@ namespace CombatSystem
 
         }
 
-        protected virtual void EndTurn()
+        public virtual void EndTurn()
         {
             Tick();
             if (WaitSeconds(2))
             {
                 state = FighterState.AwaitingTurn;
-                turnIsOver = true;
+                turnIsOver = false;
                 hasAnswered = false;
                 answeredCorrectly = false;
+                turnHasStarted = false;
             }
         }
 
@@ -255,7 +259,7 @@ namespace CombatSystem
         }
 
         protected bool WaitSeconds(float seconds) {
-            return currentFrame > seconds;
+            return currentFrame > seconds && previousFrame < seconds;
         }
     }
 }

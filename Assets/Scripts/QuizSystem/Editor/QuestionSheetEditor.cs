@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using FlashcardSystem;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -11,6 +12,8 @@ namespace QuizSystem
 
         QuestionSheet sheet;
         Question newQuestion;
+        FlashcardDeck deck;
+        bool reverse = false;
 
         private void OnEnable()
         {
@@ -20,6 +23,7 @@ namespace QuizSystem
         public override void OnInspectorGUI()
         {
             sheet = (QuestionSheet)target;
+            FixList();
             FixFoldouts();
 
             int deleteIndex = -1;
@@ -57,8 +61,15 @@ namespace QuizSystem
             }
             EditorGUILayout.EndHorizontal();
 
+            FlashcardsGUI();
+
             EditorUtility.SetDirty(target);
         }
+
+
+
+
+        //GUI functions
 
         private void QuestionGUI(Question question) {
             question.question = EditorGUILayout.TextField("Question", question.question);
@@ -106,6 +117,25 @@ namespace QuizSystem
             solution.solution = EditorGUILayout.TextField("Solution", solution.solution);
         }
 
+
+        private void FlashcardsGUI()
+        {
+            deck = (FlashcardDeck)EditorGUILayout.ObjectField("Flashcard Deck", deck, typeof(FlashcardDeck));
+            string reverseText = reverse ? "Back Is Question" : "Front Is Question";
+            reverse = EditorGUILayout.Toggle(reverseText, reverse);
+
+            if (GUILayout.Button("Add Questions"))
+            {
+                List<Question> newQuestions = QuestionSheet.CreateQuestionsFromFlashcards(deck.flashcards, reverse);
+                sheet.AddQuestions(newQuestions);
+            }
+        }
+
+
+
+
+        //helper functions
+
         private void FixChoicesArray(Question question) {
             if (question.wrongChoices.Length == 0)
             {
@@ -131,6 +161,13 @@ namespace QuizSystem
                 sheet.foldouts = new List<bool>(new bool[sheet.questions.Count]);
             }
         }
+        private void FixList()
+        {
+            if(sheet.questions == null)
+            {
+                sheet.questions = new List<Question>();
+            }
+        }
 
         private void DeleteAtIndex(int index) {
             sheet.questions.RemoveAt(index);
@@ -138,11 +175,24 @@ namespace QuizSystem
         }
 
         private void AddQuestion(Question question) {
-            sheet.questions.Add(question);
+            sheet.AddQuestion(question);
             QuestionType type = question.type;
             newQuestion = new Question();
             newQuestion.type = type;
             sheet.foldouts.Add(false);
+        }
+
+
+
+
+
+        private void AddQuestionsFromDeck(FlashcardDeck deck)
+        {
+            List<Question> questions = QuestionSheet.CreateQuestionsFromFlashcards(deck.flashcards);
+            for(int i = 0; i < questions.Count; i++)
+            {
+                sheet.AddQuestion(questions[i]);
+            }
         }
     }
 }

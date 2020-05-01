@@ -1,0 +1,566 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe722fac7aa8cd4a8f1a22f4df8de29, type: 3}
+  m_Name: States And Capitals
+  m_EditorClassIdentifier: 
+  questions:
+  - question: Alabama
+    type: 1
+    wrongChoices:
+    - Olympia
+    - Bismarck
+    - Richmond
+    solution:
+      type: 1
+      solution: Montgomery
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Alaska
+    type: 1
+    wrongChoices:
+    - Montpelier
+    - Carson City
+    - Denver
+    solution:
+      type: 1
+      solution: Juneau
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Arizona
+    type: 1
+    wrongChoices:
+    - Olympia
+    - Montgomery
+    - Augusta
+    solution:
+      type: 1
+      solution: Phoenix
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Arkansas
+    type: 1
+    wrongChoices:
+    - Oklahoma City
+    - Nashville
+    - Sacramento
+    solution:
+      type: 1
+      solution: Little Rock
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: California
+    type: 1
+    wrongChoices:
+    - Boston
+    - Tallahassee
+    - Concord
+    solution:
+      type: 1
+      solution: Sacramento
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Colorado
+    type: 1
+    wrongChoices:
+    - Helena
+    - Boston
+    - Baton Rouge
+    solution:
+      type: 1
+      solution: Denver
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Connecticut
+    type: 1
+    wrongChoices:
+    - Cheyenne
+    - Lincoln
+    - Trenton
+    solution:
+      type: 1
+      solution: Hartford
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Delaware
+    type: 1
+    wrongChoices:
+    - Charleston
+    - Albany
+    - Cheyenne
+    solution:
+      type: 1
+      solution: Dover
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Florida
+    type: 1
+    wrongChoices:
+    - Des Moines
+    - Harrisburg
+    - Indianapolis
+    solution:
+      type: 1
+      solution: Tallahassee
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Georgia
+    type: 1
+    wrongChoices:
+    - Oklahoma City
+    - Richmond
+    - Montgomery
+    solution:
+      type: 1
+      solution: Atlanta
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Hawaii
+    type: 1
+    wrongChoices:
+    - Jefferson City
+    - Lansing
+    - Denver
+    solution:
+      type: 1
+      solution: Honolulu
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Idaho
+    type: 1
+    wrongChoices:
+    - Lansing
+    - Lincoln
+    - Augusta
+    solution:
+      type: 1
+      solution: Boise
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Illinois
+    type: 1
+    wrongChoices:
+    - Santa Fe
+    - Denver
+    - Oklahoma City
+    solution:
+      type: 1
+      solution: Springfield
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Indiana
+    type: 1
+    wrongChoices:
+    - Topeka
+    - Trenton
+    - Concord
+    solution:
+      type: 1
+      solution: Indianapolis
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Iowa
+    type: 1
+    wrongChoices:
+    - Phoenix
+    - Pierre
+    - St. Paul
+    solution:
+      type: 1
+      solution: Des Moines
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Kansas
+    type: 1
+    wrongChoices:
+    - Lansing
+    - Sacramento
+    - Honolulu
+    solution:
+      type: 1
+      solution: Topeka
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Kentucky
+    type: 1
+    wrongChoices:
+    - Richmond
+    - Boston
+    - Lansing
+    solution:
+      type: 1
+      solution: Frankfort
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Louisiana
+    type: 1
+    wrongChoices:
+    - Madison
+    - Denver
+    - Juneau
+    solution:
+      type: 1
+      solution: Baton Rouge
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Maine
+    type: 1
+    wrongChoices:
+    - Columbia
+    - Annapolis
+    - Nashville
+    solution:
+      type: 1
+      solution: Augusta
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Maryland
+    type: 1
+    wrongChoices:
+    - Carson City
+    - Hartford
+    - Montgomery
+    solution:
+      type: 1
+      solution: Annapolis
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Massachusetts
+    type: 1
+    wrongChoices:
+    - Columbus
+    - Baton Rouge
+    - Montpelier
+    solution:
+      type: 1
+      solution: Boston
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Michigan
+    type: 1
+    wrongChoices:
+    - Baton Rouge
+    - Honolulu
+    - Boise
+    solution:
+      type: 1
+      solution: Lansing
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Minnesota
+    type: 1
+    wrongChoices:
+    - Bismarck
+    - Little Rock
+    - Indianapolis
+    solution:
+      type: 1
+      solution: St. Paul
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Mississippi
+    type: 1
+    wrongChoices:
+    - Baton Rouge
+    - Salt Lake City
+    - Bismarck
+    solution:
+      type: 1
+      solution: Jackson
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Missouri
+    type: 1
+    wrongChoices:
+    - Montpelier
+    - Oklahoma City
+    - Columbus
+    solution:
+      type: 1
+      solution: Jefferson City
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Montana
+    type: 1
+    wrongChoices:
+    - Tallahassee
+    - Cheyenne
+    - Columbus
+    solution:
+      type: 1
+      solution: Helena
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Nebraska
+    type: 1
+    wrongChoices:
+    - Columbus
+    - Lansing
+    - Harrisburg
+    solution:
+      type: 1
+      solution: Lincoln
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Nevada
+    type: 1
+    wrongChoices:
+    - Honolulu
+    - Tallahassee
+    - Olympia
+    solution:
+      type: 1
+      solution: Carson City
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: New Hampshire
+    type: 1
+    wrongChoices:
+    - Denver
+    - Honolulu
+    - Oklahoma City
+    solution:
+      type: 1
+      solution: Concord
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: New Jersey
+    type: 1
+    wrongChoices:
+    - Columbia
+    - Montpelier
+    - Little Rock
+    solution:
+      type: 1
+      solution: Trenton
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: New Mexico
+    type: 1
+    wrongChoices:
+    - Bismarck
+    - Jackson
+    - Denver
+    solution:
+      type: 1
+      solution: Santa Fe
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: New York
+    type: 1
+    wrongChoices:
+    - Helena
+    - Harrisburg
+    - Atlanta
+    solution:
+      type: 1
+      solution: Albany
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: North Carolina
+    type: 1
+    wrongChoices:
+    - Richmond
+    - Des Moines
+    - Montpelier
+    solution:
+      type: 1
+      solution: Raleigh
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: North Dakota
+    type: 1
+    wrongChoices:
+    - Honolulu
+    - Boise
+    - Springfield
+    solution:
+      type: 1
+      solution: Bismarck
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Ohio
+    type: 1
+    wrongChoices:
+    - St. Paul
+    - Little Rock
+    - Concord
+    solution:
+      type: 1
+      solution: Columbus
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Oklahoma
+    type: 1
+    wrongChoices:
+    - Albany
+    - Concord
+    - Boston
+    solution:
+      type: 1
+      solution: Oklahoma City
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Oregon
+    type: 1
+    wrongChoices:
+    - Jefferson City
+    - Carson City
+    - Columbia
+    solution:
+      type: 1
+      solution: Salem
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Pennsylvania
+    type: 1
+    wrongChoices:
+    - Lansing
+    - Oklahoma City
+    - Sacramento
+    solution:
+      type: 1
+      solution: Harrisburg
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Rhode Island
+    type: 1
+    wrongChoices:
+    - Springfield
+    - St. Paul
+    - Jackson
+    solution:
+      type: 1
+      solution: Providence
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: South Carolina
+    type: 1
+    wrongChoices:
+    - Juneau
+    - Salem
+    - Atlanta
+    solution:
+      type: 1
+      solution: Columbia
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: South Dakota
+    type: 1
+    wrongChoices:
+    - Harrisburg
+    - Boise
+    - Lincoln
+    solution:
+      type: 1
+      solution: Pierre
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Tennessee
+    type: 1
+    wrongChoices:
+    - Boise
+    - Helena
+    - Frankfort
+    solution:
+      type: 1
+      solution: Nashville
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Texas
+    type: 1
+    wrongChoices:
+    - Dover
+    - Columbia
+    - Des Moines
+    solution:
+      type: 1
+      solution: Austin
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Utah
+    type: 1
+    wrongChoices:
+    - Concord
+    - Albany
+    - Harrisburg
+    solution:
+      type: 1
+      solution: Salt Lake City
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Vermont
+    type: 1
+    wrongChoices:
+    - Richmond
+    - Juneau
+    - Helena
+    solution:
+      type: 1
+      solution: Montpelier
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Virginia
+    type: 1
+    wrongChoices:
+    - Cheyenne
+    - Albany
+    - Columbus
+    solution:
+      type: 1
+      solution: Richmond
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Washington
+    type: 1
+    wrongChoices:
+    - Baton Rouge
+    - Honolulu
+    - Madison
+    solution:
+      type: 1
+      solution: Olympia
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: West Virginia
+    type: 1
+    wrongChoices:
+    - St. Paul
+    - Jackson
+    - Sacramento
+    solution:
+      type: 1
+      solution: Charleston
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Wisconsin
+    type: 1
+    wrongChoices:
+    - Albany
+    - Oklahoma City
+    - Boise
+    solution:
+      type: 1
+      solution: Madison
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  - question: Wyoming
+    type: 1
+    wrongChoices:
+    - Hartford
+    - Lansing
+    - Annapolis
+    solution:
+      type: 1
+      solution: Cheyenne
+      isTrue: 0
+    includesAllOfTheAbove: 0
+  foldouts: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000

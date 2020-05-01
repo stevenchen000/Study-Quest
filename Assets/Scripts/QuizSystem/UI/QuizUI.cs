@@ -47,7 +47,6 @@ namespace QuizSystem
                 {
                     DisableGUI();
                     ResetTimer();
-                    quiz.AskQuestion();
                 }
             }
         }

@@ -37,7 +37,7 @@ namespace CombatSystem
             }
         }
 
-        protected override void EndTurn()
+        public override void EndTurn()
         {
             Tick();
 

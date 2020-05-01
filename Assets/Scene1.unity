@@ -989,6 +989,7 @@ MonoBehaviour:
   target: {fileID: 0}
   hasAnswered: 0
   answeredCorrectly: 0
+  turnHasStarted: 0
   state: 0
   moveDistance: 2
   distanceThreshold: 0.1
@@ -1285,6 +1286,7 @@ MonoBehaviour:
   target: {fileID: 0}
   hasAnswered: 0
   answeredCorrectly: 0
+  turnHasStarted: 0
   state: 0
   moveDistance: 2
   distanceThreshold: 0.1
@@ -1660,6 +1662,7 @@ MonoBehaviour:
   target: {fileID: 0}
   hasAnswered: 0
   answeredCorrectly: 0
+  turnHasStarted: 0
   state: 0
   moveDistance: 1
   distanceThreshold: 0.1
@@ -3489,6 +3492,7 @@ MonoBehaviour:
   target: {fileID: 0}
   hasAnswered: 0
   answeredCorrectly: 0
+  turnHasStarted: 0
   state: 0
   moveDistance: 2
   distanceThreshold: 0.1
@@ -3564,5 +3568,11 @@ PrefabInstance:
       propertyPath: questionUI
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6963329724446724925, guid: d01ce02b68743c1459637e36ab46bb1c,
+        type: 3}
+      propertyPath: questions
+      value: 
+      objectReference: {fileID: 11400000, guid: 351c896b28e7b91409b486e4960de6b2,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d01ce02b68743c1459637e36ab46bb1c, type: 3}
