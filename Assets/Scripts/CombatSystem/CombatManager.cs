@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace CombatSystem
@@ -34,6 +35,7 @@ namespace CombatSystem
             else {
                 Destroy(this);
             }
+            quiz = QuizManager.quiz;
         }
 
         public void Start()
@@ -42,7 +44,6 @@ namespace CombatSystem
             ChangeGUIText("Battle has begun!");
             _InitParties();
             InitTurnOrder();
-            quiz = QuizManager.quiz;
         }
 
         public void Update()
@@ -66,13 +67,19 @@ namespace CombatSystem
                 case CombatState.BattleOver:
                     if (EnemyPartyIsDead())
                     {
-                        ChangeGUIText("You won!");
+                        ChangeGUIText("You won! Press Enter to return");
                     }
                     else {
-                        ChangeGUIText("You lost. Better luck next time!");
+                        ChangeGUIText("You lost! Press Enter to return");
                     }
+                    battleState = CombatState.TransitionOut;
+                    
                     break;
                 case CombatState.TransitionOut:
+                    if (Input.GetKeyDown(KeyCode.Return))
+                    {
+                        SceneManager.LoadScene("Load Screen");
+                    }
                     break;
             }
         }
@@ -103,29 +110,29 @@ namespace CombatSystem
 
         public void AddListenerOnQuestionAsked(QuizManager.AskQuestionDelegate method)
         {
-            quiz.OnQuestionAsked += method;
+            quiz.AddListenerOnQuestionAsked(method);
         }
         public void RemoveListenerOnQuestionAsked(QuizManager.AskQuestionDelegate method)
         {
-            quiz.OnQuestionAsked -= method;
+            quiz.RemoveListenerOnQuestionAsked(method);
         }
 
         public void AddListenerOnAnswerReceived(QuizManager.ReceiveAnswerDelegate method)
         {
-            quiz.OnAnswerReceived += method;
+            quiz.AddListenerOnAnswerReceived(method);
         }
         public void RemoveListenerOnAnswerReceived(QuizManager.ReceiveAnswerDelegate method)
         {
-            quiz.OnAnswerReceived -= method;
+            quiz.RemoveListenerOnAnswerReceived(method);
         }
 
         public void AddListenerReceiveCorrectAnswer(QuizManager.SendAnswerDelegate method)
         {
-            quiz.ReceiveCorrectAnswer += method;
+            quiz.AddListenerReceiveCorrectAnswer(method);
         }
         public void RemoveListenerReceiveCorrectAnswer(QuizManager.SendAnswerDelegate method)
         {
-            quiz.ReceiveCorrectAnswer -= method;
+            quiz.RemoveListenerReceiveCorrectAnswer(method);
         }
 
         public void AskQuestion()

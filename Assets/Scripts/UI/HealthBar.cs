@@ -10,10 +10,13 @@ public class HealthBar : MonoBehaviour
     public Fighter fighter;
     public Slider healthSlider;
     public Text fighterName;
+    public Camera mainCamera;
+    public Vector3 offset;
 
     // Start is called before the first frame update
     void Start()
     {
+        mainCamera = Camera.main;
         fighterName.text = fighter.name;
         UpdateSlider(fighter.currentHealth, fighter.maxHealth);
     }
@@ -22,6 +25,7 @@ public class HealthBar : MonoBehaviour
     void Update()
     {
         UpdateSlider(fighter.currentHealth, fighter.maxHealth);
+        FollowTarget();
     }
 
     public void LinkHealthBarToFighter(Fighter fighter) {
@@ -31,5 +35,11 @@ public class HealthBar : MonoBehaviour
 
     public void UpdateSlider(float currentHealth, float maxHealth) {
         healthSlider.value = currentHealth / maxHealth;
+    }
+
+    public void FollowTarget()
+    {
+        Vector3 targetPosition = mainCamera.WorldToScreenPoint(fighter.transform.position);
+        transform.position = targetPosition + offset;
     }
 }

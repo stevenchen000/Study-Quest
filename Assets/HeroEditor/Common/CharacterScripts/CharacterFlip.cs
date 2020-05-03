@@ -13,7 +13,7 @@ namespace Assets.HeroEditor.Common.CharacterScripts
 
 	        scale.x = Mathf.Abs(scale.x);
 
-	        if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x) scale.x *= -1;
+	        //if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x) scale.x *= -1;
 
 			transform.localScale = scale;
         }

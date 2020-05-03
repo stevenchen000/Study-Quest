@@ -32,10 +32,10 @@ namespace QuizSystem
             quiz = QuizManager.quiz;
             DisableGUI();
 
-            quiz.OnQuestionAsked += SetQuestion;
-            quiz.OnAnswerReceived += StartUIDisableTimer;
-            quiz.OnAnswerReceived += StopUIInteractions;
-            quiz.ReceiveCorrectAnswer += MarkCorrectAnswer;
+            quiz.AddListenerOnQuestionAsked(SetQuestion);
+            quiz.AddListenerOnAnswerReceived(StartUIDisableTimer);
+            quiz.AddListenerOnAnswerReceived(StopUIInteractions);
+            quiz.AddListenerReceiveCorrectAnswer(MarkCorrectAnswer);
         }
 
         private void Update()
@@ -58,6 +58,7 @@ namespace QuizSystem
 
         private void SetQuestion(Question question) {
             EnableGUI();
+            ResetTimer();
             currentQuestion = question;
             questionText.text = question.question;
 
@@ -76,6 +77,7 @@ namespace QuizSystem
         }
 
         private void StopUIInteractions(bool isCorrect) {
+            Debug.Log("UI interaction stopped");
             switch (currentQuestion.type)
             {
                 case QuestionType.TrueFalse:
@@ -97,6 +99,7 @@ namespace QuizSystem
         }
 
         private void MarkCorrectAnswer(string answer) {
+            Debug.Log("Correct answer marked");
             switch (currentQuestion.type)
             {
                 case QuestionType.TrueFalse:

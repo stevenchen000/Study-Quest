@@ -44,6 +44,7 @@ namespace CombatSystem
         // Start is called before the first frame update
         void Start()
         {
+            Debug.Log("Question asked");
             startingPosition = transform.position;
             castingPosition = startingPosition + (Vector2)(transform.right * moveDistance);
             battle = CombatManager.battle;
@@ -110,6 +111,7 @@ namespace CombatSystem
         //event functions
 
         private void QuestionAnswered(bool isCorrect) {
+            Debug.Log("Answered question");
             switch (state)
             {
                 case FighterState.AnsweringQuestion:
@@ -132,6 +134,7 @@ namespace CombatSystem
         //combat functions
 
         public virtual void StartTurn() {
+            turnIsOver = false;
             MoveToCastPosition();
 
             if (movedToCastingPosition)
@@ -146,11 +149,8 @@ namespace CombatSystem
 
         public virtual void SelectSkill() {
             //Select a skill to use
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                battle.AskQuestion();
-                state = FighterState.AnsweringQuestion;
-            }
+            battle.AskQuestion();
+            state = FighterState.AnsweringQuestion;
         }
 
         private void AwaitAnswer() {
@@ -179,7 +179,6 @@ namespace CombatSystem
                 animationDone = false;
                 movedToCastingPosition = false;
                 hasDealtDamage = false;
-                turnIsOver = true;
                 ResetTime();
             }
         }
@@ -194,10 +193,11 @@ namespace CombatSystem
             if (WaitSeconds(2))
             {
                 state = FighterState.AwaitingTurn;
-                turnIsOver = false;
+                turnIsOver = true;
                 hasAnswered = false;
                 answeredCorrectly = false;
                 turnHasStarted = false;
+                ResetTime();
             }
         }
 

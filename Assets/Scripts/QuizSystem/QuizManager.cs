@@ -3,12 +3,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace QuizSystem
 {
     public class QuizManager : MonoBehaviour
     {
-        public QuestionSheet questions;
+        public QuestionSheet sheet;
+        public List<Question> questions;
+
         public static QuizManager quiz;
 
         public int currentIndex = -1;
@@ -33,6 +36,7 @@ namespace QuizSystem
             if (quiz == null)
             {
                 quiz = this;
+                DontDestroyOnLoad(this);
             }
             else {
                 Destroy(this);
@@ -42,7 +46,7 @@ namespace QuizSystem
         // Start is called before the first frame update
         void Start()
         {
-
+            SceneManager.sceneLoaded += ResetListenerOnLevelLoad;
         }
 
         // Update is called once per frame
@@ -51,14 +55,18 @@ namespace QuizSystem
             
         }
 
-
+        private void ResetListenerOnLevelLoad(Scene scene, LoadSceneMode mode)
+        {
+            ResetListeners();
+        }
+        
 
 
         //public functions
 
         public void AskQuestion()
         {
-            //Debug.Log("Attempting to ask question");
+            Debug.Log("Attempting to ask question");
             if (!askingQuestion)
             {
                 SetNextQuestion();
@@ -69,8 +77,10 @@ namespace QuizSystem
         }
 
         public bool AnswerQuestion(string answer) {
+            Debug.Log("Question was answered");
             bool isCorrect = currentQuestion.GetSolution().Equals(answer, StringComparison.InvariantCultureIgnoreCase);
             OnAnswerReceived?.Invoke(isCorrect);
+            Debug.Log("Called OnAnswerReceived");
             if (!isCorrect)
             {
                 ReceiveCorrectAnswer?.Invoke(currentQuestion.GetSolution());
@@ -85,20 +95,30 @@ namespace QuizSystem
             return currentQuestion.GetSolution();
         }
 
-
+        public void SetNewQuestions(QuestionSheet newQuestions)
+        {
+            sheet = newQuestions;
+            questions = new List<Question>();
+            questions.AddRange(sheet.GetQuestions());
+            ScrambleQuestions();
+            ResetQuestions();
+        }
 
 
 
         //Listener functions
 
         public void AddListenerOnQuestionAsked(AskQuestionDelegate method) {
+            Debug.Log($"OnQuestionAsked event added: {method}");
             OnQuestionAsked += method;
         }
         public void RemoveListenerOnQuestionAsked(AskQuestionDelegate method) {
             OnQuestionAsked -= method;
         }
 
-        public void AddListenerOnAnswerReceived(ReceiveAnswerDelegate method) {
+        public void AddListenerOnAnswerReceived(ReceiveAnswerDelegate method)
+        {
+            Debug.Log($"OnAnswerReceived event added: {method}");
             OnAnswerReceived += method;
         }
         public void RemoveListenerOnAnswerReceived(ReceiveAnswerDelegate method) {
@@ -106,6 +126,7 @@ namespace QuizSystem
         }
 
         public void AddListenerReceiveCorrectAnswer(SendAnswerDelegate method) {
+            Debug.Log($"ReceiveCorrectAnswer event added: {method}");
             ReceiveCorrectAnswer += method;
         }
         public void RemoveListenerReceiveCorrectAnswer(SendAnswerDelegate method)
@@ -113,16 +134,39 @@ namespace QuizSystem
             ReceiveCorrectAnswer -= method;
         }
 
-
+        private void ResetListeners()
+        {
+            Debug.Log("Listeners reset");
+            ReceiveCorrectAnswer = null;
+            OnAnswerReceived = null;
+            OnQuestionAsked = null;
+        }
 
 
         
         //Helper Functions
 
         private void SetNextQuestion() {
-            currentIndex = (currentIndex + 1) % questions.GetNumberOfQuestion();
-            currentQuestion = questions.GetQuestionAt(currentIndex);
+            currentIndex = (currentIndex + 1) % questions.Count;
+            currentQuestion = questions[currentIndex];
         }
         
+        private void ResetQuestions()
+        {
+            currentIndex = -1;
+            currentQuestion = null;
+            askingQuestion = false;
+        }
+
+        private void ScrambleQuestions()
+        {
+            for(int i = 0; i < questions.Count; i++)
+            {
+                int rand = UnityEngine.Random.Range(0, questions.Count);
+                Question temp = questions[i];
+                questions[i] = questions[rand];
+                questions[rand] = temp;
+            }
+        }
     }
 }
