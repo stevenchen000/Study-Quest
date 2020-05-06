@@ -8,13 +8,21 @@ using UnityEngine;
 
 namespace SkillSystem
 {
+    [CreateAssetMenu(menuName = "Skill")]
     public class Skill : ScriptableObject
     {
         public string skillName;
         public TargetType targettingType;
-        public List<SkillObjectCreationData> skillObjectIndices;
+        public float totalTime;
+
+        public List<SkillAction> actions;
 
         [Tooltip("List of objects to use for skill")]
         public List<GameObject> skillObjects;
+
+        public void RunSkill(SkillCaster caster, Timer timer)
+        {
+
+        }
     }
 }

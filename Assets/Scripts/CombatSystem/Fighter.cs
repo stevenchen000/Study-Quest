@@ -26,8 +26,8 @@ namespace CombatSystem
         protected CombatManager battle;
         public FighterState state;
 
-        protected Vector2 startingPosition;
-        protected Vector2 castingPosition;
+        public Vector2 startingPosition;
+        public Vector2 castingPosition;
         public float moveDistance = 1f;
         public float distanceThreshold = 0.1f;
         protected bool movedToCastingPosition = false;
@@ -37,14 +37,14 @@ namespace CombatSystem
         protected bool hasSelectedSkill = false;
         public Skill currentSkill;
 
-        protected float previousFrame = 0;
-        protected float currentFrame = 0;
+        protected Timer timer;
 
 
         // Start is called before the first frame update
         void Start()
         {
             Debug.Log("Question asked");
+            timer = new Timer();
             startingPosition = transform.position;
             castingPosition = startingPosition + (Vector2)(transform.right * moveDistance);
             battle = CombatManager.battle;
@@ -106,6 +106,11 @@ namespace CombatSystem
         }
 
 
+        public Vector2 GetStartingPosition()
+        {
+            return startingPosition;
+        }
+
 
 
         //event functions
@@ -161,9 +166,9 @@ namespace CombatSystem
 
 
         protected virtual void RunTurn() {
-            Tick();
+            timer.Tick();
 
-            if (WaitSeconds(1)) { 
+            if (timer.AtTime(1)) { 
                 target = battle.GetRandomTarget(this);
                 target.TakeDamage(this);
                 hasDealtDamage = true;
@@ -179,7 +184,7 @@ namespace CombatSystem
                 animationDone = false;
                 movedToCastingPosition = false;
                 hasDealtDamage = false;
-                ResetTime();
+                timer.ResetTimer();
             }
         }
 
@@ -189,15 +194,15 @@ namespace CombatSystem
 
         public virtual void EndTurn()
         {
-            Tick();
-            if (WaitSeconds(2))
+            timer.Tick();
+            if (timer.AtTime(2))
             {
                 state = FighterState.AwaitingTurn;
                 turnIsOver = true;
                 hasAnswered = false;
                 answeredCorrectly = false;
                 turnHasStarted = false;
-                ResetTime();
+                timer.ResetTimer();
             }
         }
 
@@ -222,16 +227,7 @@ namespace CombatSystem
             state = FighterState.AwaitingTurn;
         }
 
-
-        protected void Tick() {
-            previousFrame = currentFrame;
-            currentFrame += Time.deltaTime;
-        }
-
-        protected void ResetTime() {
-            previousFrame = 0;
-            currentFrame = 0;
-        }
+        
 
 
 
@@ -257,9 +253,6 @@ namespace CombatSystem
         protected void GoToPosition(Vector2 position) {
             transform.position = Vector2.Lerp(transform.position, position, 0.2f);
         }
-
-        protected bool WaitSeconds(float seconds) {
-            return currentFrame > seconds && previousFrame < seconds;
-        }
+        
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SkillSystem
 {
-    public enum SkillAnimationType
+    public enum SkillActionType
     {
         PlayAnimation,
         PlaySound,

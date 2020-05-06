@@ -566,6 +566,7 @@ GameObject:
   - component: {fileID: 1133170288}
   - component: {fileID: 1133170287}
   - component: {fileID: 1133170286}
+  - component: {fileID: 1133170290}
   m_Layer: 5
   m_Name: Load Screen
   m_TagString: Untagged
@@ -590,7 +591,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.000061035156}
-  m_SizeDelta: {x: -860.9376, y: -567.1256}
+  m_SizeDelta: {x: -860.9376, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1133170286
 MonoBehaviour:
@@ -629,12 +630,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 25
-    m_Bottom: 0
+    m_Left: 100
+    m_Right: 100
+    m_Top: 50
+    m_Bottom: 50
   m_ChildAlignment: 1
-  m_Spacing: 17.5
+  m_Spacing: 50
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -678,6 +679,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1133170284}
   m_CullTransparentMesh: 0
+--- !u!114 &1133170290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133170284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1 &1490424153
 GameObject:
   m_ObjectHideFlags: 0

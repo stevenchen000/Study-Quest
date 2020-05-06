@@ -29,9 +29,9 @@ namespace CombatSystem
 
         protected override void RunTurn()
         {
-            Tick();
+            timer.Tick();
 
-            if (WaitSeconds(1)) {
+            if (timer.AtTime(1)) {
                 state = FighterState.EndingTurn;
                 target.TakeDamage(this);
             }
@@ -39,11 +39,11 @@ namespace CombatSystem
 
         public override void EndTurn()
         {
-            Tick();
+            timer.Tick();
 
-            if (WaitSeconds(2))
+            if (timer.AtTime(2))
             {
-                ResetTime();
+                timer.ResetTimer();
                 state = FighterState.AwaitingTurn;
                 target.UnwarnOfAttack();
                 turnIsOver = true;
