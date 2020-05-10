@@ -27546,6 +27546,7 @@ GameObject:
   - component: {fileID: 114576217851892287}
   - component: {fileID: 1109985845823964}
   - component: {fileID: 1183053649}
+  - component: {fileID: 1109985845823965}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Player
@@ -27581,6 +27582,19 @@ MonoBehaviour:
   moveDistance: 1
   distanceThreshold: 0.1
   currentSkill: {fileID: 0}
+--- !u!114 &1109985845823965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109985845823963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24922aad71dd60e46b76d4243fee75e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: []
 --- !u!1 &1142965278913723
 GameObject:
   m_ObjectHideFlags: 0
