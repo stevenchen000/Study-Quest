@@ -27,6 +27,18 @@ public class Timer
         return currentFrame > time && previousFrame <= time;
     }
 
+    public float GetCurrentTime() { return currentFrame; }
+
+
+    /// <summary>
+    /// Returns true if previous or current frame is within the range
+    /// </summary>
+    /// <returns></returns>
+    public bool DuringTime(float startTime, float endTime)
+    {
+        return currentFrame > startTime && previousFrame < endTime;
+    }
+
     
     /// <summary>
     /// Returns true if previousFrame is past the given time
