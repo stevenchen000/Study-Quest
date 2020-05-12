@@ -13,6 +13,7 @@ namespace SkillSystem
         public float timing;
         public Vector3 positionOffset;
         public bool createCopyPerTarget;
-        
+
+        public SkillObjectAnimation animation;
     }
 }

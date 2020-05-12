@@ -10,7 +10,7 @@ namespace SkillSystem
     public class SkillObject : MonoBehaviour
     {
         public float lifetime;
-
+        public SkillObjectAnimation animation;
         private Timer timer;
 
 
@@ -31,7 +31,10 @@ namespace SkillSystem
         }
 
 
+        public void SetupSkillObject(SkillObjectCreationData data)
+        {
 
+        }
 
 
 
