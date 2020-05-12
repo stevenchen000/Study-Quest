@@ -17,13 +17,14 @@ namespace SkillSystem
         public string animationName;
 
         public AudioClip soundEffect;
-
-        public SkillObject skillObj;
+        
         public int gameObjectIndex;
 
+        public SkillObject so;
         public SkillObjectTarget targetType;
         public Vector2 offset;
-        
+
+        public SkillObjectCreationData data;
 
         public void RunAnimation(SkillCaster caster, Skill skill)
         {
@@ -38,6 +39,7 @@ namespace SkillSystem
                     PlaySound(source);
                     break;
                 case SkillActionType.InstantiateObject:
+                    InstantiateSkillObject(caster, skill, data);
                     break;
                 case SkillActionType.MoveObject:
                     MoveObjectToPosition(caster);
@@ -96,6 +98,12 @@ namespace SkillSystem
                     break;
             }
 
+        }
+
+        private void InstantiateSkillObject(SkillCaster caster, Skill skill, SkillObjectCreationData data)
+        {
+            SkillObject obj = GameObject.Instantiate<SkillObject>(so);
+            obj.SetupSkillObject(caster, skill, data);
         }
     }
 }

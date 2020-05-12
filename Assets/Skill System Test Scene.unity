@@ -18472,7 +18472,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   audioSource: {fileID: 0}
   currentSkill: {fileID: 0}
-  testSkill: {fileID: 11400000, guid: 99ae79402bd88f44b99c8e543f54bba8, type: 2}
+  testSkill: {fileID: 11400000, guid: bdc451ab1a5a8344ab2ec4b1e4192d47, type: 2}
   target: {fileID: 1250409291}
 --- !u!1 &1230794797
 GameObject:

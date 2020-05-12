@@ -20,9 +20,28 @@ namespace SkillSystem
         [Tooltip("List of objects to use for skill")]
         public List<GameObject> skillObjects;
 
+
         public void RunSkill(SkillCaster caster, Timer timer)
         {
+            
+        }
 
+
+        /// <summary>
+        /// Gets the skillObject at the index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public GameObject GetGameObjectAtIndex(int index)
+        {
+            GameObject result = null;
+
+            if(index >= 0 && index < skillObjects.Count)
+            {
+                result = skillObjects[index];
+            }
+
+            return result;
         }
     }
 }
