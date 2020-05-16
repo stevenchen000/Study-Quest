@@ -16,9 +16,14 @@ namespace SkillSystem
         private SkillCaster caster;
         private Skill skill;
 
+        private Rigidbody2D rb;
+        private Collider2D trigger;
+
         private void Start()
         {
             timer = new Timer();
+            rb = transform.GetComponent<Rigidbody2D>();
+            trigger = transform.GetComponent<Collider2D>();
         }
 
         private void Update()
@@ -31,7 +36,16 @@ namespace SkillSystem
                 ResetSkillObject();
             }
         }
-        
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            Debug.Log($"Collided with ${collision.gameObject}");
+            if (!collision.gameObject.CompareTag(caster.tag))
+            {
+                gameObject.SetActive(false);
+            }
+        }
+
 
 
         public void SetupSkillObject(SkillCaster caster, Skill skill, SkillObjectCreationData data)

@@ -102,7 +102,7 @@ namespace SkillSystem
 
         private void InstantiateSkillObject(SkillCaster caster, Skill skill, SkillObjectCreationData data)
         {
-            SkillObject obj = GameObject.Instantiate<SkillObject>(so);
+            SkillObject obj = PoolManager.pool.PullObject(0).GetComponent<SkillObject>();
             obj.SetupSkillObject(caster, skill, data);
         }
     }

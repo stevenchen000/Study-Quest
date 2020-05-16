@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 904830786101296441}
   - component: {fileID: 5329692559335747982}
-  - component: {fileID: 7574845172240857058}
   - component: {fileID: 8651221160053334721}
-  m_Layer: 0
+  - component: {fileID: -9008154709065524209}
+  m_Layer: 8
   m_Name: Skill Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,22 +54,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &7574845172240857058
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2402524799090863651}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
-  m_Direction: 0
 --- !u!114 &8651221160053334721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,3 +69,19 @@ MonoBehaviour:
   lifetime: 0
   anim:
     animations: []
+--- !u!58 &-9008154709065524209
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2402524799090863651}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1

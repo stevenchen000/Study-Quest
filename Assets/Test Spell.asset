@@ -36,9 +36,9 @@ MonoBehaviour:
       animation:
         animations:
         - animationType: 0
-          startTime: 0
+          startTime: 0.5
           duration: 16.02
-          speed: 5
+          speed: 20
         - animationType: 1
           startTime: 0
           duration: 20
