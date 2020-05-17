@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace StatSystem
 {
-    public class CharacterStats : MonoBehaviour
+    public class CharacterStats : MonoBehaviour, IStatContainer
     {
 
         public List<Stat> stats = new List<Stat>();

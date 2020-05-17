@@ -2,11 +2,12 @@
 using SkillSystem;
 using System.Collections;
 using System.Collections.Generic;
+using TargettingSystem;
 using UnityEngine;
 
 namespace CombatSystem
 {
-    public class Fighter : MonoBehaviour
+    public class Fighter : MonoBehaviour, ITargettable
     {
         public bool turnIsOver = false;
         public int currentHealth = 100;
@@ -253,6 +254,26 @@ namespace CombatSystem
         protected void GoToPosition(Vector2 position) {
             transform.position = Vector2.Lerp(transform.position, position, 0.2f);
         }
-        
+
+
+
+
+
+        //ITargettable functions
+
+        public string GetTag()
+        {
+            return tag;
+        }
+
+        public void TakeDamage(int damage)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void HealDamage(int damage)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
