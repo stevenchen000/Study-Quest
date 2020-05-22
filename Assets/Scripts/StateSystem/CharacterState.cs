@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SkillSystem
+namespace StateSystem
 {
-    public interface ICastable
+    public class CharacterState
     {
 
-        void Cast();
-        bool IsCasting();
-        TargetType GetTargetType();
     }
 }

@@ -7,12 +7,7 @@ namespace CombatSystem
     public class EnemyFighter : Fighter
     {
         
-
-        public override void StartTurn()
-        {
-            base.StartTurn();
-        }
-
+        
         public override void SelectSkill()
         {
             state = FighterState.RunningAbility;

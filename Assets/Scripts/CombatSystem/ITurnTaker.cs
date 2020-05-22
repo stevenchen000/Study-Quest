@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SkillSystem
+namespace CombatSystem
 {
-    public interface ICaster
+    public interface ITurnTaker
     {
-        void CastSkill(SkillCastData data);
+        void StartTurn();
+        bool IsTakingTurn();
     }
 }

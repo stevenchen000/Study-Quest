@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SkillSystem
+namespace StateSystem
 {
-    public interface ICaster
+    public class StateTransition
     {
-        void CastSkill(SkillCastData data);
     }
 }

@@ -11,6 +11,7 @@ namespace SkillSystem
     /// </summary>
     public class SkillCastData
     {
-        
+        public ICastable skill;
+        public ICaster caster;
     }
 }

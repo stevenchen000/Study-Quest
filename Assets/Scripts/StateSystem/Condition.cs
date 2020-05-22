@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SkillSystem
+namespace StateSystem
 {
-    public interface ICaster
+    public class Condition
     {
-        void CastSkill(SkillCastData data);
     }
 }

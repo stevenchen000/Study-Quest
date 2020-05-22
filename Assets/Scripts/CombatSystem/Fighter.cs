@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace CombatSystem
 {
-    public class Fighter : MonoBehaviour, ITargettable
+    public class Fighter : MonoBehaviour, ITargettable, ITurnTaker
     {
         public bool turnIsOver = false;
         public int currentHealth = 100;
@@ -25,7 +25,7 @@ namespace CombatSystem
         public delegate void HealthChanged(float currentHealth, float maxHealth);
         public HealthChanged OnHealthChanged;
         protected CombatManager battle;
-        public FighterState state;
+        public FighterState state = FighterState.AwaitingTurn;
 
         public Vector2 startingPosition;
         public Vector2 castingPosition;
@@ -34,6 +34,7 @@ namespace CombatSystem
         protected bool movedToCastingPosition = false;
         protected bool animationDone = false;
         protected bool hasDealtDamage = false;
+        public bool takingTurn = false;
 
         protected bool hasSelectedSkill = false;
         public Skill currentSkill;
@@ -139,17 +140,7 @@ namespace CombatSystem
 
         //combat functions
 
-        public virtual void StartTurn() {
-            turnIsOver = false;
-            MoveToCastPosition();
-
-            if (movedToCastingPosition)
-            {
-                state = FighterState.SelectingSkill;
-                hasAnswered = false;
-                turnHasStarted = true;
-            }
-        }
+        
         
 
 
@@ -274,6 +265,22 @@ namespace CombatSystem
         public void HealDamage(int damage)
         {
             throw new System.NotImplementedException();
+        }
+
+
+
+        //ITurnTaker functions
+
+        public void StartTurn()
+        {
+            takingTurn = true;
+            state = FighterState.SelectingSkill;
+        }
+
+
+        public bool IsTakingTurn()
+        {
+            return takingTurn;
         }
     }
 }
