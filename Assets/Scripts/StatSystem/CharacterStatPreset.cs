@@ -7,9 +7,9 @@ using UnityEngine;
 
 namespace StatSystem
 {
-    [CreateAssetMenu(menuName = "Character Stat Preset")]
+    [CreateAssetMenu(menuName = "Stats/Character Stat Preset")]
     public class CharacterStatPreset : ScriptableObject
     {
-        public List<Stat> stats;
+        public List<StatData> stats = new List<StatData>();
     }
 }

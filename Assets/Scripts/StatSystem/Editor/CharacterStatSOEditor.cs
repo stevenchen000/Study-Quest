@@ -5,16 +5,15 @@ using UnityEditor;
 
 namespace StatSystem
 {
-    [CustomEditor(typeof(CharacterStats))]
-    public class CharacterStatsEditor : Editor
+    [CustomEditor(typeof(CharacterStatsSO))]
+    public class CharacterStatSOEditor : Editor
     {
 
-        private CharacterStats stats;
-        public static CharacterStatPreset preset;
+        CharacterStatsSO stats;
 
         public void OnEnable()
         {
-            stats = (CharacterStats)target;
+            stats = (CharacterStatsSO)target;
         }
 
         public override void OnInspectorGUI()

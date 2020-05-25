@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEditor;
 using UnityEngine;
 
 namespace StatSystem
 {
     public class CharacterStats : MonoBehaviour, IStatContainer
     {
-
+        public CharacterStatPreset preset;
         public List<Stat> stats = new List<Stat>();
         private Dictionary<string, Stat> _statsDict = new Dictionary<string, Stat>();
 
@@ -24,7 +25,7 @@ namespace StatSystem
             {
                 if (stats[i].statName.Equals(statName, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    result = stats[i].GetCurrentValue();
+                    result = stats[i].GetTotalValue();
                     resultFound = true;
                     break;
                 }
@@ -38,42 +39,45 @@ namespace StatSystem
             return result;
         }
 
-        public void SetStats(List<Stat> newStats)
+        public void SetStats(CharacterStatPreset newPreset)
         {
-            stats = new List<Stat>();
-            for(int i = 0; i < newStats.Count; i++)
+            if (newPreset != preset && newPreset != null)
             {
-                Stat newStat = newStats[i];
-                this.stats.Add(new Stat(newStat));
+                stats = new List<Stat>();
+                for (int i = 0; i < newPreset.stats.Count; i++)
+                {
+                    StatData newStatData = newPreset.stats[i];
+                    AddNewStat(newStatData);
+                }
+                preset = newPreset;
             }
         }
 
 
+        public void AddNewStat(StatData data)
+        {
+            string statName = data.statName;
 
+            if (!_statsDict.ContainsKey(statName))
+            {
+                stats.Add(new Stat(data));
+            }
+        }
 
 
         public void GUI()
         {
-            int index = -1;
+            CharacterStatPreset newPreset = (CharacterStatPreset)EditorGUILayout.ObjectField("Stat Preset", preset, typeof(CharacterStatPreset), true);
+            if (newPreset != preset)
+            {
+                SetStats(newPreset);
+                EditorUtility.SetDirty(this);
+            }
 
             for(int i = 0; i < stats.Count; i++)
             {
                 stats[i].GUI();
-                /*if(GUILayout.Button("Remove Stat"))
-                {
-                    index = i;
-                }*/
             }
-
-            if (index >= 0)
-            {
-                stats.RemoveAt(index);
-            }
-            /*
-            if(GUILayout.Button("Add Stat"))
-            {
-                stats.Add(new Stat());
-            }*/
         }
     }
 }
