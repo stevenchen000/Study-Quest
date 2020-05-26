@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace CombatSystem
 {
-    public class Fighter : MonoBehaviour, ITargettable, ITurnTaker
+    public class Fighter : MonoBehaviour, ITargettable
     {
         public bool turnIsOver = false;
         public int currentHealth = 100;
@@ -37,7 +37,9 @@ namespace CombatSystem
         public bool takingTurn = false;
 
         protected bool hasSelectedSkill = false;
+        public SkillCaster caster;
         public Skill currentSkill;
+        public Skill testSkill;
 
         protected Timer timer;
 
@@ -51,8 +53,7 @@ namespace CombatSystem
             castingPosition = startingPosition + (Vector2)(transform.right * moveDistance);
             battle = CombatManager.battle;
             state = FighterState.AwaitingTurn;
-            
-            battle.AddListenerOnAnswerReceived(QuestionAnswered);
+            caster = transform.GetComponent<SkillCaster>();
         }
 
         // Update is called once per frame
@@ -61,23 +62,29 @@ namespace CombatSystem
             switch (state)
             {
                 case FighterState.SelectingSkill:
-                    SelectSkill();
+                    AwaitSkill();
                     break;
                 case FighterState.AnsweringQuestion:
                     AwaitAnswer();
                     break;
-                case FighterState.RunningAbility:
+                case FighterState.Acting:
                     RunTurn();
                     break;
-                case FighterState.Defending:
+                /*case FighterState.Defending:
                     Defend();
-                    break;
+                    break;*/
                 case FighterState.EndingTurn:
                     EndTurn();
                     break;
                 case FighterState.AwaitingTurn:
                     break;
             }
+
+            /*if (Input.GetKeyDown(KeyCode.F))
+            {
+                AnswerQuestion(true);
+                SelectSkill(testSkill);
+            }*/
         }
 
 
@@ -117,12 +124,12 @@ namespace CombatSystem
 
         //event functions
 
-        private void QuestionAnswered(bool isCorrect) {
+        /*private void QuestionAnswered(bool isCorrect) {
             Debug.Log("Answered question");
             switch (state)
             {
                 case FighterState.AnsweringQuestion:
-                    state = FighterState.RunningAbility;
+                    state = FighterState.Acting;
                     answeredCorrectly = isCorrect;
                     hasAnswered = true;
                     break;
@@ -130,7 +137,7 @@ namespace CombatSystem
                     answeredCorrectly = isCorrect;
                     break;
             }
-        }
+        }*/
 
 
 
@@ -144,39 +151,69 @@ namespace CombatSystem
         
 
 
-        public virtual void SelectSkill() {
-            //Select a skill to use
-            battle.AskQuestion();
-            state = FighterState.AnsweringQuestion;
+        protected virtual void AwaitSkill() {
+            if (currentSkill != null)
+            {
+                state = FighterState.AnsweringQuestion;
+            }
+        }
+
+        public void SelectSkill(Skill skill)
+        {
+            if (currentSkill == null && state == FighterState.SelectingSkill)
+            {
+                Debug.Log("test");
+                currentSkill = skill;
+                state = FighterState.AnsweringQuestion;
+            }
         }
 
         private void AwaitAnswer() {
             if (hasAnswered) {
-                state = FighterState.RunningAbility;
+                state = FighterState.Acting;
+            }
+        }
+
+        public void AnswerQuestion(bool isCorrect)
+        {
+            if (state == FighterState.AnsweringQuestion)
+            {
+                hasAnswered = true;
+                answeredCorrectly = isCorrect;
             }
         }
 
 
         protected virtual void RunTurn() {
-            timer.Tick();
+            if (answeredCorrectly)
+            {
+                timer.Tick();
 
-            if (timer.AtTime(1)) { 
-                target = battle.GetRandomTarget(this);
-                target.TakeDamage(this);
-                hasDealtDamage = true;
+                if (timer.AtTime(0))
+                {
+                    target = battle.GetRandomTarget(this);
+                    caster.CastSkill(currentSkill);
+                    target.TakeDamage(this);
+                    hasDealtDamage = true;
+                }
+
+                if (hasDealtDamage)
+                {
+                    ReturnToStartingPosition();
+                }
+
+                if (animationDone)
+                {
+                    state = FighterState.EndingTurn;
+                    animationDone = false;
+                    movedToCastingPosition = false;
+                    hasDealtDamage = false;
+                    timer.ResetTimer();
+                }
             }
-
-            if (hasDealtDamage) {
-                ReturnToStartingPosition();
-            }
-
-            if (animationDone)
+            else
             {
                 state = FighterState.EndingTurn;
-                animationDone = false;
-                movedToCastingPosition = false;
-                hasDealtDamage = false;
-                timer.ResetTimer();
             }
         }
 
@@ -274,6 +311,8 @@ namespace CombatSystem
         public void StartTurn()
         {
             takingTurn = true;
+            turnIsOver = false;
+            turnHasStarted = true;
             state = FighterState.SelectingSkill;
         }
 

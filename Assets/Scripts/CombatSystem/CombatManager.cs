@@ -135,10 +135,10 @@ namespace CombatSystem
             quiz.RemoveListenerReceiveCorrectAnswer(method);
         }
 
-        public void AskQuestion()
+        /*public void AskQuestion()
         {
             quiz.AskQuestion();
-        }
+        }*/
 
 
 
@@ -161,7 +161,7 @@ namespace CombatSystem
             if (fighter.TurnIsOver())
             {
                 UpdateLivingStatus();
-                fighter.EndTurn();
+                //fighter.EndTurn();
                 battleState = CombatState.EndTurn;
             }
         }

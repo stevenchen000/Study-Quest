@@ -8,9 +8,9 @@ namespace CombatSystem
     {
         
         
-        public override void SelectSkill()
+        protected override void AwaitSkill()
         {
-            state = FighterState.RunningAbility;
+            state = FighterState.Acting;
             target = battle.GetRandomTarget(this);
             
             //target.WarnOfAttack();

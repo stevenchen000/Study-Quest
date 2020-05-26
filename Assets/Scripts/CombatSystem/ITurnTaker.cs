@@ -9,6 +9,7 @@ namespace CombatSystem
     public interface ITurnTaker
     {
         void StartTurn();
+        void TakeTurn();
         bool IsTakingTurn();
     }
 }

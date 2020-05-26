@@ -11,7 +11,7 @@ namespace CombatSystem
         StartingTurn,
         SelectingSkill,
         AnsweringQuestion,
-        RunningAbility,
+        Acting,
         Defending,
         EndingTurn,
         AwaitingTurn
