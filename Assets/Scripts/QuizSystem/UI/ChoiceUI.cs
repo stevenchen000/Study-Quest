@@ -18,7 +18,7 @@ namespace QuizSystem
 
         public string text;
 
-        private QuizManager quiz;
+        public QuizUI quiz;
 
         // Start is called before the first frame update
         void Start()
@@ -26,9 +26,9 @@ namespace QuizSystem
             containerUI = transform.GetComponentInParent<ChoiceBoxesUI>();
             button = transform.GetComponent<Button>();
             textbox = transform.GetComponentInChildren<Text>();
-            quiz = QuizManager.quiz;
+            
 
-            button.onClick.AddListener(ChooseAnswer);
+            //button.onClick.AddListener(ChooseAnswer);
         }
 
 
@@ -70,7 +70,7 @@ namespace QuizSystem
         
         //event functions
 
-        private void ChooseAnswer() {
+        public void ChooseAnswer() {
             bool isCorrect = quiz.AnswerQuestion(text);
 
             ShowCrossOrCheck(isCorrect);

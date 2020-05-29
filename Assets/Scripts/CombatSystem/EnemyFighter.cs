@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using SkillSystem;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,8 +7,19 @@ namespace CombatSystem
 {
     public class EnemyFighter : Fighter
     {
-        
-        
+        // Start is called before the first frame update
+        void Start()
+        {
+            Debug.Log("Question asked");
+            timer = new Timer();
+            startingPosition = transform.position;
+            castingPosition = startingPosition + (Vector2)(transform.right * moveDistance);
+            battle = CombatManager.battle;
+            state = FighterState.AwaitingTurn;
+            caster = transform.GetComponent<SkillCaster>();
+            forwardVector = transform.right * -1;
+        }
+
         protected override void AwaitSkill()
         {
             state = FighterState.Acting;

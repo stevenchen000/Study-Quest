@@ -19,17 +19,17 @@ namespace QuizSystem
         
         private bool askingQuestion = false;
 
-
+        /*
         public delegate void AskQuestionDelegate(Question question);
         public delegate void ReceiveAnswerDelegate(bool isCorrect);
         public delegate void SendAnswerDelegate(string answer);
-
+        
         public event AskQuestionDelegate OnQuestionAsked;
         public event ReceiveAnswerDelegate OnAnswerReceived;
-        /// <summary>
-        /// Calls when incorrect answer is given
-        /// </summary>
+        
         public event SendAnswerDelegate ReceiveCorrectAnswer;
+        */
+
 
         private void Awake()
         {
@@ -46,45 +46,25 @@ namespace QuizSystem
         // Start is called before the first frame update
         void Start()
         {
-            SceneManager.sceneLoaded += ResetListenerOnLevelLoad;
+            SetNewQuestions(sheet);
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            
-        }
 
-        private void ResetListenerOnLevelLoad(Scene scene, LoadSceneMode mode)
-        {
-            ResetListeners();
-        }
-        
 
 
         //public functions
 
         public void AskQuestion()
         {
-            Debug.Log("Attempting to ask question");
             if (!askingQuestion)
             {
                 SetNextQuestion();
                 askingQuestion = true;
-                OnQuestionAsked?.Invoke(currentQuestion);
-                //Debug.Log("Question asked");
             }
         }
 
         public bool AnswerQuestion(string answer) {
-            Debug.Log("Question was answered");
             bool isCorrect = currentQuestion.GetSolution().Equals(answer, StringComparison.InvariantCultureIgnoreCase);
-            OnAnswerReceived?.Invoke(isCorrect);
-            Debug.Log("Called OnAnswerReceived");
-            if (!isCorrect)
-            {
-                ReceiveCorrectAnswer?.Invoke(currentQuestion.GetSolution());
-            }
             askingQuestion = false;
 
             return isCorrect;
@@ -106,8 +86,38 @@ namespace QuizSystem
 
 
 
-        //Listener functions
+        //Helper Functions
 
+        private void SetNextQuestion()
+        {
+            currentIndex = (currentIndex + 1) % questions.Count;
+            currentQuestion = questions[currentIndex];
+        }
+
+        private void ResetQuestions()
+        {
+            currentIndex = -1;
+            currentQuestion = null;
+            askingQuestion = false;
+        }
+
+        private void ScrambleQuestions()
+        {
+            for (int i = 0; i < questions.Count; i++)
+            {
+                int rand = UnityEngine.Random.Range(0, questions.Count);
+                Question temp = questions[i];
+                questions[i] = questions[rand];
+                questions[rand] = temp;
+            }
+        }
+
+
+
+
+
+        //Listener functions
+        /*
         public void AddListenerOnQuestionAsked(AskQuestionDelegate method) {
             Debug.Log($"OnQuestionAsked event added: {method}");
             OnQuestionAsked += method;
@@ -141,32 +151,8 @@ namespace QuizSystem
             OnAnswerReceived = null;
             OnQuestionAsked = null;
         }
+        */
 
 
-        
-        //Helper Functions
-
-        private void SetNextQuestion() {
-            currentIndex = (currentIndex + 1) % questions.Count;
-            currentQuestion = questions[currentIndex];
-        }
-        
-        private void ResetQuestions()
-        {
-            currentIndex = -1;
-            currentQuestion = null;
-            askingQuestion = false;
-        }
-
-        private void ScrambleQuestions()
-        {
-            for(int i = 0; i < questions.Count; i++)
-            {
-                int rand = UnityEngine.Random.Range(0, questions.Count);
-                Question temp = questions[i];
-                questions[i] = questions[rand];
-                questions[rand] = temp;
-            }
-        }
     }
 }

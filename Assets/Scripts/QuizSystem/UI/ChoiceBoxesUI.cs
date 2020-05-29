@@ -11,7 +11,8 @@ namespace QuizSystem
 {
     public class ChoiceBoxesUI : MonoBehaviour
     {
-        public List<ChoiceUI> buttons;
+        [HideInInspector]
+        public List<ChoiceUI> buttons = new List<ChoiceUI>();
         public string[] choices;
         public int correctAnswerIndex = -1;
 
@@ -24,7 +25,7 @@ namespace QuizSystem
             quiz = QuizManager.quiz;
             //InitButtons();
             choices = new string[4];
-
+            InitButtons();
             //add events here
         }
 

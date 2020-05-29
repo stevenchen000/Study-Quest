@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e0a83d2c8d04424bb6ce12b98812653, type: 3}
   m_Name: Test Spell
   m_EditorClassIdentifier: 
-  skillName: 
+  skillName: Test Spell
   targettingType: 0
   totalTime: 2
   actions:

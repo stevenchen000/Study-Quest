@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using CombatSystem;
+using SkillSystem;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +15,10 @@ namespace QuizSystem
         public Text questionText;
         public ChoiceBoxesUI multipleChoiceUI;
         public FillInTheBlankUI fillInTheBlankUI;
+        public SkillBar skillBar;
+
+        private CombatManager battle;
+        private Fighter currentFighter;
 
         public string[] choices;
 
@@ -24,23 +30,35 @@ namespace QuizSystem
         private float timer = 0;
         private bool prepareToDisableTimer = false;
 
+        public Skill testSkill;
+
 
         private QuizManager quiz;
 
         public void Start()
         {
             quiz = QuizManager.quiz;
-            DisableGUI();
+            battle = CombatManager.battle;
+            //DisableGUI();
 
-            quiz.AddListenerOnQuestionAsked(SetQuestion);
+            /*quiz.AddListenerOnQuestionAsked(SetQuestion);
             quiz.AddListenerOnAnswerReceived(StartUIDisableTimer);
             quiz.AddListenerOnAnswerReceived(StopUIInteractions);
-            quiz.AddListenerReceiveCorrectAnswer(MarkCorrectAnswer);
+            quiz.AddListenerReceiveCorrectAnswer(MarkCorrectAnswer);*/
         }
 
         private void Update()
         {
-            if (prepareToDisableTimer) {
+            if(currentFighter != battle.GetCurrentFighter())
+            {
+                currentFighter = battle.GetCurrentFighter();
+                skillBar.SetSkills(currentFighter.skills);
+            }
+
+
+
+
+            /*if (prepareToDisableTimer) {
                 timer += Time.deltaTime;
 
                 if(timer > disableTime)
@@ -48,8 +66,52 @@ namespace QuizSystem
                     DisableGUI();
                     ResetTimer();
                 }
+            }*/
+        }
+
+        /*public void HaveCharacterAttack()
+        {
+            currentFighter = battle.GetCurrentFighter();
+            if (currentFighter.state == FighterState.SelectingSkill)
+            {
+                currentFighter.SelectSkill(testSkill);
+                quiz.AskQuestion();
+                SetQuestion(quiz.currentQuestion);
+            }
+        }*/
+
+        public void SelectSkill(Skill skill)
+        {
+            Debug.Log("Selecting skill");
+            if (currentFighter.state == FighterState.SelectingSkill)
+            {
+                Debug.Log("Selected skill");
+                currentFighter.SelectSkill(skill);
+                quiz.AskQuestion();
+                SetQuestion(quiz.currentQuestion);
             }
         }
+
+
+        public bool AnswerQuestion(string answer)
+        {
+            bool isCorrect = quiz.AnswerQuestion(answer);
+
+            if (!isCorrect)
+            {
+                string trueAnswer = quiz.GetCurrentSolution();
+                multipleChoiceUI.MarkCorrectAnswer(trueAnswer);
+            }
+
+            battle.GetCurrentFighter().AnswerQuestion(isCorrect);
+
+            return isCorrect;
+        }
+
+
+
+
+
 
 
 
@@ -57,7 +119,6 @@ namespace QuizSystem
         //event functions
 
         private void SetQuestion(Question question) {
-            EnableGUI();
             ResetTimer();
             currentQuestion = question;
             questionText.text = question.question;

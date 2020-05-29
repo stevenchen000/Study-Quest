@@ -21,19 +21,39 @@ MonoBehaviour:
     duration: 0
     animationName: 
     soundEffect: {fileID: 0}
-    skillObj: {fileID: 0}
     gameObjectIndex: 0
+    so: {fileID: 0}
     targetType: 2
     offset: {x: 2.07, y: 0}
+    data:
+      skillObjIndex: 0
+      timing: 0
+      lifetime: 0
+      target: 0
+      parent: 0
+      targetPositionOffset: {x: 0, y: 0, z: 0}
+      createCopyPerTarget: 0
+      animation:
+        animations: []
   - animationType: 0
     startTime: 0.1
     duration: 0
     animationName: SlashMelee1H
     soundEffect: {fileID: 0}
-    skillObj: {fileID: 0}
     gameObjectIndex: 0
+    so: {fileID: 0}
     targetType: 0
     offset: {x: 0, y: 0}
+    data:
+      skillObjIndex: 0
+      timing: 0
+      lifetime: 0
+      target: 0
+      parent: 0
+      targetPositionOffset: {x: 0, y: 0, z: 0}
+      createCopyPerTarget: 0
+      animation:
+        animations: []
   skillObjects:
   - {fileID: 0}
   - {fileID: 0}

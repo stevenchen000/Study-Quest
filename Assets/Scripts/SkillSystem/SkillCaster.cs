@@ -34,10 +34,10 @@ namespace SkillSystem
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.T))
+            /*if (Input.GetKeyDown(KeyCode.T))
             {
                 CastSkill(testSkill);
-            }
+            }*/
 
             if (IsCasting())
             {

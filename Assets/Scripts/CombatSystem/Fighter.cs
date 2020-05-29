@@ -39,7 +39,11 @@ namespace CombatSystem
         protected bool hasSelectedSkill = false;
         public SkillCaster caster;
         public Skill currentSkill;
-        public Skill testSkill;
+
+
+        public List<Skill> skills = new List<Skill>();
+
+        public Vector2 forwardVector;
 
         protected Timer timer;
 
@@ -54,6 +58,7 @@ namespace CombatSystem
             battle = CombatManager.battle;
             state = FighterState.AwaitingTurn;
             caster = transform.GetComponent<SkillCaster>();
+            forwardVector = transform.right;
         }
 
         // Update is called once per frame
@@ -85,7 +90,12 @@ namespace CombatSystem
                 AnswerQuestion(true);
                 SelectSkill(testSkill);
             }*/
+
+            //Debug.DrawRay(transform.position, GetForwardVector() * 5, Color.blue);
         }
+
+
+
 
 
 
@@ -120,24 +130,15 @@ namespace CombatSystem
             return startingPosition;
         }
 
+        public Vector2 GetForwardVector()
+        {
+            return forwardVector;
+        }
 
 
-        //event functions
 
-        /*private void QuestionAnswered(bool isCorrect) {
-            Debug.Log("Answered question");
-            switch (state)
-            {
-                case FighterState.AnsweringQuestion:
-                    state = FighterState.Acting;
-                    answeredCorrectly = isCorrect;
-                    hasAnswered = true;
-                    break;
-                case FighterState.Defending:
-                    answeredCorrectly = isCorrect;
-                    break;
-            }
-        }*/
+
+
 
 
 
@@ -146,10 +147,7 @@ namespace CombatSystem
 
 
         //combat functions
-
         
-        
-
 
         protected virtual void AwaitSkill() {
             if (currentSkill != null)
@@ -197,11 +195,6 @@ namespace CombatSystem
                     hasDealtDamage = true;
                 }
 
-                if (hasDealtDamage)
-                {
-                    ReturnToStartingPosition();
-                }
-
                 if (animationDone)
                 {
                     state = FighterState.EndingTurn;
@@ -209,6 +202,13 @@ namespace CombatSystem
                     movedToCastingPosition = false;
                     hasDealtDamage = false;
                     timer.ResetTimer();
+                }
+                else
+                {
+                    if (!caster.IsCasting())
+                    {
+                        animationDone = true;
+                    }
                 }
             }
             else
@@ -232,6 +232,7 @@ namespace CombatSystem
                 answeredCorrectly = false;
                 turnHasStarted = false;
                 timer.ResetTimer();
+                currentSkill = null;
             }
         }
 

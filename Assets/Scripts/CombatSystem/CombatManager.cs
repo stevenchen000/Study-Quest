@@ -108,6 +108,8 @@ namespace CombatSystem
             return result;
         }
 
+
+        /*
         public void AddListenerOnQuestionAsked(QuizManager.AskQuestionDelegate method)
         {
             quiz.AddListenerOnQuestionAsked(method);
@@ -133,12 +135,17 @@ namespace CombatSystem
         public void RemoveListenerReceiveCorrectAnswer(QuizManager.SendAnswerDelegate method)
         {
             quiz.RemoveListenerReceiveCorrectAnswer(method);
+        }*/
+
+        public Fighter GetCurrentFighter()
+        {
+            return turnOrder.GetCurrentFighter();
         }
 
-        /*public void AskQuestion()
-        {
-            quiz.AskQuestion();
-        }*/
+
+
+
+
 
 
 
@@ -198,7 +205,7 @@ namespace CombatSystem
 
 
 
-
+        //Helper functions
 
         private void _InitParties()
         {
