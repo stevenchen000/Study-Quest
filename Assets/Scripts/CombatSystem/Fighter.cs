@@ -160,7 +160,6 @@ namespace CombatSystem
         {
             if (currentSkill == null && state == FighterState.SelectingSkill)
             {
-                Debug.Log("test");
                 currentSkill = skill;
                 state = FighterState.AnsweringQuestion;
             }

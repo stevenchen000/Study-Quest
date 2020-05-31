@@ -82,10 +82,10 @@ namespace QuizSystem
 
         public void SelectSkill(Skill skill)
         {
-            Debug.Log("Selecting skill");
+            //Debug.Log("Selecting skill");
             if (currentFighter.state == FighterState.SelectingSkill)
             {
-                Debug.Log("Selected skill");
+                //Debug.Log("Selected skill");
                 currentFighter.SelectSkill(skill);
                 quiz.AskQuestion();
                 SetQuestion(quiz.currentQuestion);

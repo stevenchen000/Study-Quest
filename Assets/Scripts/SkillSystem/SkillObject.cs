@@ -46,6 +46,11 @@ namespace SkillSystem
             }
         }
 
+        private void OnCollisionStay2D(Collision2D collision)
+        {
+            Debug.Log(collision);
+        }
+
 
 
         public void SetupSkillObject(SkillCaster caster, Skill skill, SkillObjectCreationData data)
@@ -61,10 +66,11 @@ namespace SkillSystem
             lifetime = data.lifetime;
 
             GameObject obj = skill.GetGameObjectAtIndex(data.skillObjIndex);
-            GameObject instObj = Instantiate(obj);
+            GameObject instObj = ObjectPool.Instantiate(obj);
             instObj.transform.parent = transform;
             instObj.transform.position = transform.position;
             instObj.transform.rotation = transform.rotation;
+            
 
             Transform baseTransform = null;
 

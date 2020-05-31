@@ -69,12 +69,6 @@ namespace SkillSystem
             source.Play();
         }
 
-        private SkillObject CreateSkillObject(SkillCaster caster)
-        {
-            SkillObject so = null;
-
-            return so;
-        }
 
         private void MoveObjectToPosition(SkillCaster caster)
         {
@@ -102,8 +96,9 @@ namespace SkillSystem
 
         private void InstantiateSkillObject(SkillCaster caster, Skill skill, SkillObjectCreationData data)
         {
-            SkillObject obj = PoolManager.pool.PullObject(0).GetComponent<SkillObject>();
-            obj.SetupSkillObject(caster, skill, data);
+            GameObject obj = ObjectPool.Instantiate(GlobalConstants.gc.skillObject);
+            SkillObject so = obj.GetComponent<SkillObject>();
+            so.SetupSkillObject(caster, skill, data);
         }
     }
 }

@@ -4,13 +4,29 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-
-    private Dictionary<GameObject, List<GameObject>> _pool;
+    public static ObjectPool pool;
+    private Dictionary<GameObject, List<GameObject>> _pool = new Dictionary<GameObject, List<GameObject>>();
     
-    public ObjectPool()
+    public void Awake()
     {
         InitPool();
     }
+
+
+    public static GameObject Instantiate(GameObject go)
+    {
+        return pool.PullObject(go);
+    }
+
+    public static T Instantiate<T>(T go) where T : Component
+    {
+        GameObject tempObj = pool.PullObject(go.gameObject);
+        return tempObj.GetComponent<T>();
+    }
+
+
+
+
 
 
     /// <summary>
@@ -24,7 +40,7 @@ public class ObjectPool : MonoBehaviour
         }
 
         for (int i = 0; i < amount; i++) {
-            GameObject tempObj = Instantiate(go);
+            GameObject tempObj = GameObject.Instantiate(go);
             tempObj.SetActive(false);
             _pool[go].Add(tempObj);
         }
@@ -66,6 +82,13 @@ public class ObjectPool : MonoBehaviour
 
 
     private void InitPool() {
-        _pool = new Dictionary<GameObject, List<GameObject>>();
+        if(pool == null)
+        {
+            pool = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
     }
 }

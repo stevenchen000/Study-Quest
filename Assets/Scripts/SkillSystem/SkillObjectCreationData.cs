@@ -20,5 +20,10 @@ namespace SkillSystem
         public bool createCopyPerTarget;
 
         public SkillObjectAnimation animation;
+        
+        public GameObject GetGameObject(Skill skill)
+        {
+            return skill.GetGameObjectAtIndex(skillObjIndex);
+        }
     }
 }
