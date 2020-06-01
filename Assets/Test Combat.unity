@@ -1651,6 +1651,104 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 1.37}
   m_Size: {x: 1.86, y: 3.34}
   m_Direction: 0
+--- !u!114 &715416850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715416845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24922aad71dd60e46b76d4243fee75e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preset: {fileID: 11400000, guid: b3f90ff799b51044e8c94e224ca7c0a9, type: 2}
+  stats:
+  - statData: {fileID: 11400000, guid: 47131acf2b5058a4cab7452ce6408eef, type: 2}
+    statName: Health
+    isSlider: 1
+    hasAdder: 0
+    hasPercentAdder: 0
+    hasPercentMultiplier: 0
+    currentValue: 100
+    baseValue: 100
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 0
+  - statData: {fileID: 11400000, guid: d47e882b35e7a7a4a85cf18996cf76cc, type: 2}
+    statName: Mana
+    isSlider: 1
+    hasAdder: 0
+    hasPercentAdder: 0
+    hasPercentMultiplier: 0
+    currentValue: 50
+    baseValue: 50
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 0
+  - statData: {fileID: 11400000, guid: 69a7a21441f39314cbd428337c5eabcf, type: 2}
+    statName: Strength
+    isSlider: 0
+    hasAdder: 1
+    hasPercentAdder: 1
+    hasPercentMultiplier: 0
+    currentValue: 0
+    baseValue: 25
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 0
+  - statData: {fileID: 11400000, guid: 4940b174089e73745b38f3f8f05588de, type: 2}
+    statName: Defense
+    isSlider: 0
+    hasAdder: 1
+    hasPercentAdder: 1
+    hasPercentMultiplier: 0
+    currentValue: 0
+    baseValue: 7
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 1
+  - statData: {fileID: 11400000, guid: 83f0dcb317685174aa8fbf6d251ddcc5, type: 2}
+    statName: Magic
+    isSlider: 0
+    hasAdder: 1
+    hasPercentAdder: 1
+    hasPercentMultiplier: 0
+    currentValue: 0
+    baseValue: 15
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 1
+  - statData: {fileID: 11400000, guid: ef1e74cb42ead234b9bb3e17ec576454, type: 2}
+    statName: Magic Defense
+    isSlider: 0
+    hasAdder: 1
+    hasPercentAdder: 1
+    hasPercentMultiplier: 0
+    currentValue: 0
+    baseValue: 10
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 1
+  - statData: {fileID: 11400000, guid: a90108eaf0f2a5548abdbe536b4ced57, type: 2}
+    statName: Speed
+    isSlider: 0
+    hasAdder: 1
+    hasPercentAdder: 1
+    hasPercentMultiplier: 0
+    currentValue: 0
+    baseValue: 10
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 1
 --- !u!1 &726577962
 GameObject:
   m_ObjectHideFlags: 0
@@ -2372,6 +2470,104 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 1.37}
   m_Size: {x: 1.86, y: 3.34}
   m_Direction: 0
+--- !u!114 &951127051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951127046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24922aad71dd60e46b76d4243fee75e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preset: {fileID: 11400000, guid: b3f90ff799b51044e8c94e224ca7c0a9, type: 2}
+  stats:
+  - statData: {fileID: 11400000, guid: 47131acf2b5058a4cab7452ce6408eef, type: 2}
+    statName: Health
+    isSlider: 1
+    hasAdder: 0
+    hasPercentAdder: 0
+    hasPercentMultiplier: 0
+    currentValue: 100
+    baseValue: 100
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 1
+  - statData: {fileID: 11400000, guid: d47e882b35e7a7a4a85cf18996cf76cc, type: 2}
+    statName: Mana
+    isSlider: 1
+    hasAdder: 0
+    hasPercentAdder: 0
+    hasPercentMultiplier: 0
+    currentValue: 50
+    baseValue: 50
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 1
+  - statData: {fileID: 11400000, guid: 69a7a21441f39314cbd428337c5eabcf, type: 2}
+    statName: Strength
+    isSlider: 0
+    hasAdder: 1
+    hasPercentAdder: 1
+    hasPercentMultiplier: 0
+    currentValue: 0
+    baseValue: 25
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 1
+  - statData: {fileID: 11400000, guid: 4940b174089e73745b38f3f8f05588de, type: 2}
+    statName: Defense
+    isSlider: 0
+    hasAdder: 1
+    hasPercentAdder: 1
+    hasPercentMultiplier: 0
+    currentValue: 0
+    baseValue: 7
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 1
+  - statData: {fileID: 11400000, guid: 83f0dcb317685174aa8fbf6d251ddcc5, type: 2}
+    statName: Magic
+    isSlider: 0
+    hasAdder: 1
+    hasPercentAdder: 1
+    hasPercentMultiplier: 0
+    currentValue: 0
+    baseValue: 15
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 1
+  - statData: {fileID: 11400000, guid: ef1e74cb42ead234b9bb3e17ec576454, type: 2}
+    statName: Magic Defense
+    isSlider: 0
+    hasAdder: 1
+    hasPercentAdder: 1
+    hasPercentMultiplier: 0
+    currentValue: 0
+    baseValue: 10
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 1
+  - statData: {fileID: 11400000, guid: a90108eaf0f2a5548abdbe536b4ced57, type: 2}
+    statName: Speed
+    isSlider: 0
+    hasAdder: 1
+    hasPercentAdder: 1
+    hasPercentMultiplier: 0
+    currentValue: 0
+    baseValue: 10
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 1
 --- !u!114 &960434871 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6963329724446724925, guid: d01ce02b68743c1459637e36ab46bb1c,
@@ -4147,6 +4343,7 @@ GameObject:
   - component: {fileID: 1545551084}
   - component: {fileID: 1545551085}
   - component: {fileID: 1545551086}
+  - component: {fileID: 1545551087}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
@@ -4257,6 +4454,104 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.76}
   m_Size: {x: 1.42, y: 1.31}
   m_Direction: 0
+--- !u!114 &1545551087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545551081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24922aad71dd60e46b76d4243fee75e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preset: {fileID: 11400000, guid: b3f90ff799b51044e8c94e224ca7c0a9, type: 2}
+  stats:
+  - statData: {fileID: 11400000, guid: 47131acf2b5058a4cab7452ce6408eef, type: 2}
+    statName: Health
+    isSlider: 1
+    hasAdder: 0
+    hasPercentAdder: 0
+    hasPercentMultiplier: 0
+    currentValue: 100
+    baseValue: 100
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 1
+  - statData: {fileID: 11400000, guid: d47e882b35e7a7a4a85cf18996cf76cc, type: 2}
+    statName: Mana
+    isSlider: 1
+    hasAdder: 0
+    hasPercentAdder: 0
+    hasPercentMultiplier: 0
+    currentValue: 50
+    baseValue: 50
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 1
+  - statData: {fileID: 11400000, guid: 69a7a21441f39314cbd428337c5eabcf, type: 2}
+    statName: Strength
+    isSlider: 0
+    hasAdder: 1
+    hasPercentAdder: 1
+    hasPercentMultiplier: 0
+    currentValue: 0
+    baseValue: 25
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 1
+  - statData: {fileID: 11400000, guid: 4940b174089e73745b38f3f8f05588de, type: 2}
+    statName: Defense
+    isSlider: 0
+    hasAdder: 1
+    hasPercentAdder: 1
+    hasPercentMultiplier: 0
+    currentValue: 0
+    baseValue: 7
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 1
+  - statData: {fileID: 11400000, guid: 83f0dcb317685174aa8fbf6d251ddcc5, type: 2}
+    statName: Magic
+    isSlider: 0
+    hasAdder: 1
+    hasPercentAdder: 1
+    hasPercentMultiplier: 0
+    currentValue: 0
+    baseValue: 15
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 1
+  - statData: {fileID: 11400000, guid: ef1e74cb42ead234b9bb3e17ec576454, type: 2}
+    statName: Magic Defense
+    isSlider: 0
+    hasAdder: 1
+    hasPercentAdder: 1
+    hasPercentMultiplier: 0
+    currentValue: 0
+    baseValue: 10
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 1
+  - statData: {fileID: 11400000, guid: a90108eaf0f2a5548abdbe536b4ced57, type: 2}
+    statName: Speed
+    isSlider: 0
+    hasAdder: 1
+    hasPercentAdder: 1
+    hasPercentMultiplier: 0
+    currentValue: 0
+    baseValue: 10
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 1
 --- !u!1 &1551219664
 GameObject:
   m_ObjectHideFlags: 0
@@ -6426,6 +6721,104 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &2129952619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129952614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24922aad71dd60e46b76d4243fee75e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preset: {fileID: 11400000, guid: b3f90ff799b51044e8c94e224ca7c0a9, type: 2}
+  stats:
+  - statData: {fileID: 11400000, guid: 47131acf2b5058a4cab7452ce6408eef, type: 2}
+    statName: Health
+    isSlider: 1
+    hasAdder: 0
+    hasPercentAdder: 0
+    hasPercentMultiplier: 0
+    currentValue: 100
+    baseValue: 100
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 1
+  - statData: {fileID: 11400000, guid: d47e882b35e7a7a4a85cf18996cf76cc, type: 2}
+    statName: Mana
+    isSlider: 1
+    hasAdder: 0
+    hasPercentAdder: 0
+    hasPercentMultiplier: 0
+    currentValue: 50
+    baseValue: 50
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 1
+  - statData: {fileID: 11400000, guid: 69a7a21441f39314cbd428337c5eabcf, type: 2}
+    statName: Strength
+    isSlider: 0
+    hasAdder: 1
+    hasPercentAdder: 1
+    hasPercentMultiplier: 0
+    currentValue: 0
+    baseValue: 25
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 1
+  - statData: {fileID: 11400000, guid: 4940b174089e73745b38f3f8f05588de, type: 2}
+    statName: Defense
+    isSlider: 0
+    hasAdder: 1
+    hasPercentAdder: 1
+    hasPercentMultiplier: 0
+    currentValue: 0
+    baseValue: 7
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 1
+  - statData: {fileID: 11400000, guid: 83f0dcb317685174aa8fbf6d251ddcc5, type: 2}
+    statName: Magic
+    isSlider: 0
+    hasAdder: 1
+    hasPercentAdder: 1
+    hasPercentMultiplier: 0
+    currentValue: 0
+    baseValue: 15
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 1
+  - statData: {fileID: 11400000, guid: ef1e74cb42ead234b9bb3e17ec576454, type: 2}
+    statName: Magic Defense
+    isSlider: 0
+    hasAdder: 1
+    hasPercentAdder: 1
+    hasPercentMultiplier: 0
+    currentValue: 0
+    baseValue: 10
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 1
+  - statData: {fileID: 11400000, guid: a90108eaf0f2a5548abdbe536b4ced57, type: 2}
+    statName: Speed
+    isSlider: 0
+    hasAdder: 1
+    hasPercentAdder: 1
+    hasPercentMultiplier: 0
+    currentValue: 0
+    baseValue: 10
+    addedValue: 0
+    percentAdder: 100
+    percentMultiplier: 100
+    foldout: 1
 --- !u!1 &2141350739
 GameObject:
   m_ObjectHideFlags: 0

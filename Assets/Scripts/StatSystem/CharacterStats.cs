@@ -25,7 +25,7 @@ namespace StatSystem
             {
                 if (stats[i].statName.Equals(statName, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    result = stats[i].GetTotalValue();
+                    result = stats[i].GetCurrentValue();
                     resultFound = true;
                     break;
                 }
@@ -38,6 +38,8 @@ namespace StatSystem
 
             return result;
         }
+
+        
 
         public void SetStats(CharacterStatPreset newPreset)
         {
