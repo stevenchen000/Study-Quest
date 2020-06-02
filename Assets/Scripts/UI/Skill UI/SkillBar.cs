@@ -25,7 +25,7 @@ public class SkillBar : MonoBehaviour
 
     public void SelectSkill(Skill skill)
     {
-        quiz.SelectSkill(skill);
+        //quiz.SelectSkill(skill);
     }
 
     public void SetSkills(List<Skill> newSkills)

@@ -18,18 +18,7 @@ namespace QuizSystem
         public Question currentQuestion;
         
         private bool askingQuestion = false;
-
-        /*
-        public delegate void AskQuestionDelegate(Question question);
-        public delegate void ReceiveAnswerDelegate(bool isCorrect);
-        public delegate void SendAnswerDelegate(string answer);
         
-        public event AskQuestionDelegate OnQuestionAsked;
-        public event ReceiveAnswerDelegate OnAnswerReceived;
-        
-        public event SendAnswerDelegate ReceiveCorrectAnswer;
-        */
-
 
         private void Awake()
         {
@@ -115,44 +104,7 @@ namespace QuizSystem
 
 
 
-
-        //Listener functions
-        /*
-        public void AddListenerOnQuestionAsked(AskQuestionDelegate method) {
-            Debug.Log($"OnQuestionAsked event added: {method}");
-            OnQuestionAsked += method;
-        }
-        public void RemoveListenerOnQuestionAsked(AskQuestionDelegate method) {
-            OnQuestionAsked -= method;
-        }
-
-        public void AddListenerOnAnswerReceived(ReceiveAnswerDelegate method)
-        {
-            Debug.Log($"OnAnswerReceived event added: {method}");
-            OnAnswerReceived += method;
-        }
-        public void RemoveListenerOnAnswerReceived(ReceiveAnswerDelegate method) {
-            OnAnswerReceived -= method;
-        }
-
-        public void AddListenerReceiveCorrectAnswer(SendAnswerDelegate method) {
-            Debug.Log($"ReceiveCorrectAnswer event added: {method}");
-            ReceiveCorrectAnswer += method;
-        }
-        public void RemoveListenerReceiveCorrectAnswer(SendAnswerDelegate method)
-        {
-            ReceiveCorrectAnswer -= method;
-        }
-
-        private void ResetListeners()
-        {
-            Debug.Log("Listeners reset");
-            ReceiveCorrectAnswer = null;
-            OnAnswerReceived = null;
-            OnQuestionAsked = null;
-        }
-        */
-
+        
 
     }
 }

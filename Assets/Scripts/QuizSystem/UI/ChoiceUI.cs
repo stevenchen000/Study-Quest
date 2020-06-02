@@ -27,8 +27,6 @@ namespace QuizSystem
             button = transform.GetComponent<Button>();
             textbox = transform.GetComponentInChildren<Text>();
             
-
-            //button.onClick.AddListener(ChooseAnswer);
         }
 
 

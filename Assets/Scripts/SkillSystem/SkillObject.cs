@@ -29,7 +29,7 @@ namespace SkillSystem
         private void Update()
         {
             timer.Tick();
-            anim.RunAnimation(this, caster, caster.GetTarget(), timer);
+            anim.RunAnimation(this, caster, caster.GetTarget().GetCaster(), timer);
 
             if(timer.AtTime(lifetime))
             {
@@ -83,7 +83,7 @@ namespace SkillSystem
                     baseTransform = caster.transform;
                     break;
                 case SkillObjectTarget.Target:
-                    baseTransform = caster.GetTarget().transform;
+                    baseTransform = caster.GetTarget().GetTransform();
                     break;
             }
 

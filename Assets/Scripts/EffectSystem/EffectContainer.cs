@@ -11,7 +11,7 @@ namespace EffectSystem
     public class EffectContainer
     {
         public EffectSO effect;
-        public Fighter caster;
+        public IFighter caster;
         public CharacterStats statsSnapshot;
     }
 }

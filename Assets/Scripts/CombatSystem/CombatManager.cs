@@ -13,17 +13,16 @@ namespace CombatSystem
     public class CombatManager : MonoBehaviour
     {
         public static CombatManager battle;
-        public QuizManager quiz;
 
-        public Party playerParty;
-        public Party enemyParty;
+        public QuizUI quizUI;
 
-        public bool battleHasStarted = false;
-        public TurnOrderManager turnOrder;
-
-        public Text guiText;
-
+        public IFighter player;
+        public IFighter enemy;
+        
         public CombatState battleState;
+
+        public HealthBar playerHealthBar;
+        public HealthBar enemyHealthBar;
         
 
         public void Awake()
@@ -35,15 +34,18 @@ namespace CombatSystem
             else {
                 Destroy(this);
             }
-            quiz = QuizManager.quiz;
+            
         }
 
         public void Start()
         {
-            battleState = CombatState.StartTurn;
-            ChangeGUIText("Battle has begun!");
-            _InitParties();
-            InitTurnOrder();
+            battleState = CombatState.AwaitingInput;
+            quizUI.AskQuestion();
+
+            player = FindObjectOfType<PlayerFighter>();
+            playerHealthBar.SetTarget(player);
+            enemy = FindObjectOfType<EnemyFighter>();
+            enemyHealthBar.SetTarget(enemy);
         }
 
         public void Update()
@@ -53,37 +55,48 @@ namespace CombatSystem
             {
                 case CombatState.TransitionIn:
                     break;
-                case CombatState.StartTurn:
-                    StartTurn();
-                    string name = turnOrder.GetCurrentFighter().name;
-                    ChangeGUIText($"{name}'s turn.");
+                case CombatState.AwaitingInput:
+
                     break;
-                case CombatState.RunTurn:
-                    CombatLoop();
-                    break;
-                case CombatState.EndTurn:
-                    EndTurn();
+                case CombatState.Attacking:
+                    Attacking();
                     break;
                 case CombatState.BattleOver:
-                    if (EnemyPartyIsDead())
+                    if (EnemyIsDead())
                     {
-                        ChangeGUIText("You won! Press Enter to return");
+                        Debug.Log("You won!");
                     }
-                    else {
-                        ChangeGUIText("You lost! Press Enter to return");
+                    else
+                    {
+                        Debug.Log("Game Over");
                     }
                     battleState = CombatState.TransitionOut;
-                    
                     break;
                 case CombatState.TransitionOut:
                     if (Input.GetKeyDown(KeyCode.Return))
                     {
-                        SceneManager.LoadScene("Load Screen");
+                        SceneManager.LoadScene("Test_Dungeon");
                     }
                     break;
             }
         }
 
+        
+        private void Attacking()
+        {
+            if(!player.IsAttacking() && !enemy.IsAttacking())
+            {
+                if(PlayerIsDead() || EnemyIsDead())
+                {
+                    battleState = CombatState.BattleOver;
+                }
+                else
+                {
+                    battleState = CombatState.AwaitingInput;
+                    quizUI.AskQuestion();
+                }
+            }
+        }
 
 
 
@@ -92,57 +105,27 @@ namespace CombatSystem
         //public functions
 
 
-        public Fighter GetRandomTarget(Fighter fighter)
+        public IFighter GetTarget(IFighter fighter)
         {
-            Fighter result = null;
-
-            if (FighterIsPlayer(fighter))
+            return fighter == player ? enemy : player;
+        }
+        
+        
+        public void AnswerQuestion(bool isCorrect)
+        {
+            if (battleState == CombatState.AwaitingInput)
             {
-                result = enemyParty.GetRandomLivingFighter();
+                if (isCorrect)
+                {
+                    player.Attack(enemy);
+                }
+                else
+                {
+                    enemy.Attack(player);
+                }
+                battleState = CombatState.Attacking;
             }
-            else
-            {
-                result = playerParty.GetRandomLivingFighter();
-            }
-
-            return result;
         }
-
-
-        /*
-        public void AddListenerOnQuestionAsked(QuizManager.AskQuestionDelegate method)
-        {
-            quiz.AddListenerOnQuestionAsked(method);
-        }
-        public void RemoveListenerOnQuestionAsked(QuizManager.AskQuestionDelegate method)
-        {
-            quiz.RemoveListenerOnQuestionAsked(method);
-        }
-
-        public void AddListenerOnAnswerReceived(QuizManager.ReceiveAnswerDelegate method)
-        {
-            quiz.AddListenerOnAnswerReceived(method);
-        }
-        public void RemoveListenerOnAnswerReceived(QuizManager.ReceiveAnswerDelegate method)
-        {
-            quiz.RemoveListenerOnAnswerReceived(method);
-        }
-
-        public void AddListenerReceiveCorrectAnswer(QuizManager.SendAnswerDelegate method)
-        {
-            quiz.AddListenerReceiveCorrectAnswer(method);
-        }
-        public void RemoveListenerReceiveCorrectAnswer(QuizManager.SendAnswerDelegate method)
-        {
-            quiz.RemoveListenerReceiveCorrectAnswer(method);
-        }*/
-
-        public Fighter GetCurrentFighter()
-        {
-            return turnOrder.GetCurrentFighter();
-        }
-
-
 
 
 
@@ -150,106 +133,20 @@ namespace CombatSystem
 
 
         //combat functions
-
-        private void StartTurn() {
-            Fighter currentFighter = turnOrder.GetCurrentFighter();
-            currentFighter.StartTurn();
-            if (currentFighter.turnHasStarted)
-            {
-                battleState = CombatState.RunTurn;
-            }
-        }
-
-        private void CombatLoop()
-        {
-            Fighter fighter = turnOrder.GetCurrentFighter();
-            //Debug.Log("Taking turn");
-
-            if (fighter.TurnIsOver())
-            {
-                UpdateLivingStatus();
-                //fighter.EndTurn();
-                battleState = CombatState.EndTurn;
-            }
-        }
-
-        private void EndTurn() {
-            if (BattleIsStillGoing())
-            {
-                ProgressTurn();
-                battleState = CombatState.StartTurn;
-            }
-            else {
-                battleState = CombatState.BattleOver;
-            }
-        }
-
-
-        private void ProgressTurn()
-        {
-            turnOrder.GetNextFighter();
-        }
-
-
-        private void UpdateLivingStatus()
-        {
-            playerParty.UpdatePartyLivingStatus();
-            enemyParty.UpdatePartyLivingStatus();
-        }
-
-
-
-
         
 
-
-
-
-        //Helper functions
-
-        private void _InitParties()
-        {
-            playerParty = new Party();
-            enemyParty = new Party();
-            Fighter[] fighters = GameObject.FindObjectsOfType<Fighter>();
-
-            for (int i = 0; i < fighters.Length; i++) {
-                Fighter fighter = fighters[i];
-
-                if (FighterIsPlayer(fighter))
-                {
-                    playerParty.AddPartyMember(fighter);
-                }
-                else {
-                    enemyParty.AddPartyMember(fighter);
-                }
-            }
+        private bool PlayerIsDead() {
+            return player.IsDead();
         }
 
-        private bool PlayerPartyIsDead() {
-            return playerParty.PartyIsDead();
-        }
-
-        private bool EnemyPartyIsDead() {
-            return enemyParty.PartyIsDead();
+        private bool EnemyIsDead() {
+            return enemy.IsDead();
         }
 
         private bool BattleIsStillGoing() {
-            return !PlayerPartyIsDead() && !EnemyPartyIsDead();
+            return !PlayerIsDead() && !EnemyIsDead();
         }
 
-        private bool FighterIsPlayer(Fighter fighter) {
-            return fighter.tag == "Player";
-        }
-
-        private void InitTurnOrder() {
-            turnOrder = new TurnOrderManager(playerParty, enemyParty);
-        }
-
-
-        public void ChangeGUIText(string newText) {
-            guiText.text = newText;
-        }
 
     }
 }

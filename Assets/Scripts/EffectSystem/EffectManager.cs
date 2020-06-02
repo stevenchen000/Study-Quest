@@ -9,13 +9,13 @@ namespace EffectSystem
 {
     public class EffectManager : MonoBehaviour
     {
-        private Fighter fighter;
+        private IFighter fighter;
         private CharacterStats stats;
 
         // Start is called before the first frame update
         void Start()
         {
-            fighter = transform.GetComponent<Fighter>();
+            fighter = transform.GetComponent<IFighter>();
             stats = transform.GetComponent<CharacterStats>();
         }
 

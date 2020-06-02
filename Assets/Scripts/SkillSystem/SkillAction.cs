@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CombatSystem;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -82,12 +83,13 @@ namespace SkillSystem
                 case SkillObjectTarget.Creator:
                     break;
                 case SkillObjectTarget.Target:
-                    SkillCaster target = caster.GetTarget();
+                    IFighter target = caster.GetTarget();
                     Vector3 targetPosition = target.GetStartingPosition();
+                    Transform targetTransform = target.GetTransform();
 
                     caster.transform.position = targetPosition +
-                                                target.transform.right * offset.x * target.transform.localScale.x +
-                                                target.transform.up * offset.y;
+                                                targetTransform.right * offset.x * targetTransform.localScale.x +
+                                                targetTransform.up * offset.y;
                     Debug.Log("Moved to target position");
                     break;
             }

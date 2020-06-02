@@ -8,7 +8,7 @@ namespace SkillSystem
 {
     public class SkillCaster : MonoBehaviour
     {
-        public Fighter user;
+        public IFighter user;
 
         public Animator anim;
         public AudioSource audioSource;
@@ -19,7 +19,7 @@ namespace SkillSystem
         private Timer timer;
         private List<SkillObject> skillObjects;
         private List<SkillAction> skillActions;
-        public SkillCaster target;
+        public IFighter target;
 
 
         // Start is called before the first frame update
@@ -28,7 +28,7 @@ namespace SkillSystem
             SetAnimator();
             SetAudioSource();
             timer = new Timer();
-            user = transform.GetComponent<Fighter>();
+            user = transform.GetComponent<IFighter>();
         }
 
         // Update is called once per frame
@@ -73,11 +73,12 @@ namespace SkillSystem
 
         //public functions
 
-        public void CastSkill(Skill skill)
+        public void CastSkill(Skill skill, IFighter target)
         {
             if (!IsCasting() && skill != null)
             {
                 currentSkill = skill;
+                this.target = target;
                 timer.ResetTimer();
                 PrepareSkill(skill);
             }
@@ -92,7 +93,7 @@ namespace SkillSystem
             return currentSkill != null;
         }
 
-        public SkillCaster GetTarget()
+        public IFighter GetTarget()
         {
             return target;
         }

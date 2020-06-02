@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
 
-    public Fighter fighter;
+    public IFighter fighter;
     public Slider healthSlider;
     public Text fighterName;
     public Camera mainCamera;
@@ -17,29 +17,34 @@ public class HealthBar : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
-        fighterName.text = fighter.name;
-        UpdateSlider(fighter.currentHealth, fighter.maxHealth);
+        //fighterName.text = fighter.name;
+        UpdateSlider(fighter.GetCurrentHealth(), fighter.GetMaxHealth());
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateSlider(fighter.currentHealth, fighter.maxHealth);
+        UpdateSlider(fighter.GetCurrentHealth(), fighter.GetMaxHealth());
         FollowTarget();
     }
 
-    public void LinkHealthBarToFighter(Fighter fighter) {
+    public void LinkHealthBarToFighter(IFighter fighter) {
         this.fighter = fighter;
-        fighter.OnHealthChanged += UpdateSlider;
     }
 
-    public void UpdateSlider(float currentHealth, float maxHealth) {
-        healthSlider.value = currentHealth / maxHealth;
+    public void UpdateSlider(int currentHealth, int maxHealth) {
+        float clampedMax = maxHealth < 1 ? 1 : maxHealth;
+        healthSlider.value = currentHealth / clampedMax;
     }
 
     public void FollowTarget()
     {
-        Vector3 targetPosition = mainCamera.WorldToScreenPoint(fighter.transform.position);
+        Vector3 targetPosition = mainCamera.WorldToScreenPoint(fighter.GetPosition());
         transform.position = targetPosition + offset;
+    }
+
+    public void SetTarget(IFighter target)
+    {
+        fighter = target;
     }
 }

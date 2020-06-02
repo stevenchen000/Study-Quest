@@ -8,18 +8,16 @@ using UnityEngine;
 
 namespace CombatSystem
 {
-    public class EnemyFighter : MonoBehaviour, IFighter
+    public class PlayerFighter : MonoBehaviour, IFighter
     {
 
-        public int currentHealth = 100;
-        public int maxHealth = 100;
+        public int currentHealth = 5;
+        public int maxHealth = 5;
 
         public Vector2 startingPosition;
 
         public SkillCaster caster;
         public Skill skill;
-
-        public IFighter target;
 
         private void Start()
         {
@@ -28,11 +26,15 @@ namespace CombatSystem
         }
 
 
-
         public void Attack(IFighter target)
         {
-            target.TakeDamage(1);
+            target.TakeDamage(20);
             caster.CastSkill(skill, target);
+        }
+
+        public void TakeDamage(int damage)
+        {
+            currentHealth -= 1;
         }
 
         public int GetCurrentHealth()
@@ -68,11 +70,6 @@ namespace CombatSystem
         public void SetStartingPosition(Vector3 position)
         {
             startingPosition = position;
-        }
-
-        public void TakeDamage(int damage)
-        {
-            currentHealth -= damage;
         }
 
         public Transform GetTransform()

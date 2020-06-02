@@ -9,9 +9,8 @@ namespace CombatSystem
     public enum CombatState
     {
         TransitionIn,
-        StartTurn,
-        RunTurn,
-        EndTurn,
+        AwaitingInput,
+        Attacking,
         BattleOver,
         TransitionOut
     }
