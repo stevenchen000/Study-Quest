@@ -22,6 +22,7 @@ namespace CombatSystem
 
         Vector2 GetPosition();
         Vector2 GetStartingPosition();
+        Vector2 GetForwardVector();
         Transform GetTransform();
         void SetStartingPosition(Vector3 position);
 

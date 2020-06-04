@@ -81,5 +81,10 @@ namespace CombatSystem
         {
             return caster;
         }
+
+        public Vector2 GetForwardVector()
+        {
+            return transform.right;
+        }
     }
 }

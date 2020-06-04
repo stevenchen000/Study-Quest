@@ -86,9 +86,10 @@ namespace SkillSystem
                     IFighter target = caster.GetTarget();
                     Vector3 targetPosition = target.GetStartingPosition();
                     Transform targetTransform = target.GetTransform();
+                    Vector3 forwardVector = target.GetForwardVector();
 
                     caster.transform.position = targetPosition +
-                                                targetTransform.right * offset.x * targetTransform.localScale.x +
+                                                forwardVector * offset.x * targetTransform.localScale.x +
                                                 targetTransform.up * offset.y;
                     Debug.Log("Moved to target position");
                     break;
