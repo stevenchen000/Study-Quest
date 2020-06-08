@@ -2,26 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using System.Linq;
 
 namespace DungeonSystem
 {
-    public class PlayerExplorer : MonoBehaviour
+    public class PlayerExplorer : MonoBehaviour, IInteractor
     {
 
         public float movementSpeed = 5;
-
+        List<IInteractable> interactables = new List<IInteractable>();
+        public Collider2D collider;
 
         // Start is called before the first frame update
         void Start()
         {
-
+            var tempInteracts = FindObjectsOfType<MonoBehaviour>().OfType<IInteractable>();
+            foreach(IInteractable i in tempInteracts)
+            {
+                interactables.Add(i);
+            }
+            collider = transform.GetComponent<Collider2D>();
         }
 
         // Update is called once per frame
         void Update()
         {
             GetMovementInput();
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                foreach(IInteractable i in interactables)
+                {
+                    if (i.IsColliding(collider))
+                    {
+                        i.Interact(this);
+                        break;
+                    }
+                }
+            }
         }
 
 
@@ -31,7 +49,8 @@ namespace DungeonSystem
 
             if(enemy != null)
             {
-                SceneManager.LoadScene("Test_Solo_Combat");
+                WorldState.SetDungeonPosition(transform.position);
+                SceneLoader.LoadCombat();
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using QuizSystem;
+﻿using DungeonSystem;
+using QuizSystem;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,7 +76,9 @@ namespace CombatSystem
                 case CombatState.TransitionOut:
                     if (Input.GetKeyDown(KeyCode.Return))
                     {
-                        SceneManager.LoadScene("Test_Dungeon");
+                        string dungeonName = WorldState.GetDungeonName();
+                        Vector3 position = WorldState.GetDungeonPosition();
+                        SceneLoader.LoadDungeon(dungeonName, position);
                     }
                     break;
             }
