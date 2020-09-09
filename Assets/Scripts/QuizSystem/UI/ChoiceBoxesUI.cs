@@ -13,7 +13,7 @@ namespace QuizSystem
     {
         [HideInInspector]
         public List<ChoiceUI> buttons = new List<ChoiceUI>();
-        public string[] choices;
+        public List<string> choices = new List<string>();
         public int correctAnswerIndex = -1;
 
         public GameObject buttonPrefab;
@@ -24,7 +24,6 @@ namespace QuizSystem
         {
             quiz = QuizManager.quiz;
             //InitButtons();
-            choices = new string[4];
             InitButtons();
             //add events here
         }
@@ -73,11 +72,11 @@ namespace QuizSystem
 
         //event functions
 
-        public void SetChoices(string[] newChoices) {
+        public void SetChoices(List<string> newChoices) {
             choices = newChoices;
             
             for (int i = 0; i < buttons.Count; i++) {
-                if (i < newChoices.Length)
+                if (i < newChoices.Count)
                 {
                     buttons[i].SetChoice(newChoices[i]);
                     buttons[i].EnableChoice();

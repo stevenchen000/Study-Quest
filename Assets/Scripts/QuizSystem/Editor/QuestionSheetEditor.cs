@@ -30,7 +30,7 @@ namespace QuizSystem
             List<Question> questions = sheet.GetQuestions();
             for (int i = 0; i < questions.Count; i++) {
                 Question question = questions[i];
-                sheet.foldouts[i] = EditorGUILayout.BeginFoldoutHeaderGroup(sheet.foldouts[i], $"Q: {question.question} | A: {question.GetSolution()}");
+                sheet.foldouts[i] = EditorGUILayout.BeginFoldoutHeaderGroup(sheet.foldouts[i], $"Q: {question.question} | A: {question.GetAnswer()}");
                 if (sheet.foldouts[i])
                 {
                     QuestionGUI(question);
@@ -75,7 +75,7 @@ namespace QuizSystem
             question.question = EditorGUILayout.TextField("Question", question.question);
             QuestionType newType = (QuestionType)EditorGUILayout.EnumPopup("Question Type", question.type);
             question.SetQuestionType(newType);
-
+            /*
             Solution solution = question.solution;
             switch (question.type)
             {
@@ -88,7 +88,7 @@ namespace QuizSystem
                 case QuestionType.FillInTheBlank:
                     FillInTheBlankGUI(solution);
                     break;
-            }
+            }*/
 
             EditorGUILayout.Space(10);
         }
@@ -103,14 +103,14 @@ namespace QuizSystem
         }
 
         private void MultipleChoiceGUI(Question question) {
-            Solution solution = question.solution;
+            /*Solution solution = question.solution;
             solution.solution = EditorGUILayout.TextField("Solution", solution.solution);
 
             FixChoicesArray(question);
 
             question.wrongChoices[0] = EditorGUILayout.TextField("Wrong 1", question.wrongChoices[0]);
             question.wrongChoices[1] = EditorGUILayout.TextField("Wrong 2", question.wrongChoices[1]);
-            question.wrongChoices[2] = EditorGUILayout.TextField("Wrong 3", question.wrongChoices[2]);
+            question.wrongChoices[2] = EditorGUILayout.TextField("Wrong 3", question.wrongChoices[2]);*/
         }
 
         private void FillInTheBlankGUI(Solution solution) {
@@ -137,7 +137,7 @@ namespace QuizSystem
         //helper functions
 
         private void FixChoicesArray(Question question) {
-            if (question.wrongChoices.Length == 0)
+            /*if (question.wrongChoices.Length == 0)
             {
                 question.wrongChoices = new string[3];
             }
@@ -153,7 +153,7 @@ namespace QuizSystem
                 {
                     choices[i] = question.wrongChoices[i];
                 }
-            }
+            }*/
         }
 
         private void FixFoldouts() {

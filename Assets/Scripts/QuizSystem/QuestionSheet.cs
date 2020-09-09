@@ -49,7 +49,7 @@ namespace QuizSystem
                 Question question = new Question();
                 question.SetQuestionType(QuestionType.MultipleChoice);
                 question.question = reverse ? cards[i].GetBackText() : cards[i].GetFrontText();
-                question.solution.solution = reverse? cards[i].GetFrontText() : cards[i].GetBackText();
+                question.answer = reverse ? cards[i].GetFrontText() : cards[i].GetBackText();
 
                 while(question.GetNumberOfWrongChoices() < 3)
                 {

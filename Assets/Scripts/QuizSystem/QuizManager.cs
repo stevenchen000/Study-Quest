@@ -1,5 +1,4 @@
-﻿using CombatSystem;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,14 +9,12 @@ namespace QuizSystem
     public class QuizManager : MonoBehaviour
     {
         public QuestionSheet sheet;
-        public List<Question> questions;
+        public List<Question> questions = new List<Question>();
 
         public static QuizManager quiz;
 
-        public int currentIndex = -1;
         public Question currentQuestion;
-        
-        private bool askingQuestion = false;
+        public int currentIndex = 0;
         
 
         private void Awake()
@@ -43,26 +40,32 @@ namespace QuizSystem
 
         //public functions
 
-        public void AskQuestion()
+        public Question GetCurrentQuestion()
         {
-            if (!askingQuestion)
+            Question result = null;
+
+            if(questions.Count > currentIndex)
             {
-                SetNextQuestion();
-                askingQuestion = true;
+                result = questions[currentIndex];
             }
+
+            return result;
         }
 
-        public bool AnswerQuestion(string answer) {
-            bool isCorrect = currentQuestion.GetSolution().Equals(answer, StringComparison.InvariantCultureIgnoreCase);
-            askingQuestion = false;
+        public Question GetNextQuestion()
+        {
+            currentIndex = (currentIndex + 1) % questions.Count;
+            SetQuestion();
 
-            return isCorrect;
+            return questions[currentIndex];
         }
 
-        
-        public string GetCurrentSolution() {
-            return currentQuestion.GetSolution();
+
+        public bool AnswerQuestion(string answer)
+        {
+            return currentQuestion.CheckAnswer(answer);
         }
+
 
         public void SetNewQuestions(QuestionSheet newQuestions)
         {
@@ -70,26 +73,15 @@ namespace QuizSystem
             questions = new List<Question>();
             questions.AddRange(sheet.GetQuestions());
             ScrambleQuestions();
-            ResetQuestions();
-        }
-
-
-
-        //Helper Functions
-
-        private void SetNextQuestion()
-        {
-            currentIndex = (currentIndex + 1) % questions.Count;
+            currentIndex = 0;
             currentQuestion = questions[currentIndex];
         }
 
-        private void ResetQuestions()
-        {
-            currentIndex = -1;
-            currentQuestion = null;
-            askingQuestion = false;
-        }
 
+
+        /// <summary>
+        /// Rearranges the order of the questions
+        /// </summary>
         private void ScrambleQuestions()
         {
             for (int i = 0; i < questions.Count; i++)
@@ -103,8 +95,19 @@ namespace QuizSystem
 
 
 
+        /// <summary>
+        /// Updates the currentQuestion based on currentIndex
+        /// </summary>
+        private void SetQuestion()
+        {
+            currentQuestion = questions[currentIndex];
+        }
 
-        
+        public void SetQuestion(Question newQuestion)
+        {
+            currentQuestion = newQuestion;
+        }
+
 
     }
 }

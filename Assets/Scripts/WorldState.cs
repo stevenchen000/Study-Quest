@@ -10,7 +10,9 @@ public class WorldState : MonoBehaviour
     public string dungeonName;
     public Vector3 dungeonPosition;
 
+    public string hubName = "Test_Hub_World";
     public Vector3 hubPosition;
+
 
     private void Awake()
     {

@@ -1,6 +1,4 @@
-﻿using CombatSystem;
-using SkillSystem;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,11 +13,8 @@ namespace QuizSystem
         public Text questionText;
         public ChoiceBoxesUI multipleChoiceUI;
         public FillInTheBlankUI fillInTheBlankUI;
-
-        private CombatManager battle;
-        private IFighter currentFighter;
-
-        public string[] choices;
+        
+        public List<string> choices = new List<string>();
 
         public delegate void AnsweredQuestion(bool isCorrect);
         public event AnsweredQuestion OnQuestionAnswered;
@@ -28,8 +23,7 @@ namespace QuizSystem
         public float disableTime = 2f;
         private float timer = 0;
         private bool prepareToDisableTimer = false;
-
-        public Skill testSkill;
+        
 
 
         private QuizManager quiz;
@@ -37,7 +31,6 @@ namespace QuizSystem
         public void Start()
         {
             quiz = QuizManager.quiz;
-            battle = CombatManager.battle;
 
         }
 
@@ -51,15 +44,7 @@ namespace QuizSystem
 
         public bool AnswerQuestion(string answer)
         {
-            bool isCorrect = quiz.AnswerQuestion(answer);
-
-            if (!isCorrect)
-            {
-                string trueAnswer = quiz.GetCurrentSolution();
-                multipleChoiceUI.MarkCorrectAnswer(trueAnswer);
-            }
-
-            battle.AnswerQuestion(isCorrect);
+            bool isCorrect = currentQuestion.CheckAnswer(answer);
 
             return isCorrect;
         }
@@ -67,8 +52,7 @@ namespace QuizSystem
 
         public void AskQuestion()
         {
-            quiz.AskQuestion();
-            SetQuestion(quiz.currentQuestion);
+            currentQuestion = quiz.GetNextQuestion();
         }
 
 

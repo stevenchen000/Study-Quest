@@ -13,31 +13,31 @@ namespace QuizSystem
         public string question;
         public QuestionType type;
         [Tooltip("List of wrong answers to use for multiple choice")]
-        public string[] wrongChoices;
-        public Solution solution;
+        public string answer;
+        public List<string> wrongChoices = new List<string>();
+        //public Solution solution;
         public bool includesAllOfTheAbove = false;
 
         public Question() {
-            wrongChoices = new string[3];
-            solution = new Solution();
+
         }
 
 
 
-        public bool CheckSolution(string answer) {
-            return solution.CheckSolution(answer);
+        public bool CheckAnswer(string answer) {
+            return string.Compare(answer, this.answer, true) == 0;
         }
 
-        public string GetSolution()
+        public string GetAnswer()
         {
-            return solution.GetSolution();
+            return answer;
         }
 
-        public int GetSolutionIndex(string[] choices) {
+        public int GetSolutionIndex(List<string> choices) {
             int index = -1;
 
-            for (int i = 0; i < choices.Length; i++) {
-                if (choices[i] == GetSolution()) {
+            for (int i = 0; i < choices.Count; i++) {
+                if (CheckAnswer(choices[i])) {
                     index = i;
                     break;
                 }
@@ -45,15 +45,10 @@ namespace QuizSystem
 
             return index;
         }
-
-        public void SetSolutionText(string text)
-        {
-            solution.solution = text;
-        }
+        
 
         public void SetQuestionType(QuestionType newType) {
             type = newType;
-            solution.type = newType;
         }
 
         public void AddWrongChoice(string text)
@@ -69,7 +64,7 @@ namespace QuizSystem
         {
             bool result = true;
 
-            if (GetSolution().Equals(text, StringComparison.InvariantCultureIgnoreCase))
+            if (GetAnswer().Equals(text, StringComparison.InvariantCultureIgnoreCase))
             {
                 result = false;
             }
@@ -93,30 +88,18 @@ namespace QuizSystem
 
         public int GetNumberOfWrongChoices()
         {
-            int num = 0;
-            for(int i = 0; i < wrongChoices.Length; i++)
-            {
-                if(wrongChoices[i] == null)
-                {
-                    break;
-                }
-                else
-                {
-                    num++;
-                }
-            }
-
-            return num;
+            return wrongChoices.Count;
         }
 
 
-        public string[] GetAllChoices() {
-            string[] choices = null;
+        public List<string> GetAllChoices() {
+            List<string> choices = new List<string>();
 
             switch (type)
             {
                 case QuestionType.TrueFalse:
-                    choices = new string[2] { "true", "false" };
+                    choices.Add("true");
+                    choices.Add("false");
                     break;
                 case QuestionType.MultipleChoice:
                     choices = GetScrambledChoices();
@@ -128,11 +111,11 @@ namespace QuizSystem
             return choices;
         }
 
-        private string[] GetScrambledChoices() {
-            string[] choices = GetUnscrambledChoices();
+        private List<string> GetScrambledChoices() {
+            List<string> choices = GetUnscrambledChoices();
 
-            for (int i = 0; i < choices.Length; i++) {
-                int rand = UnityEngine.Random.Range(0, choices.Length);
+            for (int i = 0; i < choices.Count; i++) {
+                int rand = UnityEngine.Random.Range(0, choices.Count);
                 string temp = choices[i];
                 choices[i] = choices[rand];
                 choices[rand] = temp;
@@ -141,8 +124,12 @@ namespace QuizSystem
             return choices;
         }
 
-        private string[] GetUnscrambledChoices() {
-            return new string[4] { wrongChoices[0], wrongChoices[1], wrongChoices[2], solution.GetSolution() };
+        private List<string> GetUnscrambledChoices() {
+            List<string> result = new List<string>();
+            result.AddRange(wrongChoices);
+            result.Add(answer);
+
+            return result;
         }
     }
 }

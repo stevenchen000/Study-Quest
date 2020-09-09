@@ -12,6 +12,7 @@ namespace DungeonSystem
         public float movementSpeed = 5;
         List<IInteractable> interactables = new List<IInteractable>();
         public Collider2D collider;
+        public bool defaultIsLeft = true;
 
         // Start is called before the first frame update
         void Start()
@@ -79,6 +80,41 @@ namespace DungeonSystem
             }
 
             transform.position += clampedDirection * speed * Time.deltaTime;
+            FaceDirection(clampedDirection);
+        }
+
+
+        private void FaceDirection(Vector3 direction)
+        {
+            if(direction.x != 0)
+            {
+                if (!IsFacingRightDirection(direction))
+                {
+                    Vector3 currScale = transform.localScale;
+                    transform.localScale = new Vector3(-currScale.x, currScale.y, currScale.z);
+                }
+            }
+        }
+
+        private bool IsFacingRightDirection(Vector3 direction)
+        {
+            bool result = false;
+
+            if (defaultIsLeft)
+            {
+                result = !SameSign(direction.x, transform.localScale.x);
+            }
+            else
+            {
+                result = SameSign(direction.x, transform.localScale.x);
+            }
+
+            return result;
+        }
+
+        private bool SameSign(float num1, float num2)
+        {
+            return (num1 <= 0 && num2 <= 0) || (num1 >= 0 && num2 >= 0);
         }
     }
 }
