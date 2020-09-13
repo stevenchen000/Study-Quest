@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CombatSystem;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,28 +11,19 @@ namespace QuizSystem
     public class QuizUI : MonoBehaviour
     {
         public Question currentQuestion;
-        public Text questionText;
-        public ChoiceBoxesUI multipleChoiceUI;
-        public FillInTheBlankUI fillInTheBlankUI;
-        
-        public List<string> choices = new List<string>();
 
-        public delegate void AnsweredQuestion(bool isCorrect);
-        public event AnsweredQuestion OnQuestionAnswered;
-    
-        
-        public float disableTime = 2f;
-        private float timer = 0;
-        private bool prepareToDisableTimer = false;
-        
-
+        public QuizTextUI ui;
+        public List<QuizChoiceUi> choices = new List<QuizChoiceUi>();
 
         private QuizManager quiz;
+        private CombatManager combat;
 
         public void Start()
         {
             quiz = QuizManager.quiz;
-
+            ui = transform.GetComponentInChildren<QuizTextUI>();
+            choices.AddRange(transform.GetComponentsInChildren<QuizChoiceUi>());
+            combat = FindObjectOfType<CombatManager>();
         }
 
         private void Update()
@@ -39,120 +31,15 @@ namespace QuizSystem
             
         }
 
-        
-
-
-        public bool AnswerQuestion(string answer)
-        {
-            bool isCorrect = currentQuestion.CheckAnswer(answer);
-
-            return isCorrect;
-        }
-
-
         public void AskQuestion()
         {
             currentQuestion = quiz.GetNextQuestion();
+            ui.SetText(currentQuestion.question);
         }
 
-
-
-
-
-
-        //event functions
-
-        private void SetQuestion(Question question) {
-            ResetTimer();
-            currentQuestion = question;
-            questionText.text = question.question;
-
-            switch (question.type)
-            {
-                case QuestionType.TrueFalse:
-                    SetupMultipleChoiceGUI();
-                    break;
-                case QuestionType.MultipleChoice:
-                    SetupMultipleChoiceGUI();
-                    break;
-                case QuestionType.FillInTheBlank:
-                    SetupFillInTheBlankGUI();
-                    break;
-            }
-        }
-
-        private void StopUIInteractions(bool isCorrect) {
-            Debug.Log("UI interaction stopped");
-            switch (currentQuestion.type)
-            {
-                case QuestionType.TrueFalse:
-                    multipleChoiceUI.DisableChoiceInteractions();
-                    break;
-                case QuestionType.MultipleChoice:
-                    multipleChoiceUI.DisableChoiceInteractions();
-                    break;
-                case QuestionType.FillInTheBlank:
-                    fillInTheBlankUI.DisableInteraction();
-                    break;
-            }
-        }
-        
-        private void StartUIDisableTimer(bool isCorrect)
+        public void AnswerQuestion(bool correct)
         {
-            timer = 0;
-            prepareToDisableTimer = true;
-        }
-
-        private void MarkCorrectAnswer(string answer) {
-            Debug.Log("Correct answer marked");
-            switch (currentQuestion.type)
-            {
-                case QuestionType.TrueFalse:
-                    multipleChoiceUI.MarkCorrectAnswer(answer);
-                    break;
-                case QuestionType.MultipleChoice:
-                    multipleChoiceUI.MarkCorrectAnswer(answer);
-                    break;
-                case QuestionType.FillInTheBlank:
-                    fillInTheBlankUI.MarkCorrectAnswer(answer);
-                    break;
-            }
-        }
-
-
-
-
-
-        //helper functions
-
-
-        private void ResetTimer() {
-            prepareToDisableTimer = false;
-            timer = 0;
-        }
-
-        private void DisableGUI()
-        {
-            gameObject.SetActive(false);
-            multipleChoiceUI.DisableGUI();
-            fillInTheBlankUI.DisableGUI();
-        }
-
-        private void EnableGUI() {
-            gameObject.SetActive(true);
-        }
-
-        private void SetupMultipleChoiceGUI() {
-            choices = currentQuestion.GetAllChoices();
-            multipleChoiceUI.SetChoices(choices);
-            multipleChoiceUI.EnableGUI();
-            multipleChoiceUI.EnableChoiceInteractions();
-        }
-
-        private void SetupFillInTheBlankGUI()
-        {
-            fillInTheBlankUI.EnableGUI();
-            fillInTheBlankUI.EnableInteraction();
+            combat.QuestionAnswered(correct);
         }
     }
 }

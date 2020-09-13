@@ -1,162 +1,11 @@
-﻿using System;
+﻿using QuizSystem;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace CombatSystem
 {
-    [Serializable]
-    public class CombatState
-    {
-        public string stateName;
-        public bool isDefault = false;
-
-        public List<CombatStateAction> startActions = new List<CombatStateAction>();
-        public List<CombatStateAction> runActions = new List<CombatStateAction>();
-        public List<CombatStateAction> endActions = new List<CombatStateAction>();
-
-        public List<CombatStateTransition> transitions = new List<CombatStateTransition>();
-
-        public void StartState(CombatManager manager)
-        {
-            RunActions(startActions, manager);
-        }
-
-        public void RunState(CombatManager manager)
-        {
-            RunActions(runActions, manager);
-            CheckTransitions(manager);
-        }
-
-        public void EndState(CombatManager manager)
-        {
-            RunActions(endActions, manager);
-        }
-        
-
-
-
-
-        /* "Serialization" */
-
-        public void UpdateData(CombatStateList list)
-        {
-            for(int i = 0; i < transitions.Count; i++)
-            {
-                transitions[i].UpdateData(list);
-            }
-        }
-        
-
-
-        /* Helper functions */
-
-        private void RunActions(List<CombatStateAction> actions, CombatManager manager)
-        {
-            for(int i = 0; i < actions.Count; i++)
-            {
-                actions[i].CallAction(manager);
-            }
-        }
-
-        private void CheckTransitions(CombatManager manager)
-        {
-            for(int i = 0; i < transitions.Count; i++)
-            {
-                if (transitions[i].ConditionsMet(manager))
-                {
-                    //manager.ChangeState(transitions[i].toStateIndex);
-                }
-            }
-        }
-    }
-
-    [Serializable]
-    public class CombatStateTransition
-    {
-        public string description;
-        public List<CombatStateCondition> conditions = new List<CombatStateCondition>();
-        public int toStateIndex;
-        public string stateName;
-
-        public bool ConditionsMet(CombatManager manager)
-        {
-            bool result = true;
-
-            for(int i = 0; i < conditions.Count; i++)
-            {
-                if(conditions[i] != null)
-                {
-                    result &= conditions[i].ConditionMet(manager);
-
-                    if (!result)
-                    {
-                        break;
-                    }
-                }
-            }
-
-            return result;
-        }
-
-
-        public void UpdateData(CombatStateList list)
-        {
-            List<CombatState> states = list.states;
-
-            if (toStateIndex >= 0 && toStateIndex < states.Count)
-            {
-                stateName = list.states[toStateIndex].stateName;
-                description = $"-> {stateName}";
-            }
-            else
-            {
-                stateName = "Error: Invalid Index";
-                description = stateName;
-            }
-        }
-    }
-
-    [CreateAssetMenu(menuName = "Combat State/State List")]
-    public class CombatStateList : ScriptableObject, ISerializationCallbackReceiver
-    {
-        public List<CombatState> states = new List<CombatState>();
-
-        public CombatState GetStartState()
-        {
-            CombatState result = null;
-
-            for(int i = 0; i < states.Count; i++)
-            {
-                if (states[i].isDefault)
-                {
-                    result = states[i];
-                    break;
-                }else if(i == 0)
-                {
-                    result = states[0];
-                }
-            }
-
-            return result;
-        }
-
-
-
-        public void OnAfterDeserialize()
-        {
-            for(int i = 0; i < states.Count; i++)
-            {
-                states[i].UpdateData(this);
-            }
-        }
-
-        public void OnBeforeSerialize()
-        {
-            
-        }
-    }
-
     public enum StateEnum
     {
         TransitionIn,
@@ -167,18 +16,19 @@ namespace CombatSystem
         TransitionOut
     }
 
-
-
-
-
-
-
-
+    public enum CharacterAction
+    {
+        Attack,
+        Ability,
+        Flee,
+        None
+    }
 
     public class CombatManager : MonoBehaviour
     {
-        /*public CombatStateList states;
-        public CombatState currState;*/
+        public static CombatManager combat;
+        public QuizUI quizUi;
+
         public StateEnum currentState;
         public StateEnum newState;
         public float currStateDuration = 0;
@@ -186,17 +36,30 @@ namespace CombatSystem
         public Fighter player;
         public Fighter enemy;
 
-
-        //public Action currentAction
+        public float enemyAttackChance = 0;
+        public CharacterAction currentAction = CharacterAction.None;
         public Fighter currentAttacker;
 
 
-        public bool isAwaitingInput = false;
+        public bool hasAnswered = false;
+        public bool answeredCorrectly = false;
 
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
-            
+            if (combat == null)
+            {
+                combat = this;
+            }
+            else
+            {
+                Destroy(this);
+            }
+        }
+
+        private void Start()
+        {
+            DeactivateQuizUI();
         }
 
         // Update is called once per frame
@@ -215,6 +78,12 @@ namespace CombatSystem
             }
         }
 
+
+
+
+
+        #region States
+
         /* States */
 
         public void RunState()
@@ -222,64 +91,152 @@ namespace CombatSystem
             switch (currentState)
             {
                 case StateEnum.TransitionIn:
-                    TransitionIn();
+                    _TransitionIn();
                     break;
                 case StateEnum.SelectAction:
-                    SelectAction();
+                    _SelectAction();
                     break;
                 case StateEnum.AnswerQuestion:
-                    AnswerQuestion();
+                    _AnswerQuestion();
                     break;
                 case StateEnum.CharacterAttack:
-                    CharacterAttack();
+                    _CharacterAttack();
                     break;
                 case StateEnum.BattleOver:
-                    BattleOver();
+                    _BattleOver();
                     break;
                 case StateEnum.TransitionOut:
-                    TransitionOut();
+                    _TransitionOut();
                     break;
             }
         }
 
-        private void TransitionIn()
+        private void _TransitionIn()
         {
             ChangeState(StateEnum.AnswerQuestion);
         }
 
-        private void SelectAction()
+        private void _SelectAction()
         {
             if (currStateDuration == 0)
             {
-                //Enable select action UI
+                float rand = UnityEngine.Random.Range(0,1);
+
+                if(rand < enemyAttackChance)
+                {
+                    currentAction = CharacterAction.Ability;
+                }
+                else
+                {
+                    currentAction = CharacterAction.Attack;
+                }
             }
             else
             {
                 //await action
             }
-        }
 
-        private void AnswerQuestion()
-        {
-            if(currStateDuration == 0)
+            if(currentAction != CharacterAction.None)
             {
-
+                ChangeState(StateEnum.AnswerQuestion);
             }
         }
 
-        private void CharacterAttack()
+        private void _AnswerQuestion()
         {
+            if(currStateDuration == 0)
+            {
+                ActivateQuizUI();
+            }
 
+            if (hasAnswered)
+            {
+                ChangeState(StateEnum.CharacterAttack);
+            }
         }
 
-        private void BattleOver()
+        private void _CharacterAttack()
         {
+            if (currStateDuration == 0)
+            {
+                if (answeredCorrectly)
+                {
+                    //player attack
+                    switch (currentAction)
+                    {
+                        case CharacterAction.Attack:
+                            enemy.TakeDamage(1);
+                            Debug.Log("Player attacked");
+                            break;
+                        case CharacterAction.Ability:
+                            enemy.TakeDamage(2);
+                            Debug.Log("Player counterattacked");
+                            break;
+                        case CharacterAction.Flee:
+                            break;
+                        case CharacterAction.None:
+                            break;
+                    }
+                }
+                else
+                {
+                    //enemy attack
+                    switch (currentAction)
+                    {
+                        case CharacterAction.Ability:
+                            player.TakeDamage(2);
+                            Debug.Log("Enemy used a strong attack");
+                            break;
+                        default:
+                            player.TakeDamage(1);
+                            Debug.Log("Enemy attacked");
+                            break;
+                    }
+                }
+            }
 
+            if(player.IsDead() || enemy.IsDead())
+            {
+                ChangeState(StateEnum.BattleOver);
+            }
+            else
+            {
+                ChangeState(StateEnum.SelectAction);
+            }
         }
 
-        private void TransitionOut()
+        private void _BattleOver()
         {
+            if (currStateDuration == 0)
+            {
+                if (player.IsDead())
+                {
+                    //display game over screen
+                }
+                else
+                {
+                    //display victory screen
+                }
+            }
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    ChangeState(StateEnum.TransitionOut);
+                }
+            }
+        }
 
+        private void _TransitionOut()
+        {
+            if (player.IsDead())
+            {
+                //Go back to dungeon
+            }
+            else
+            {
+                //Go back to title screen
+            }
         }
 
         private void ChangeState(StateEnum state)
@@ -287,6 +244,42 @@ namespace CombatSystem
             newState = state;
         }
 
+
+        public void SelectAction(CharacterAction action)
+        {
+            currentAction = action;
+        }
+
+        #endregion
+
+
+
+
+        public void QuestionAnswered(bool correct)
+        {
+            hasAnswered = true;
+            answeredCorrectly = correct;
+        }
+
+
+
+
+
+
+
+
+
+
+        private void DeactivateQuizUI()
+        {
+            quizUi.gameObject.SetActive(false);
+        }
+
+        public void ActivateQuizUI()
+        {
+            quizUi.gameObject.SetActive(true);
+            quizUi.AskQuestion();
+        }
 
         /*public void ChangeState(int index)
         {
