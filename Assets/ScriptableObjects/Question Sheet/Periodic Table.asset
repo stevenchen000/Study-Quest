@@ -12,1017 +12,744 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe722fac7aa8cd4a8f1a22f4df8de29, type: 3}
   m_Name: Periodic Table
   m_EditorClassIdentifier: 
+  filename: Assets/Quizlet Cards/PeriodicTable.txt
+  addQuestionsFromFile: 0
+  setQuestionsFromFile: 0
+  reverse: 0
   questions:
   - question: H
     type: 1
+    answer: Hydrogen
     wrongChoices:
-    - Astatine
-    - Chlorine
-    - Ruthenium
-    solution:
-      type: 1
-      solution: Hydrogen
-      isTrue: 0
+    - Nitrogen
+    - Actinium
+    - Iodine
     includesAllOfTheAbove: 0
   - question: He
     type: 1
+    answer: Helium
     wrongChoices:
-    - Phosphorus
-    - Potassium
-    - Radon
-    solution:
-      type: 1
-      solution: Helium
-      isTrue: 0
+    - Samarium
+    - Holmium
+    - Krypton
     includesAllOfTheAbove: 0
   - question: Li
     type: 1
+    answer: Lithium
     wrongChoices:
-    - Tin
-    - Argon
-    - Osmium
-    solution:
-      type: 1
-      solution: Lithium
-      isTrue: 0
+    - Magnesium
+    - Indium
+    - Ytterbium
     includesAllOfTheAbove: 0
   - question: Be
     type: 1
+    answer: Beryllium
     wrongChoices:
-    - Cobalt
-    - Gallium
-    - Astatine
-    solution:
-      type: 1
-      solution: Beryllium
-      isTrue: 0
+    - Sodium
+    - Nitrogen
+    - Rhenium
     includesAllOfTheAbove: 0
   - question: B
     type: 1
+    answer: Boron
     wrongChoices:
-    - Rubidium
-    - Iron
-    - Xenon
-    solution:
-      type: 1
-      solution: Boron
-      isTrue: 0
+    - Zirconium
+    - Lanthanum
+    - Gold
     includesAllOfTheAbove: 0
   - question: C
     type: 1
+    answer: Carbon
     wrongChoices:
-    - Niobium
-    - Thallium
-    - Platinum
-    solution:
-      type: 1
-      solution: Carbon
-      isTrue: 0
+    - Thulium
+    - Radon
+    - Vanadium
     includesAllOfTheAbove: 0
   - question: N
     type: 1
+    answer: Nitrogen
     wrongChoices:
-    - Beryllium
-    - Oxygen
-    - Platinum
-    solution:
-      type: 1
-      solution: Nitrogen
-      isTrue: 0
+    - Francium
+    - Antimony
+    - Lutetium
     includesAllOfTheAbove: 0
   - question: O
     type: 1
+    answer: Oxygen
     wrongChoices:
-    - Argon
-    - Radium
-    - Xenon
-    solution:
-      type: 1
-      solution: Oxygen
-      isTrue: 0
+    - Uranium
+    - Astatine
+    - Phosphorus
     includesAllOfTheAbove: 0
   - question: F
     type: 1
+    answer: Fluorine
     wrongChoices:
-    - Sulfur
-    - Helium
-    - Platinum
-    solution:
-      type: 1
-      solution: Fluorine
-      isTrue: 0
+    - Gallium
+    - Polonium
+    - Tungsten
     includesAllOfTheAbove: 0
   - question: Ne
     type: 1
+    answer: Neon
     wrongChoices:
-    - Cobalt
-    - Mercury
-    - Argon
-    solution:
-      type: 1
-      solution: Neon
-      isTrue: 0
+    - Gadolinium
+    - Lead
+    - Rubidium
     includesAllOfTheAbove: 0
   - question: Na
     type: 1
+    answer: Sodium
     wrongChoices:
-    - Copper
+    - Yttrium
     - Helium
-    - Hafnium
-    solution:
-      type: 1
-      solution: Sodium
-      isTrue: 0
+    - Nitrogen
     includesAllOfTheAbove: 0
   - question: Mg
     type: 1
+    answer: Magnesium
     wrongChoices:
-    - Platinum
-    - Terbium
-    - Gadolinium
-    solution:
-      type: 1
-      solution: Magnesium
-      isTrue: 0
+    - Erbium
+    - Cesium
+    - Niobium
     includesAllOfTheAbove: 0
   - question: Al
     type: 1
+    answer: Aluminum
     wrongChoices:
-    - Carbon
-    - Manganese
-    - Selenium
-    solution:
-      type: 1
-      solution: Aluminum
-      isTrue: 0
+    - Rhenium
+    - Argon
+    - Lead
     includesAllOfTheAbove: 0
   - question: Si
     type: 1
+    answer: Silicon
     wrongChoices:
-    - Beryllium
-    - Tungsten
-    - Tantalum
-    solution:
-      type: 1
-      solution: Silicon
-      isTrue: 0
+    - Selenium
+    - Neon
+    - Thulium
     includesAllOfTheAbove: 0
   - question: P
     type: 1
+    answer: Phosphorus
     wrongChoices:
-    - Tin
-    - Titanium
-    - Chlorine
-    solution:
-      type: 1
-      solution: Phosphorus
-      isTrue: 0
+    - Lutetium
+    - Cobalt
+    - Erbium
     includesAllOfTheAbove: 0
   - question: S
     type: 1
+    answer: Sulfur
     wrongChoices:
-    - Lutetium
-    - Dysprosium
-    - Chlorine
-    solution:
-      type: 1
-      solution: Sulfur
-      isTrue: 0
+    - Cesium
+    - Astatine
+    - Promethium
     includesAllOfTheAbove: 0
   - question: Cl
     type: 1
+    answer: Chlorine
     wrongChoices:
-    - Zirconium
-    - Technetium
-    - Praseodymium
-    solution:
-      type: 1
-      solution: Chlorine
-      isTrue: 0
+    - Rhenium
+    - Silicon
+    - Neon
     includesAllOfTheAbove: 0
   - question: Ar
     type: 1
+    answer: Argon
     wrongChoices:
-    - Krypton
-    - Platinum
-    - Tin
-    solution:
-      type: 1
-      solution: Argon
-      isTrue: 0
+    - Tungsten
+    - Palladium
+    - Phosphorus
     includesAllOfTheAbove: 0
   - question: K
     type: 1
+    answer: Potassium
     wrongChoices:
-    - Hafnium
-    - Silicon
-    - Osmium
-    solution:
-      type: 1
-      solution: Potassium
-      isTrue: 0
+    - Cesium
+    - Radium
+    - Tellurium
     includesAllOfTheAbove: 0
   - question: Ca
     type: 1
+    answer: Calcium
     wrongChoices:
-    - Iridium
-    - Copper
-    - Protactinium
-    solution:
-      type: 1
-      solution: Calcium
-      isTrue: 0
+    - Neodymium
+    - Gallium
+    - Rubidium
     includesAllOfTheAbove: 0
   - question: Sc
     type: 1
+    answer: Scandium
     wrongChoices:
-    - Niobium
     - Silver
-    - Iron
-    solution:
-      type: 1
-      solution: Scandium
-      isTrue: 0
+    - Manganese
+    - Cesium
     includesAllOfTheAbove: 0
   - question: Ti
     type: 1
+    answer: Titanium
     wrongChoices:
-    - Protactinium
-    - Bromine
-    - Copper
-    solution:
-      type: 1
-      solution: Titanium
-      isTrue: 0
+    - Boron
+    - Manganese
+    - Indium
     includesAllOfTheAbove: 0
   - question: V
     type: 1
+    answer: Vanadium
     wrongChoices:
-    - Actinium
-    - Polonium
-    - Lutetium
-    solution:
-      type: 1
-      solution: Vanadium
-      isTrue: 0
+    - Chlorine
+    - Rhenium
+    - Hafnium
     includesAllOfTheAbove: 0
   - question: Cr
     type: 1
+    answer: Chromium
     wrongChoices:
-    - Holmium
-    - Gadolinium
-    - Radon
-    solution:
-      type: 1
-      solution: Chromium
-      isTrue: 0
+    - Hydrogen
+    - Argon
+    - Copper
     includesAllOfTheAbove: 0
   - question: Mn
     type: 1
+    answer: Manganese
     wrongChoices:
-    - Tin
-    - Boron
-    - Hafnium
-    solution:
-      type: 1
-      solution: Manganese
-      isTrue: 0
+    - Niobium
+    - Dysprosium
+    - Thulium
     includesAllOfTheAbove: 0
   - question: Fe
     type: 1
+    answer: Iron
     wrongChoices:
-    - Technetium
-    - Actinium
     - Hydrogen
-    solution:
-      type: 1
-      solution: Iron
-      isTrue: 0
+    - Bismuth
+    - Gadolinium
     includesAllOfTheAbove: 0
   - question: Co
     type: 1
+    answer: Cobalt
     wrongChoices:
-    - Ruthenium
-    - Palladium
-    - Hydrogen
-    solution:
-      type: 1
-      solution: Cobalt
-      isTrue: 0
+    - Tantalum
+    - Tin
+    - Fluorine
     includesAllOfTheAbove: 0
   - question: Ni
     type: 1
+    answer: Nickel
     wrongChoices:
-    - Beryllium
-    - Promethium
-    - Scandium
-    solution:
-      type: 1
-      solution: Nickel
-      isTrue: 0
+    - Astatine
+    - Cesium
+    - Selenium
     includesAllOfTheAbove: 0
   - question: Cu
     type: 1
+    answer: Copper
     wrongChoices:
-    - Tin
-    - Hafnium
-    - Zinc
-    solution:
-      type: 1
-      solution: Copper
-      isTrue: 0
+    - Dysprosium
+    - Bismuth
+    - Palladium
     includesAllOfTheAbove: 0
   - question: Zn
     type: 1
+    answer: Zinc
     wrongChoices:
-    - Palladium
-    - Iridium
-    - Phosphorus
-    solution:
-      type: 1
-      solution: Zinc
-      isTrue: 0
+    - Manganese
+    - Erbium
+    - Iodine
     includesAllOfTheAbove: 0
   - question: Ga
     type: 1
+    answer: Gallium
     wrongChoices:
-    - Cerium
-    - Helium
-    - Protactinium
-    solution:
-      type: 1
-      solution: Gallium
-      isTrue: 0
+    - Zirconium
+    - Magnesium
+    - Strontium
     includesAllOfTheAbove: 0
   - question: Ge
     type: 1
+    answer: Germanium
     wrongChoices:
-    - Francium
-    - Gold
-    - Argon
-    solution:
-      type: 1
-      solution: Germanium
-      isTrue: 0
+    - Radium
+    - Platinum
+    - Praseodymium
     includesAllOfTheAbove: 0
   - question: As
     type: 1
+    answer: Arsenic
     wrongChoices:
-    - Aluminum
-    - Calcium
-    - Germanium
-    solution:
-      type: 1
-      solution: Arsenic
-      isTrue: 0
+    - Phosphorus
+    - Iridium
+    - Praseodymium
     includesAllOfTheAbove: 0
   - question: Se
     type: 1
+    answer: Selenium
     wrongChoices:
-    - Lanthanum
-    - Hydrogen
-    - Nickel
-    solution:
-      type: 1
-      solution: Selenium
-      isTrue: 0
+    - Europium
+    - Dysprosium
+    - Lutetium
     includesAllOfTheAbove: 0
   - question: Br
     type: 1
+    answer: Bromine
     wrongChoices:
-    - Tantalum
-    - Nitrogen
-    - Neon
-    solution:
-      type: 1
-      solution: Bromine
-      isTrue: 0
+    - Tin
+    - Thallium
+    - Copper
     includesAllOfTheAbove: 0
   - question: Kr
     type: 1
+    answer: Krypton
     wrongChoices:
-    - Palladium
-    - Lithium
-    - Helium
-    solution:
-      type: 1
-      solution: Krypton
-      isTrue: 0
+    - Thulium
+    - Gallium
+    - Erbium
     includesAllOfTheAbove: 0
   - question: Rb
     type: 1
+    answer: Rubidium
     wrongChoices:
-    - Cadmium
-    - Radon
-    - Polonium
-    solution:
-      type: 1
-      solution: Rubidium
-      isTrue: 0
+    - Erbium
+    - Cerium
+    - Helium
     includesAllOfTheAbove: 0
   - question: Sr
     type: 1
+    answer: Strontium
     wrongChoices:
-    - Zinc
-    - Ruthenium
-    - Bromine
-    solution:
-      type: 1
-      solution: Strontium
-      isTrue: 0
+    - Rhodium
+    - Thorium
+    - Thulium
     includesAllOfTheAbove: 0
   - question: Y
     type: 1
+    answer: Yttrium
     wrongChoices:
-    - Strontium
-    - Lead
-    - Polonium
-    solution:
-      type: 1
-      solution: Yttrium
-      isTrue: 0
+    - Neon
+    - Zinc
+    - Neodymium
     includesAllOfTheAbove: 0
   - question: Zr
     type: 1
+    answer: Zirconium
     wrongChoices:
-    - Sulfur
-    - Osmium
-    - Argon
-    solution:
-      type: 1
-      solution: Zirconium
-      isTrue: 0
+    - Manganese
+    - Samarium
+    - Hafnium
     includesAllOfTheAbove: 0
   - question: Nb
     type: 1
+    answer: Niobium
     wrongChoices:
-    - Oxygen
-    - Titanium
-    - Bismuth
-    solution:
-      type: 1
-      solution: Niobium
-      isTrue: 0
+    - Phosphorus
+    - Rhodium
+    - Iridium
     includesAllOfTheAbove: 0
   - question: Mo
     type: 1
+    answer: Molybdenum
     wrongChoices:
-    - Antimony
-    - Radon
-    - Phosphorus
-    solution:
-      type: 1
-      solution: Molybdenum
-      isTrue: 0
+    - Gold
+    - Fluorine
+    - Strontium
     includesAllOfTheAbove: 0
   - question: Tc
     type: 1
+    answer: Technetium
     wrongChoices:
-    - Arsenic
-    - Silver
-    - Calcium
-    solution:
-      type: 1
-      solution: Technetium
-      isTrue: 0
+    - Cadmium
+    - Polonium
+    - Erbium
     includesAllOfTheAbove: 0
   - question: Ru
     type: 1
+    answer: Ruthenium
     wrongChoices:
-    - Uranium
-    - Helium
-    - Platinum
-    solution:
-      type: 1
-      solution: Ruthenium
-      isTrue: 0
+    - Carbon
+    - Selenium
+    - Cobalt
     includesAllOfTheAbove: 0
   - question: Rh
     type: 1
+    answer: Rhodium
     wrongChoices:
-    - Selenium
-    - Gallium
-    - Cadmium
-    solution:
-      type: 1
-      solution: Rhodium
-      isTrue: 0
+    - Titanium
+    - Bromine
+    - Terbium
     includesAllOfTheAbove: 0
   - question: Pd
     type: 1
+    answer: Palladium
     wrongChoices:
-    - Helium
-    - Strontium
-    - Carbon
-    solution:
-      type: 1
-      solution: Palladium
-      isTrue: 0
+    - Nickel
+    - Polonium
+    - Magnesium
     includesAllOfTheAbove: 0
   - question: Ag
     type: 1
+    answer: Silver
     wrongChoices:
-    - Phosphorus
-    - Sulfur
-    - Copper
-    solution:
-      type: 1
-      solution: Silver
-      isTrue: 0
+    - Niobium
+    - Holmium
+    - Uranium
     includesAllOfTheAbove: 0
   - question: Cd
     type: 1
+    answer: Cadmium
     wrongChoices:
-    - Astatine
-    - Sodium
-    - Praseodymium
-    solution:
-      type: 1
-      solution: Cadmium
-      isTrue: 0
+    - Selenium
+    - Cesium
+    - Protactinium
     includesAllOfTheAbove: 0
   - question: In
     type: 1
+    answer: Indium
     wrongChoices:
-    - Samarium
-    - Argon
-    - Hafnium
-    solution:
-      type: 1
-      solution: Indium
-      isTrue: 0
+    - Neon
+    - Oxygen
+    - Tantalum
     includesAllOfTheAbove: 0
   - question: Sn
     type: 1
+    answer: Tin
     wrongChoices:
-    - Thulium
-    - Sulfur
-    - Xenon
-    solution:
-      type: 1
-      solution: Tin
-      isTrue: 0
+    - Actinium
+    - Thorium
+    - Carbon
     includesAllOfTheAbove: 0
   - question: Sb
     type: 1
+    answer: Antimony
     wrongChoices:
-    - Rubidium
-    - Gold
-    - Silicon
-    solution:
-      type: 1
-      solution: Antimony
-      isTrue: 0
+    - Holmium
+    - Tellurium
+    - Dysprosium
     includesAllOfTheAbove: 0
   - question: Te
     type: 1
+    answer: Tellurium
     wrongChoices:
-    - Nitrogen
-    - Scandium
-    - Praseodymium
-    solution:
-      type: 1
-      solution: Tellurium
-      isTrue: 0
+    - Thallium
+    - Polonium
+    - Lutetium
     includesAllOfTheAbove: 0
   - question: I
     type: 1
+    answer: Iodine
     wrongChoices:
-    - Holmium
-    - Mercury
-    - Bismuth
-    solution:
-      type: 1
-      solution: Iodine
-      isTrue: 0
+    - Promethium
+    - Dysprosium
+    - Potassium
     includesAllOfTheAbove: 0
   - question: Xe
     type: 1
+    answer: Xenon
     wrongChoices:
-    - Radium
-    - Titanium
-    - Ruthenium
-    solution:
-      type: 1
-      solution: Xenon
-      isTrue: 0
+    - Lead
+    - Tin
+    - Aluminum
     includesAllOfTheAbove: 0
   - question: Cs
     type: 1
+    answer: Cesium
     wrongChoices:
-    - Ruthenium
-    - Polonium
-    - Krypton
-    solution:
-      type: 1
-      solution: Cesium
-      isTrue: 0
+    - Protactinium
+    - Yttrium
+    - Iron
     includesAllOfTheAbove: 0
   - question: Ba
     type: 1
+    answer: Barium
     wrongChoices:
-    - Hafnium
-    - Polonium
-    - Zirconium
-    solution:
-      type: 1
-      solution: Barium
-      isTrue: 0
+    - Titanium
+    - Radon
+    - Rubidium
     includesAllOfTheAbove: 0
   - question: La
     type: 1
+    answer: Lanthanum
     wrongChoices:
-    - Bromine
-    - Krypton
-    - Rhenium
-    solution:
-      type: 1
-      solution: Lanthanum
-      isTrue: 0
+    - Bismuth
+    - Tantalum
+    - Cobalt
     includesAllOfTheAbove: 0
   - question: Ce
     type: 1
+    answer: Cerium
     wrongChoices:
-    - Krypton
-    - Titanium
-    - Lead
-    solution:
-      type: 1
-      solution: Cerium
-      isTrue: 0
+    - Protactinium
+    - Copper
+    - Hafnium
     includesAllOfTheAbove: 0
   - question: Pr
     type: 1
+    answer: Praseodymium
     wrongChoices:
-    - Osmium
-    - Silver
-    - Strontium
-    solution:
-      type: 1
-      solution: Praseodymium
-      isTrue: 0
+    - Bromine
+    - Rubidium
+    - Platinum
     includesAllOfTheAbove: 0
   - question: Nd
     type: 1
+    answer: Neodymium
     wrongChoices:
-    - Molybdenum
-    - Silver
-    - Cesium
-    solution:
-      type: 1
-      solution: Neodymium
-      isTrue: 0
+    - Radon
+    - Antimony
+    - Bismuth
     includesAllOfTheAbove: 0
   - question: Pm
     type: 1
+    answer: Promethium
     wrongChoices:
-    - Sulfur
-    - Manganese
-    - Uranium
-    solution:
-      type: 1
-      solution: Promethium
-      isTrue: 0
+    - Argon
+    - Rubidium
+    - Chromium
     includesAllOfTheAbove: 0
   - question: Sm
     type: 1
+    answer: Samarium
     wrongChoices:
-    - Chromium
-    - Yttrium
-    - Platinum
-    solution:
-      type: 1
-      solution: Samarium
-      isTrue: 0
+    - Uranium
+    - Cesium
+    - Carbon
     includesAllOfTheAbove: 0
   - question: Eu
     type: 1
+    answer: Europium
     wrongChoices:
-    - Polonium
-    - Fluorine
-    - Zirconium
-    solution:
-      type: 1
-      solution: Europium
-      isTrue: 0
+    - Holmium
+    - Lead
+    - Iridium
     includesAllOfTheAbove: 0
   - question: Gd
     type: 1
+    answer: Gadolinium
     wrongChoices:
-    - Sodium
-    - Potassium
-    - Thorium
-    solution:
-      type: 1
-      solution: Gadolinium
-      isTrue: 0
+    - Barium
+    - Indium
+    - Cesium
     includesAllOfTheAbove: 0
   - question: Tb
     type: 1
+    answer: Terbium
     wrongChoices:
-    - Potassium
-    - Tantalum
-    - Iron
-    solution:
-      type: 1
-      solution: Terbium
-      isTrue: 0
+    - Chromium
+    - Xenon
+    - Erbium
     includesAllOfTheAbove: 0
   - question: Dy
     type: 1
+    answer: Dysprosium
     wrongChoices:
-    - Lithium
-    - Thulium
-    - Rubidium
-    solution:
-      type: 1
-      solution: Dysprosium
-      isTrue: 0
+    - Chromium
+    - Francium
+    - Phosphorus
     includesAllOfTheAbove: 0
   - question: Ho
     type: 1
+    answer: Holmium
     wrongChoices:
-    - Lithium
-    - Iodine
-    - Protactinium
-    solution:
-      type: 1
-      solution: Holmium
-      isTrue: 0
+    - Radon
+    - Phosphorus
+    - Rhenium
     includesAllOfTheAbove: 0
   - question: Er
     type: 1
+    answer: Erbium
     wrongChoices:
-    - Phosphorus
-    - Francium
-    - Boron
-    solution:
-      type: 1
-      solution: Erbium
-      isTrue: 0
+    - Zirconium
+    - Aluminum
+    - Yttrium
     includesAllOfTheAbove: 0
   - question: Tm
     type: 1
+    answer: Thulium
     wrongChoices:
-    - Uranium
-    - Neodymium
-    - Rubidium
-    solution:
-      type: 1
-      solution: Thulium
-      isTrue: 0
+    - Magnesium
+    - Hafnium
+    - Zirconium
     includesAllOfTheAbove: 0
   - question: Yb
     type: 1
+    answer: Ytterbium
     wrongChoices:
-    - Ruthenium
-    - Cerium
-    - Helium
-    solution:
-      type: 1
-      solution: Ytterbium
-      isTrue: 0
+    - Boron
+    - Thorium
+    - Calcium
     includesAllOfTheAbove: 0
   - question: Lu
     type: 1
+    answer: Lutetium
     wrongChoices:
-    - Samarium
-    - Cobalt
-    - Erbium
-    solution:
-      type: 1
-      solution: Lutetium
-      isTrue: 0
+    - Beryllium
+    - Ytterbium
+    - Zinc
     includesAllOfTheAbove: 0
   - question: Hf
     type: 1
+    answer: Hafnium
     wrongChoices:
-    - Bromine
-    - Tin
-    - Titanium
-    solution:
-      type: 1
-      solution: Hafnium
-      isTrue: 0
+    - Cerium
+    - Rubidium
+    - Rhodium
     includesAllOfTheAbove: 0
   - question: Ta
     type: 1
+    answer: Tantalum
     wrongChoices:
-    - Barium
-    - Argon
-    - Krypton
-    solution:
-      type: 1
-      solution: Tantalum
-      isTrue: 0
+    - Radon
+    - Zinc
+    - Fluorine
     includesAllOfTheAbove: 0
   - question: W
     type: 1
+    answer: Tungsten
     wrongChoices:
-    - Sodium
-    - Rhenium
-    - Zinc
-    solution:
-      type: 1
-      solution: Tungsten
-      isTrue: 0
+    - Xenon
+    - Strontium
+    - Holmium
     includesAllOfTheAbove: 0
   - question: Re
     type: 1
+    answer: Rhenium
     wrongChoices:
-    - Protactinium
-    - Radium
-    - Arsenic
-    solution:
-      type: 1
-      solution: Rhenium
-      isTrue: 0
+    - Lead
+    - Cadmium
+    - Silver
     includesAllOfTheAbove: 0
   - question: Os
     type: 1
+    answer: Osmium
     wrongChoices:
-    - Mercury
-    - Sodium
-    - Bromine
-    solution:
-      type: 1
-      solution: Osmium
-      isTrue: 0
+    - Europium
+    - Oxygen
+    - Strontium
     includesAllOfTheAbove: 0
   - question: Ir
     type: 1
+    answer: Iridium
     wrongChoices:
-    - Potassium
-    - Actinium
-    - Helium
-    solution:
-      type: 1
-      solution: Iridium
-      isTrue: 0
+    - Zirconium
+    - Chromium
+    - Rhenium
     includesAllOfTheAbove: 0
   - question: Pt
     type: 1
+    answer: Platinum
     wrongChoices:
-    - Promethium
-    - Lead
-    - Tellurium
-    solution:
-      type: 1
-      solution: Platinum
-      isTrue: 0
+    - Thulium
+    - Phosphorus
+    - Ytterbium
     includesAllOfTheAbove: 0
   - question: Au
     type: 1
+    answer: Gold
     wrongChoices:
-    - Antimony
-    - Actinium
-    - Silicon
-    solution:
-      type: 1
-      solution: Gold
-      isTrue: 0
+    - Erbium
+    - Rubidium
+    - Osmium
     includesAllOfTheAbove: 0
   - question: Hg
     type: 1
+    answer: Mercury
     wrongChoices:
-    - Aluminum
-    - Barium
-    - Fluorine
-    solution:
-      type: 1
-      solution: Mercury
-      isTrue: 0
+    - Magnesium
+    - Nickel
+    - Hydrogen
     includesAllOfTheAbove: 0
   - question: Tl
     type: 1
+    answer: Thallium
     wrongChoices:
     - Zirconium
-    - Rubidium
-    - Tungsten
-    solution:
-      type: 1
-      solution: Thallium
-      isTrue: 0
+    - Copper
+    - Oxygen
     includesAllOfTheAbove: 0
   - question: Pb
     type: 1
+    answer: Lead
     wrongChoices:
-    - Zinc
-    - Silicon
-    - Promethium
-    solution:
-      type: 1
-      solution: Lead
-      isTrue: 0
+    - Magnesium
+    - Sodium
+    - Argon
     includesAllOfTheAbove: 0
   - question: Bi
     type: 1
+    answer: Bismuth
     wrongChoices:
-    - Fluorine
-    - Dysprosium
-    - Osmium
-    solution:
-      type: 1
-      solution: Bismuth
-      isTrue: 0
+    - Neodymium
+    - Cobalt
+    - Silver
     includesAllOfTheAbove: 0
   - question: Po
     type: 1
+    answer: Polonium
     wrongChoices:
-    - Technetium
-    - Tungsten
-    - Neon
-    solution:
-      type: 1
-      solution: Polonium
-      isTrue: 0
+    - Samarium
+    - Potassium
+    - Rubidium
     includesAllOfTheAbove: 0
   - question: At
     type: 1
+    answer: Astatine
     wrongChoices:
-    - Boron
     - Hafnium
-    - Helium
-    solution:
-      type: 1
-      solution: Astatine
-      isTrue: 0
+    - Erbium
+    - Neon
     includesAllOfTheAbove: 0
   - question: Rn
     type: 1
+    answer: Radon
     wrongChoices:
-    - Technetium
-    - Yttrium
-    - Neon
-    solution:
-      type: 1
-      solution: Radon
-      isTrue: 0
+    - Promethium
+    - Rhenium
+    - Platinum
     includesAllOfTheAbove: 0
   - question: Fr
     type: 1
+    answer: Francium
     wrongChoices:
-    - Holmium
-    - Praseodymium
-    - Oxygen
-    solution:
-      type: 1
-      solution: Francium
-      isTrue: 0
+    - Rhodium
+    - Actinium
+    - Fluorine
     includesAllOfTheAbove: 0
   - question: Ra
     type: 1
+    answer: Radium
     wrongChoices:
-    - Francium
-    - Chromium
-    - Copper
-    solution:
-      type: 1
-      solution: Radium
-      isTrue: 0
+    - Ruthenium
+    - Palladium
+    - Phosphorus
     includesAllOfTheAbove: 0
   - question: Ac
     type: 1
+    answer: Actinium
     wrongChoices:
-    - Gold
-    - Lanthanum
-    - Iron
-    solution:
-      type: 1
-      solution: Actinium
-      isTrue: 0
+    - Copper
+    - Fluorine
+    - Rubidium
     includesAllOfTheAbove: 0
   - question: Th
     type: 1
+    answer: Thorium
     wrongChoices:
     - Tungsten
-    - Polonium
-    - Samarium
-    solution:
-      type: 1
-      solution: Thorium
-      isTrue: 0
+    - Zirconium
+    - Aluminum
     includesAllOfTheAbove: 0
   - question: Pa
     type: 1
+    answer: Protactinium
     wrongChoices:
-    - Scandium
-    - Europium
-    - Silicon
-    solution:
-      type: 1
-      solution: Protactinium
-      isTrue: 0
+    - Palladium
+    - Iodine
+    - Cerium
     includesAllOfTheAbove: 0
   - question: U
     type: 1
+    answer: Uranium
     wrongChoices:
-    - Vanadium
-    - Lead
-    - Protactinium
-    solution:
-      type: 1
-      solution: Uranium
-      isTrue: 0
+    - Astatine
+    - Technetium
+    - Tungsten
     includesAllOfTheAbove: 0
-  foldouts: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000

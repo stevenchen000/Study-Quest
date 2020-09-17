@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CombatSystem
 {
@@ -113,7 +114,7 @@ namespace CombatSystem
 
         private void _TransitionIn()
         {
-            ChangeState(StateEnum.AnswerQuestion);
+            ChangeState(StateEnum.SelectAction);
         }
 
         private void _SelectAction()
@@ -193,9 +194,13 @@ namespace CombatSystem
                             break;
                     }
                 }
+                
             }
 
-            if(player.IsDead() || enemy.IsDead())
+            hasAnswered = false;
+            answeredCorrectly = false;
+
+            if (player.IsDead() || enemy.IsDead())
             {
                 ChangeState(StateEnum.BattleOver);
             }
@@ -204,6 +209,7 @@ namespace CombatSystem
                 ChangeState(StateEnum.SelectAction);
             }
         }
+            
 
         private void _BattleOver()
         {
@@ -211,11 +217,11 @@ namespace CombatSystem
             {
                 if (player.IsDead())
                 {
-                    //display game over screen
+                    Debug.Log("Game over. Press Enter to return");
                 }
                 else
                 {
-                    //display victory screen
+                    Debug.Log("You win!");
                 }
             }
             else
@@ -229,13 +235,15 @@ namespace CombatSystem
 
         private void _TransitionOut()
         {
-            if (player.IsDead())
+            if (!player.IsDead())
             {
-                //Go back to dungeon
+                string dungeonName = WorldState.GetDungeonName();
+                UnityUtilities.LoadLevel(dungeonName);
             }
             else
             {
-                //Go back to title screen
+                string hubName = WorldState.GetHubName();
+                UnityUtilities.LoadLevel(hubName);
             }
         }
 

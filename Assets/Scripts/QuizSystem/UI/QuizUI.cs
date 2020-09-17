@@ -34,12 +34,31 @@ namespace QuizSystem
         public void AskQuestion()
         {
             currentQuestion = quiz.GetNextQuestion();
-            ui.SetText(currentQuestion.question);
+            SetupTextUI();
+            SetupChoiceUI();
         }
 
         public void AnswerQuestion(bool correct)
         {
             combat.QuestionAnswered(correct);
+        }
+
+
+
+
+
+        private void SetupTextUI()
+        {
+            ui.SetText(currentQuestion.question);
+        }
+
+        private void SetupChoiceUI()
+        {
+            List<string> choiceList = currentQuestion.GetAllChoices();
+            for (int i = 0; i < choiceList.Count; i++)
+            {
+                choices[i].UpdateText(choiceList[i]);
+            }
         }
     }
 }

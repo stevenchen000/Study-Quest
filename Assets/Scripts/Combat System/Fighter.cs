@@ -19,10 +19,28 @@ namespace CombatSystem
         private bool IsAttacking = false;
         private Animator anim;
 
+        public CharacterData data;
+        public bool isPlayer = false;
+
         private void Start()
         {
             anim = transform.GetComponent<Animator>();
+            SetupCharacter();
         }
+
+        private void OnDestroy()
+        {
+            if (isPlayer)
+            {
+                data.currentHealth = currentHealth;
+            }
+        }
+
+
+
+
+
+
 
         public void Attack(Fighter target)
         {
@@ -78,6 +96,70 @@ namespace CombatSystem
         public bool IsDead()
         {
             return currentHealth == 0;
+        }
+
+        private void SetupCharacter()
+        {
+            RemoveChildren();
+            SetupData();
+            CreateChild();
+            SetupStats();
+        }
+
+        private void RemoveChildren()
+        {
+            Transform child = null;
+
+            try
+            {
+                transform.GetChild(0);
+            }catch(Exception e)
+            {
+
+            }
+
+            while (child != null)
+            {
+                child.transform.SetParent(null);
+                child.gameObject.SetActive(false);
+                child = transform.GetChild(0);
+            }
+        }
+
+        private void SetupData()
+        {
+            if (isPlayer)
+            {
+                data = WorldState.GetPlayerData();
+            }
+            else
+            {
+                data = WorldState.GetCharacterData();
+            }
+        }
+
+        private void CreateChild()
+        {
+            GameObject model = Instantiate(data.model);
+            model.transform.parent = transform;
+            model.transform.localPosition = new Vector3();
+        }
+
+        private void SetupStats()
+        {
+            int currentHealth = data.currentHealth;
+            int maxHealth = data.maxHealth;
+
+            this.maxHealth = maxHealth;
+
+            if (isPlayer)
+            {
+                this.currentHealth = currentHealth;
+            }
+            else
+            {
+                this.currentHealth = maxHealth;
+            }
         }
     }
 }

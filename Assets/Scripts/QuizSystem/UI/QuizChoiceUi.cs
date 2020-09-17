@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using CombatSystem;
 
 namespace QuizSystem
 {
@@ -24,6 +25,7 @@ namespace QuizSystem
         {
             ui = transform.GetComponentInParent<QuizUI>();
         }
+        
 
         public void UpdateText(string newText)
         {
@@ -34,7 +36,8 @@ namespace QuizSystem
         public void AnswerQuestion()
         {
             bool correct = QuizManager.quiz.AnswerQuestion(text);
-
+            CombatManager.combat.QuestionAnswered(correct);
+            
             if (correct)
             {
                 MarkCorrect();

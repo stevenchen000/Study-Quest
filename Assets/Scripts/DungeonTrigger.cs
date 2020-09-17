@@ -20,6 +20,7 @@ public class DungeonTrigger : MonoBehaviour, IInteractable
 
     public void Interact(IInteractor interactor)
     {
+        WorldState.ResetCurrentFloorNumber();
         WorldState.SetDungeonName(dungeonName);
         WorldState.SetDungeonPosition(new Vector3(0,0,0));
         SceneLoader.LoadDungeon(dungeonName);

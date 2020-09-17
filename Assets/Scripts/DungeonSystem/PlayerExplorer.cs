@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using CombatSystem;
 
 namespace DungeonSystem
 {
@@ -11,17 +12,28 @@ namespace DungeonSystem
 
         public float movementSpeed = 5;
         List<IInteractable> interactables = new List<IInteractable>();
+        public CharacterData data;
         public Collider2D collider;
         public bool defaultIsLeft = true;
+        public bool useHubPosition;
 
         // Start is called before the first frame update
         void Start()
         {
-            var tempInteracts = FindObjectsOfType<MonoBehaviour>().OfType<IInteractable>();
-            foreach(IInteractable i in tempInteracts)
+            if (!useHubPosition)
             {
-                interactables.Add(i);
+                transform.position = WorldState.GetDungeonPosition();
             }
+            else
+            {
+                transform.position = WorldState.GetHubPosition();
+            }
+            data = WorldState.GetPlayerData();
+            SetupModel();
+
+            var tempInteracts = FindObjectsOfType<MonoBehaviour>().OfType<IInteractable>();
+            interactables.AddRange(tempInteracts);
+
             collider = transform.GetComponent<Collider2D>();
         }
 
@@ -116,5 +128,18 @@ namespace DungeonSystem
         {
             return (num1 <= 0 && num2 <= 0) || (num1 >= 0 && num2 >= 0);
         }
+
+
+
+        private void SetupModel()
+        {
+            UnityUtilities.RemoveChildren(transform);
+            GameObject model = data.model;
+            GameObject child = Instantiate(model);
+
+            child.transform.SetParent(transform);
+            child.transform.localPosition = new Vector3();
+        }
+
     }
 }

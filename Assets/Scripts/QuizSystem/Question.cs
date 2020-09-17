@@ -22,6 +22,12 @@ namespace QuizSystem
 
         }
 
+        public Question(string newQuestion, string newAnswer)
+        {
+            question = newQuestion;
+            answer = newAnswer;
+        }
+
 
 
         public bool CheckAnswer(string answer) {
@@ -53,37 +59,15 @@ namespace QuizSystem
 
         public void AddWrongChoice(string text)
         {
-            int num = GetNumberOfWrongChoices();
-            if(QuestionDoesNotContainChoice(text) && num < 3)
+            if (QuestionDoesNotContainChoice(text))
             {
-                wrongChoices[num] = text;
+                wrongChoices.Add(text);
             }
         }
 
         private bool QuestionDoesNotContainChoice(string text)
         {
-            bool result = true;
-
-            if (GetAnswer().Equals(text, StringComparison.InvariantCultureIgnoreCase))
-            {
-                result = false;
-            }
-
-            if (result)
-            {
-                int num = GetNumberOfWrongChoices();
-
-                for(int i = 0; i < num; i++)
-                {
-                    if(wrongChoices[i].Equals(text, StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        result = false;
-                        break;
-                    }
-                }
-            }
-
-            return result;
+            return !wrongChoices.Contains(text) && answer != text;
         }
 
         public int GetNumberOfWrongChoices()
@@ -113,7 +97,7 @@ namespace QuizSystem
 
         private List<string> GetScrambledChoices() {
             List<string> choices = GetUnscrambledChoices();
-
+            
             for (int i = 0; i < choices.Count; i++) {
                 int rand = UnityEngine.Random.Range(0, choices.Count);
                 string temp = choices[i];

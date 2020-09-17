@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 namespace QuizSystem
 {
@@ -12,6 +13,9 @@ namespace QuizSystem
     {
         public TMP_Text text;
         public string question;
+
+        public Button button;
+
 
         public void SetText(string newText)
         {

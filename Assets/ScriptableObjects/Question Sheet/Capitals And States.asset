@@ -12,555 +12,408 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe722fac7aa8cd4a8f1a22f4df8de29, type: 3}
   m_Name: Capitals And States
   m_EditorClassIdentifier: 
+  filename: Assets/Quizlet Cards/StatesAndCapitals.txt
+  addQuestionsFromFile: 0
+  setQuestionsFromFile: 0
+  reverse: 1
   questions:
   - question: Montgomery
     type: 1
+    answer: Alabama
     wrongChoices:
-    - South Carolina
-    - Ohio
-    - Kentucky
-    solution:
-      type: 1
-      solution: Alabama
-      isTrue: 0
+    - Nevada
+    - Idaho
+    - Wyoming
     includesAllOfTheAbove: 0
   - question: Juneau
     type: 1
+    answer: Alaska
     wrongChoices:
-    - Maryland
-    - Michigan
-    - California
-    solution:
-      type: 1
-      solution: Alaska
-      isTrue: 0
+    - Iowa
+    - Rhode Island
+    - Vermont
     includesAllOfTheAbove: 0
   - question: Phoenix
     type: 1
+    answer: Arizona
     wrongChoices:
-    - Oregon
-    - Kentucky
-    - Mississippi
-    solution:
-      type: 1
-      solution: Arizona
-      isTrue: 0
+    - Michigan
+    - Texas
+    - Pennsylvania
     includesAllOfTheAbove: 0
   - question: Little Rock
     type: 1
+    answer: Arkansas
     wrongChoices:
-    - Hawaii
-    - Indiana
-    - Illinois
-    solution:
-      type: 1
-      solution: Arkansas
-      isTrue: 0
+    - Maine
+    - Idaho
+    - Minnesota
     includesAllOfTheAbove: 0
   - question: Sacramento
     type: 1
+    answer: California
     wrongChoices:
-    - Utah
-    - South Dakota
-    - North Carolina
-    solution:
-      type: 1
-      solution: California
-      isTrue: 0
+    - South Carolina
+    - Oklahoma
+    - Kentucky
     includesAllOfTheAbove: 0
   - question: Denver
     type: 1
+    answer: Colorado
     wrongChoices:
-    - West Virginia
-    - Tennessee
-    - North Carolina
-    solution:
-      type: 1
-      solution: Colorado
-      isTrue: 0
+    - Pennsylvania
+    - Wisconsin
+    - California
     includesAllOfTheAbove: 0
   - question: Hartford
     type: 1
+    answer: Connecticut
     wrongChoices:
-    - Washington
     - Hawaii
-    - Utah
-    solution:
-      type: 1
-      solution: Connecticut
-      isTrue: 0
+    - Iowa
+    - Arkansas
     includesAllOfTheAbove: 0
   - question: Dover
     type: 1
+    answer: Delaware
     wrongChoices:
-    - Oklahoma
-    - New York
-    - Oregon
-    solution:
-      type: 1
-      solution: Delaware
-      isTrue: 0
+    - New Mexico
+    - Pennsylvania
+    - Alabama
     includesAllOfTheAbove: 0
   - question: Tallahassee
     type: 1
+    answer: Florida
     wrongChoices:
-    - Georgia
-    - South Carolina
-    - Delaware
-    solution:
-      type: 1
-      solution: Florida
-      isTrue: 0
+    - Missouri
+    - Massachusetts
+    - Ohio
     includesAllOfTheAbove: 0
   - question: Atlanta
     type: 1
+    answer: Georgia
     wrongChoices:
-    - New Hampshire
+    - New Mexico
+    - Massachusetts
     - Colorado
-    - Florida
-    solution:
-      type: 1
-      solution: Georgia
-      isTrue: 0
     includesAllOfTheAbove: 0
   - question: Honolulu
     type: 1
+    answer: Hawaii
     wrongChoices:
-    - New Mexico
-    - Indiana
-    - Maine
-    solution:
-      type: 1
-      solution: Hawaii
-      isTrue: 0
+    - Virginia
+    - Michigan
+    - Wisconsin
     includesAllOfTheAbove: 0
   - question: Boise
     type: 1
+    answer: Idaho
     wrongChoices:
-    - New Mexico
-    - Minnesota
-    - Connecticut
-    solution:
-      type: 1
-      solution: Idaho
-      isTrue: 0
+    - New Jersey
+    - Indiana
+    - Wisconsin
     includesAllOfTheAbove: 0
   - question: Springfield
     type: 1
+    answer: Illinois
     wrongChoices:
-    - Louisiana
-    - Arizona
-    - Wisconsin
-    solution:
-      type: 1
-      solution: Illinois
-      isTrue: 0
+    - New Mexico
+    - Kansas
+    - Arkansas
     includesAllOfTheAbove: 0
   - question: Indianapolis
     type: 1
+    answer: Indiana
     wrongChoices:
-    - Minnesota
-    - Florida
-    - Maine
-    solution:
-      type: 1
-      solution: Indiana
-      isTrue: 0
+    - Wisconsin
+    - Kansas
+    - Arkansas
     includesAllOfTheAbove: 0
   - question: Des Moines
     type: 1
+    answer: Iowa
     wrongChoices:
-    - Connecticut
-    - Maryland
-    - California
-    solution:
-      type: 1
-      solution: Iowa
-      isTrue: 0
+    - Delaware
+    - Mississippi
+    - Louisiana
     includesAllOfTheAbove: 0
   - question: Topeka
     type: 1
+    answer: Kansas
     wrongChoices:
-    - Michigan
-    - Arkansas
-    - Connecticut
-    solution:
-      type: 1
-      solution: Kansas
-      isTrue: 0
+    - Missouri
+    - Wyoming
+    - Wisconsin
     includesAllOfTheAbove: 0
   - question: Frankfort
     type: 1
+    answer: Kentucky
     wrongChoices:
-    - Illinois
-    - Wisconsin
-    - Utah
-    solution:
-      type: 1
-      solution: Kentucky
-      isTrue: 0
+    - Nebraska
+    - Hawaii
+    - Virginia
     includesAllOfTheAbove: 0
   - question: Baton Rouge
     type: 1
+    answer: Louisiana
     wrongChoices:
-    - Oklahoma
-    - Florida
-    - Indiana
-    solution:
-      type: 1
-      solution: Louisiana
-      isTrue: 0
+    - Colorado
+    - New Mexico
+    - Alaska
     includesAllOfTheAbove: 0
   - question: Augusta
     type: 1
+    answer: Maine
     wrongChoices:
-    - Colorado
-    - Alabama
-    - Pennsylvania
-    solution:
-      type: 1
-      solution: Maine
-      isTrue: 0
+    - Massachusetts
+    - Nebraska
+    - New Mexico
     includesAllOfTheAbove: 0
   - question: Annapolis
     type: 1
+    answer: Maryland
     wrongChoices:
-    - Oklahoma
-    - Colorado
-    - Florida
-    solution:
-      type: 1
-      solution: Maryland
-      isTrue: 0
+    - Indiana
+    - New Jersey
+    - Kentucky
     includesAllOfTheAbove: 0
   - question: Boston
     type: 1
+    answer: Massachusetts
     wrongChoices:
-    - Maine
-    - Arkansas
-    - Florida
-    solution:
-      type: 1
-      solution: Massachusetts
-      isTrue: 0
+    - Colorado
+    - South Carolina
+    - Alabama
     includesAllOfTheAbove: 0
   - question: Lansing
     type: 1
+    answer: Michigan
     wrongChoices:
-    - Montana
-    - Oklahoma
-    - Delaware
-    solution:
-      type: 1
-      solution: Michigan
-      isTrue: 0
+    - Kentucky
+    - Maine
+    - New Mexico
     includesAllOfTheAbove: 0
   - question: St. Paul
     type: 1
+    answer: Minnesota
     wrongChoices:
-    - Washington
-    - Virginia
-    - Missouri
-    solution:
-      type: 1
-      solution: Minnesota
-      isTrue: 0
+    - Georgia
+    - Arizona
+    - Alabama
     includesAllOfTheAbove: 0
   - question: Jackson
     type: 1
+    answer: Mississippi
     wrongChoices:
-    - Colorado
-    - Wyoming
-    - Wisconsin
-    solution:
-      type: 1
-      solution: Mississippi
-      isTrue: 0
+    - Oregon
+    - Missouri
+    - Maine
     includesAllOfTheAbove: 0
   - question: Jefferson City
     type: 1
+    answer: Missouri
     wrongChoices:
-    - Nebraska
-    - Michigan
-    - New Jersey
-    solution:
-      type: 1
-      solution: Missouri
-      isTrue: 0
+    - Texas
+    - Wisconsin
+    - Wyoming
     includesAllOfTheAbove: 0
   - question: Helena
     type: 1
+    answer: Montana
     wrongChoices:
-    - Idaho
-    - South Carolina
     - Louisiana
-    solution:
-      type: 1
-      solution: Montana
-      isTrue: 0
+    - Oklahoma
+    - Washington
     includesAllOfTheAbove: 0
   - question: Lincoln
     type: 1
+    answer: Nebraska
     wrongChoices:
-    - Indiana
-    - New Hampshire
-    - West Virginia
-    solution:
-      type: 1
-      solution: Nebraska
-      isTrue: 0
+    - Oregon
+    - Colorado
+    - Idaho
     includesAllOfTheAbove: 0
   - question: Carson City
     type: 1
+    answer: Nevada
     wrongChoices:
-    - Texas
-    - Hawaii
-    - Louisiana
-    solution:
-      type: 1
-      solution: Nevada
-      isTrue: 0
+    - Illinois
+    - Pennsylvania
+    - South Dakota
     includesAllOfTheAbove: 0
   - question: Concord
     type: 1
+    answer: New Hampshire
     wrongChoices:
-    - California
-    - Ohio
-    - Nevada
-    solution:
-      type: 1
-      solution: New Hampshire
-      isTrue: 0
+    - North Carolina
+    - Idaho
+    - Maine
     includesAllOfTheAbove: 0
   - question: Trenton
     type: 1
+    answer: New Jersey
     wrongChoices:
-    - South Carolina
-    - Idaho
-    - Maine
-    solution:
-      type: 1
-      solution: New Jersey
-      isTrue: 0
+    - Washington
+    - Utah
+    - Florida
     includesAllOfTheAbove: 0
   - question: Santa Fe
     type: 1
+    answer: New Mexico
     wrongChoices:
-    - Ohio
-    - Illinois
-    - Rhode Island
-    solution:
-      type: 1
-      solution: New Mexico
-      isTrue: 0
+    - Iowa
+    - Massachusetts
+    - New York
     includesAllOfTheAbove: 0
   - question: Albany
     type: 1
+    answer: New York
     wrongChoices:
-    - Mississippi
-    - Utah
-    - Kansas
-    solution:
-      type: 1
-      solution: New York
-      isTrue: 0
+    - Tennessee
+    - New Jersey
+    - Montana
     includesAllOfTheAbove: 0
   - question: Raleigh
     type: 1
+    answer: North Carolina
     wrongChoices:
-    - New Hampshire
-    - Michigan
-    - Wisconsin
-    solution:
-      type: 1
-      solution: North Carolina
-      isTrue: 0
+    - Iowa
+    - Delaware
+    - Oklahoma
     includesAllOfTheAbove: 0
   - question: Bismarck
     type: 1
+    answer: North Dakota
     wrongChoices:
-    - South Carolina
-    - California
-    - Minnesota
-    solution:
-      type: 1
-      solution: North Dakota
-      isTrue: 0
+    - Arizona
+    - Wyoming
+    - Rhode Island
     includesAllOfTheAbove: 0
   - question: Columbus
     type: 1
+    answer: Ohio
     wrongChoices:
-    - California
-    - Nevada
-    - Connecticut
-    solution:
-      type: 1
-      solution: Ohio
-      isTrue: 0
+    - New Jersey
+    - Arkansas
+    - Oklahoma
     includesAllOfTheAbove: 0
   - question: Oklahoma City
     type: 1
+    answer: Oklahoma
     wrongChoices:
-    - Tennessee
-    - California
-    - Maryland
-    solution:
-      type: 1
-      solution: Oklahoma
-      isTrue: 0
+    - Iowa
+    - New York
+    - New Jersey
     includesAllOfTheAbove: 0
   - question: Salem
     type: 1
+    answer: Oregon
     wrongChoices:
-    - Idaho
-    - Maryland
-    - Mississippi
-    solution:
-      type: 1
-      solution: Oregon
-      isTrue: 0
+    - Tennessee
+    - North Carolina
+    - Rhode Island
     includesAllOfTheAbove: 0
   - question: Harrisburg
     type: 1
+    answer: Pennsylvania
     wrongChoices:
-    - Hawaii
-    - Idaho
-    - Minnesota
-    solution:
-      type: 1
-      solution: Pennsylvania
-      isTrue: 0
+    - South Carolina
+    - Michigan
+    - Wisconsin
     includesAllOfTheAbove: 0
   - question: Providence
     type: 1
+    answer: Rhode Island
     wrongChoices:
-    - Georgia
-    - North Dakota
-    - Oregon
-    solution:
-      type: 1
-      solution: Rhode Island
-      isTrue: 0
+    - Utah
+    - Delaware
+    - Arizona
     includesAllOfTheAbove: 0
   - question: Columbia
     type: 1
+    answer: South Carolina
     wrongChoices:
-    - Missouri
-    - Alaska
-    - Rhode Island
-    solution:
-      type: 1
-      solution: South Carolina
-      isTrue: 0
+    - Mississippi
+    - North Carolina
+    - Florida
     includesAllOfTheAbove: 0
   - question: Pierre
     type: 1
+    answer: South Dakota
     wrongChoices:
-    - Missouri
-    - Oklahoma
-    - Michigan
-    solution:
-      type: 1
-      solution: South Dakota
-      isTrue: 0
+    - North Dakota
+    - Mississippi
+    - Minnesota
     includesAllOfTheAbove: 0
   - question: Nashville
     type: 1
+    answer: Tennessee
     wrongChoices:
-    - Arkansas
-    - Massachusetts
-    - California
-    solution:
-      type: 1
-      solution: Tennessee
-      isTrue: 0
+    - Montana
+    - New Hampshire
+    - Rhode Island
     includesAllOfTheAbove: 0
   - question: Austin
     type: 1
+    answer: Texas
     wrongChoices:
-    - Kentucky
-    - Washington
-    - Oklahoma
-    solution:
-      type: 1
-      solution: Texas
-      isTrue: 0
+    - Pennsylvania
+    - Hawaii
+    - Rhode Island
     includesAllOfTheAbove: 0
   - question: Salt Lake City
     type: 1
+    answer: Utah
     wrongChoices:
-    - Ohio
-    - Minnesota
-    - Pennsylvania
-    solution:
-      type: 1
-      solution: Utah
-      isTrue: 0
+    - Kentucky
+    - Arkansas
+    - Florida
     includesAllOfTheAbove: 0
   - question: Montpelier
     type: 1
+    answer: Vermont
     wrongChoices:
-    - Missouri
-    - New Jersey
-    - North Carolina
-    solution:
-      type: 1
-      solution: Vermont
-      isTrue: 0
+    - Washington
+    - Arkansas
+    - Maine
     includesAllOfTheAbove: 0
   - question: Richmond
     type: 1
+    answer: Virginia
     wrongChoices:
-    - Kansas
-    - Idaho
-    - Utah
-    solution:
-      type: 1
-      solution: Virginia
-      isTrue: 0
+    - Arizona
+    - California
+    - Maine
     includesAllOfTheAbove: 0
   - question: Olympia
     type: 1
+    answer: Washington
     wrongChoices:
     - Illinois
+    - Colorado
     - Pennsylvania
-    - Texas
-    solution:
-      type: 1
-      solution: Washington
-      isTrue: 0
     includesAllOfTheAbove: 0
   - question: Charleston
     type: 1
+    answer: West Virginia
     wrongChoices:
-    - North Dakota
-    - Maryland
-    - New Jersey
-    solution:
-      type: 1
-      solution: West Virginia
-      isTrue: 0
+    - South Carolina
+    - Illinois
+    - Alabama
     includesAllOfTheAbove: 0
   - question: Madison
     type: 1
+    answer: Wisconsin
     wrongChoices:
-    - Connecticut
-    - Virginia
-    - Kentucky
-    solution:
-      type: 1
-      solution: Wisconsin
-      isTrue: 0
+    - Colorado
+    - Arizona
+    - Alabama
     includesAllOfTheAbove: 0
   - question: Cheyenne
     type: 1
+    answer: Wyoming
     wrongChoices:
-    - Connecticut
-    - Iowa
-    - Nevada
-    solution:
-      type: 1
-      solution: Wyoming
-      isTrue: 0
+    - Utah
+    - Wisconsin
+    - Pennsylvania
     includesAllOfTheAbove: 0
-  foldouts: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
