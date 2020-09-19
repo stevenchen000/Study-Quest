@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace DungeonSystem
 {
@@ -21,7 +22,10 @@ namespace DungeonSystem
         }
 
 
-
+        public void Test()
+        {
+            
+        }
 
     }
 }

@@ -606,7 +606,7 @@ GameObject:
   - component: {fileID: 717506614}
   - component: {fileID: 717506613}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Event Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2249,6 +2249,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Quiz Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 6963329724446724924, guid: d01ce02b68743c1459637e36ab46bb1c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6963329724446724925, guid: d01ce02b68743c1459637e36ab46bb1c,
         type: 3}
       propertyPath: sheet
@@ -2458,6 +2463,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: World Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815691982610915413, guid: fc35440856ba903439eea7bfb8946c14,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7815691982610915415, guid: fc35440856ba903439eea7bfb8946c14,
         type: 3}

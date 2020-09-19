@@ -11,6 +11,7 @@ public class DungeonFloorData
     public Vector3 startingPosition;
 }
 
+[CreateAssetMenu(menuName = "Dungeon Data")]
 public class DungeonData : ScriptableObject
 {
     public List<string> floorNames = new List<string>();
