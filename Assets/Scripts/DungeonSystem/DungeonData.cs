@@ -1,18 +1,27 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DungeonData : MonoBehaviour
+
+[Serializable]
+public class DungeonFloorData
 {
-    // Start is called before the first frame update
-    void Start()
+    public string floorName;
+    public Vector3 startingPosition;
+}
+
+public class DungeonData : ScriptableObject
+{
+    public List<string> floorNames = new List<string>();
+
+    public bool IsLastFloor(int currentFloor)
     {
-        
+        return currentFloor == (floorNames.Count - 1);
     }
 
-    // Update is called once per frame
-    void Update()
+    public Vector3 GetStartingPoint(int currentFloor)
     {
-        
+        return new Vector3();
     }
 }

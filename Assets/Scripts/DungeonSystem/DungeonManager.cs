@@ -7,6 +7,12 @@ namespace DungeonSystem
     public class DungeonManager : MonoBehaviour
     {
         public PlayerExplorer player;
+        public int currentFloor = 1;
+
+        public DungeonData data;
+        public Vector3 playerLocation;
+        //list of monsters in area
+
 
         public void Start()
         {

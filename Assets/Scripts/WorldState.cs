@@ -16,6 +16,7 @@ public class WorldState : MonoBehaviour
 
     public string combatName = "Test_Solo_Combat";
     public int currentFloor = 1;
+    public int newFloor = 1;
     public CharacterData characterData;
     public CharacterData playerData;
 
@@ -62,5 +63,5 @@ public class WorldState : MonoBehaviour
     public static int GetCurrentFloorNumber() { return world.currentFloor; }
     public static void SetCurrentFloorNumber(int floor) { world.currentFloor = floor; }
     public static void IncrementFloor() { world.currentFloor++; }
-    public static void ResetCurrentFloorNumber() { world.currentFloor = 1; }
+    public static void ResetFloorNumber() { world.currentFloor = 1; }
 }
