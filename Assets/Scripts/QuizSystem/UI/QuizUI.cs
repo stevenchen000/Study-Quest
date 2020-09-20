@@ -24,6 +24,9 @@ namespace QuizSystem
             ui = transform.GetComponentInChildren<QuizTextUI>();
             choices.AddRange(transform.GetComponentsInChildren<QuizChoiceUi>());
             combat = FindObjectOfType<CombatManager>();
+
+            quiz.SubscribeToOnQuestionAsked(AskQuestion);
+            gameObject.SetActive(false);
         }
 
         private void Update()
@@ -31,9 +34,9 @@ namespace QuizSystem
             
         }
 
-        public void AskQuestion()
+        public void AskQuestion(Question question)
         {
-            currentQuestion = quiz.GetNextQuestion();
+            currentQuestion = question;
             SetupTextUI();
             SetupChoiceUI();
         }

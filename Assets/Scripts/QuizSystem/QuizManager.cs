@@ -15,7 +15,13 @@ namespace QuizSystem
 
         public Question currentQuestion;
         public int currentIndex = 0;
-        
+
+        public delegate void QuestionAsked(Question question);
+        public event QuestionAsked OnQuestionAsked;
+
+        public delegate void QuestionAnswered(bool correct);
+        public event QuestionAnswered OnQuestionAnswered;
+
 
         private void Awake()
         {
@@ -33,6 +39,7 @@ namespace QuizSystem
         void Start()
         {
             SetNewQuestions(sheet);
+
         }
 
 
@@ -42,14 +49,7 @@ namespace QuizSystem
 
         public Question GetCurrentQuestion()
         {
-            Question result = null;
-
-            if(questions.Count > currentIndex)
-            {
-                result = questions[currentIndex];
-            }
-
-            return result;
+            return currentQuestion;
         }
 
         public Question GetNextQuestion()
@@ -63,7 +63,18 @@ namespace QuizSystem
 
         public bool AnswerQuestion(string answer)
         {
-            return currentQuestion.CheckAnswer(answer);
+            bool correct = currentQuestion.CheckAnswer(answer);
+
+            OnQuestionAnswered?.Invoke(correct);
+            GetNextQuestion();
+
+            return correct;
+        }
+
+        public void AskQuestion()
+        {
+            Question question = GetCurrentQuestion();
+            OnQuestionAsked?.Invoke(question);
         }
 
 
@@ -73,11 +84,29 @@ namespace QuizSystem
             questions = new List<Question>();
             questions.AddRange(sheet.GetQuestions());
             ScrambleQuestions();
-            currentIndex = 0;
-            currentQuestion = questions[currentIndex];
+            currentIndex = -1;
+            currentQuestion = GetNextQuestion();
         }
 
+        public void SubscribeToOnQuestionAsked(QuestionAsked func)
+        {
+            OnQuestionAsked += func;
+        }
 
+        public void UnsubscribeFromOnQuestionAsked(QuestionAsked func)
+        {
+            OnQuestionAsked -= func;
+        }
+
+        public void SubscribeToOnQuestionAnswered(QuestionAnswered func)
+        {
+            OnQuestionAnswered += func;
+        }
+
+        public void UnsubscribeFromOnQuestionAnswered(QuestionAnswered func)
+        {
+            OnQuestionAnswered -= func;
+        }
 
         /// <summary>
         /// Rearranges the order of the questions

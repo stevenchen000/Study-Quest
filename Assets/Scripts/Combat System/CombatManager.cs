@@ -40,10 +40,11 @@ namespace CombatSystem
         public float enemyAttackChance = 0;
         public CharacterAction currentAction = CharacterAction.None;
         public Fighter currentAttacker;
-
-
+        
         public bool hasAnswered = false;
         public bool answeredCorrectly = false;
+
+        private QuizManager quiz;
 
         // Start is called before the first frame update
         void Awake()
@@ -51,6 +52,7 @@ namespace CombatSystem
             if (combat == null)
             {
                 combat = this;
+                quiz = QuizManager.quiz;
             }
             else
             {
@@ -60,7 +62,8 @@ namespace CombatSystem
 
         private void Start()
         {
-            DeactivateQuizUI();
+            //DeactivateQuizUI();
+            quiz.SubscribeToOnQuestionAnswered(QuestionAnswered);
         }
 
         // Update is called once per frame
@@ -79,7 +82,10 @@ namespace CombatSystem
             }
         }
 
-
+        private void OnDestroy()
+        {
+            quiz.UnsubscribeFromOnQuestionAnswered(QuestionAnswered);
+        }
 
 
 
@@ -200,13 +206,16 @@ namespace CombatSystem
             hasAnswered = false;
             answeredCorrectly = false;
 
-            if (player.IsDead() || enemy.IsDead())
+            if (!player.isAttacking && !enemy.isAttacking)
             {
-                ChangeState(StateEnum.BattleOver);
-            }
-            else
-            {
-                ChangeState(StateEnum.SelectAction);
+                if (player.IsDead() || enemy.IsDead())
+                {
+                    ChangeState(StateEnum.BattleOver);
+                }
+                else
+                {
+                    ChangeState(StateEnum.SelectAction);
+                }
             }
         }
             
@@ -285,8 +294,8 @@ namespace CombatSystem
 
         public void ActivateQuizUI()
         {
-            quizUi.gameObject.SetActive(true);
-            quizUi.AskQuestion();
+            //quizUi.gameObject.SetActive(true);
+            quiz.AskQuestion();
         }
 
         /*public void ChangeState(int index)

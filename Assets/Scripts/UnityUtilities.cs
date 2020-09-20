@@ -15,22 +15,28 @@ public class UnityUtilities
 
     public static void RemoveChildren(Transform obj)
     {
-        Transform child = null;
+        Transform child = GetFirstChild(obj);
 
+        while (child != null)
+        {
+            child.transform.SetParent(null);
+            child.gameObject.SetActive(false);
+            child = GetFirstChild(obj);
+        }
+    }
+
+    public static Transform GetFirstChild(Transform obj)
+    {
+        Transform child = null;
         try
         {
-            obj.GetChild(0);
+            child = obj.GetChild(0);
         }
         catch (Exception e)
         {
 
         }
 
-        while (child != null)
-        {
-            child.transform.SetParent(null);
-            child.gameObject.SetActive(false);
-            child = obj.GetChild(0);
-        }
+        return child;
     }
 }

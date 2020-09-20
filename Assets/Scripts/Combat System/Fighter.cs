@@ -16,7 +16,7 @@ namespace CombatSystem
 
         public string attackAnim = "Attack";
 
-        private bool IsAttacking = false;
+        public bool isAttacking = false;
         private Animator anim;
 
         public CharacterData data;
@@ -35,8 +35,7 @@ namespace CombatSystem
                 data.currentHealth = currentHealth;
             }
         }
-
-
+        
 
 
 
@@ -44,15 +43,16 @@ namespace CombatSystem
 
         public void Attack(Fighter target)
         {
-            if (!IsAttacking)
+            if (!isAttacking)
             {
                 StartCoroutine(_Attack(target));
+                PlayAnimation("Attack");
             }
         }
 
         private IEnumerator _Attack(Fighter target)
         {
-            IsAttacking = true;
+            isAttacking = true;
 
             PlayAnimation(attackAnim);
 
@@ -60,7 +60,7 @@ namespace CombatSystem
             target.TakeDamage(1);
             yield return new WaitForSeconds(attackTime);
 
-            IsAttacking = false;
+            isAttacking = false;
         }
 
 
@@ -73,7 +73,10 @@ namespace CombatSystem
             anim.CrossFade(animation, crossfade);
         }
 
-
+        public void SetAnimationBool(string boolName, bool value)
+        {
+            anim.SetBool(boolName, value);
+        }
 
 
 
@@ -85,6 +88,11 @@ namespace CombatSystem
         {
             currentHealth -= damage;
             currentHealth = Mathf.Max(currentHealth, 0);
+
+            if(currentHealth == 0)
+            {
+                SetAnimationBool("isDead", true);
+            }
         }
 
         public void HealHealth(int healing)
@@ -100,30 +108,10 @@ namespace CombatSystem
 
         private void SetupCharacter()
         {
-            RemoveChildren();
+            UnityUtilities.RemoveChildren(transform);
             SetupData();
             CreateChild();
             SetupStats();
-        }
-
-        private void RemoveChildren()
-        {
-            Transform child = null;
-
-            try
-            {
-                transform.GetChild(0);
-            }catch(Exception e)
-            {
-
-            }
-
-            while (child != null)
-            {
-                child.transform.SetParent(null);
-                child.gameObject.SetActive(false);
-                child = transform.GetChild(0);
-            }
         }
 
         private void SetupData()
@@ -141,8 +129,11 @@ namespace CombatSystem
         private void CreateChild()
         {
             GameObject model = Instantiate(data.model);
+            Vector3 localScale = model.transform.localScale;
             model.transform.parent = transform;
             model.transform.localPosition = new Vector3();
+
+            model.transform.localScale = localScale;
         }
 
         private void SetupStats()
