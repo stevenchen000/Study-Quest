@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Player Data
   m_EditorClassIdentifier: 
   model: {fileID: 7788525197325948855, guid: d651352d0ca7ce844a048c165dd5cdaa, type: 3}
-  currentHealth: 3
+  currentHealth: 1
   maxHealth: 3

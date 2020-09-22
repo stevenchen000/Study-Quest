@@ -1,0 +1,270 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe722fac7aa8cd4a8f1a22f4df8de29, type: 3}
+  m_Name: States And Capitals Typed
+  m_EditorClassIdentifier: 
+  filename: Assets/Quizlet Cards/StatesAndCapitals.txt
+  defaultQuestionType: 2
+  addQuestionsFromFile: 0
+  setQuestionsFromFile: 0
+  reverse: 0
+  questions:
+  - question: Alabama
+    type: 2
+    answer: Montgomery
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Alaska
+    type: 2
+    answer: Juneau
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Arizona
+    type: 2
+    answer: Phoenix
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Arkansas
+    type: 2
+    answer: Little Rock
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: California
+    type: 2
+    answer: Sacramento
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Colorado
+    type: 2
+    answer: Denver
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Connecticut
+    type: 2
+    answer: Hartford
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Delaware
+    type: 2
+    answer: Dover
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Florida
+    type: 2
+    answer: Tallahassee
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Georgia
+    type: 2
+    answer: Atlanta
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Hawaii
+    type: 2
+    answer: Honolulu
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Idaho
+    type: 2
+    answer: Boise
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Illinois
+    type: 2
+    answer: Springfield
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Indiana
+    type: 2
+    answer: Indianapolis
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Iowa
+    type: 2
+    answer: Des Moines
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Kansas
+    type: 2
+    answer: Topeka
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Kentucky
+    type: 2
+    answer: Frankfort
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Louisiana
+    type: 2
+    answer: Baton Rouge
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Maine
+    type: 2
+    answer: Augusta
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Maryland
+    type: 2
+    answer: Annapolis
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Massachusetts
+    type: 2
+    answer: Boston
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Michigan
+    type: 2
+    answer: Lansing
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Minnesota
+    type: 2
+    answer: St. Paul
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Mississippi
+    type: 2
+    answer: Jackson
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Missouri
+    type: 2
+    answer: Jefferson City
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Montana
+    type: 2
+    answer: Helena
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Nebraska
+    type: 2
+    answer: Lincoln
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Nevada
+    type: 2
+    answer: Carson City
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: New Hampshire
+    type: 2
+    answer: Concord
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: New Jersey
+    type: 2
+    answer: Trenton
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: New Mexico
+    type: 2
+    answer: Santa Fe
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: New York
+    type: 2
+    answer: Albany
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: North Carolina
+    type: 2
+    answer: Raleigh
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: North Dakota
+    type: 2
+    answer: Bismarck
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Ohio
+    type: 2
+    answer: Columbus
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Oklahoma
+    type: 2
+    answer: Oklahoma City
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Oregon
+    type: 2
+    answer: Salem
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Pennsylvania
+    type: 2
+    answer: Harrisburg
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Rhode Island
+    type: 2
+    answer: Providence
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: South Carolina
+    type: 2
+    answer: Columbia
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: South Dakota
+    type: 2
+    answer: Pierre
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Tennessee
+    type: 2
+    answer: Nashville
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Texas
+    type: 2
+    answer: Austin
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Utah
+    type: 2
+    answer: Salt Lake City
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Vermont
+    type: 2
+    answer: Montpelier
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Virginia
+    type: 2
+    answer: Richmond
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Washington
+    type: 2
+    answer: Olympia
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: West Virginia
+    type: 2
+    answer: Charleston
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Wisconsin
+    type: 2
+    answer: Madison
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Wyoming
+    type: 2
+    answer: Cheyenne
+    wrongChoices: []
+    includesAllOfTheAbove: 0

@@ -17,6 +17,7 @@ namespace QuizSystem
         public Button button;
         private QuizUI ui;
 
+        public KeyCode keycode;
         public Color defaultColor = Color.gray;
         public Color incorrectColor = Color.red;
         public Color correctColor = Color.green;
@@ -25,17 +26,30 @@ namespace QuizSystem
         {
             ui = transform.GetComponentInParent<QuizUI>();
         }
-        
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(keycode))
+            {
+                AnswerQuestion();
+            }
+        }
 
         public void UpdateText(string newText)
         {
-            textUI.text = newText;
+            string keycodeName = keycode.ToString();
+            int keycodeLength = keycodeName.Length;
+            keycodeName = keycodeName.Substring(keycodeLength-1);
+
+            textUI.text = $"{keycodeName}) {newText}";
             text = newText;
+            ResetButton();
         }
 
         public void AnswerQuestion()
         {
             bool correct = QuizManager.quiz.AnswerQuestion(text);
+            Debug.Log("Answered question: " + text);
             CombatManager.combat.QuestionAnswered(correct);
             
             if (correct)
@@ -50,11 +64,13 @@ namespace QuizSystem
 
         public void MarkCorrect()
         {
+            Debug.Log("Marked correct");
             ChangeButtonColor(correctColor);
         }
 
         public void MarkIncorrect()
         {
+            Debug.Log("Marked incorrect");
             ChangeButtonColor(incorrectColor);
         }
 
@@ -68,6 +84,9 @@ namespace QuizSystem
             ColorBlock block = button.colors;
             block.normalColor = color;
             block.highlightedColor = color;
+            block.pressedColor = color;
+            block.selectedColor = color;
+            button.colors = block;
         }
     }
 }

@@ -14,6 +14,7 @@ namespace QuizSystem
     {
         [Tooltip("Name and paht for file to get questions from")]
         public string filename;
+        public QuestionType defaultQuestionType;
         [Tooltip("Click to add questions from file")]
         public bool addQuestionsFromFile = false;
         [Tooltip("Click to set questions from file (removes all current questions)")]
@@ -125,10 +126,20 @@ namespace QuizSystem
                 string answer = reverse ? text[0] : text[1];
                 Question newQuestion = new Question(question, answer);
                 questions.Add(newQuestion);
-                newQuestion.type = QuestionType.MultipleChoice;
+                newQuestion.type = defaultQuestionType;
             }
 
-            SetChoices(questions);
+            switch (defaultQuestionType)
+            {
+                case QuestionType.TrueFalse:
+                    break;
+                case QuestionType.MultipleChoice:
+                    SetChoices(questions);
+                    break;
+                case QuestionType.FillInTheBlank:
+                    break;
+            }
+
 
             if (setQuestionsFromFile)
             {

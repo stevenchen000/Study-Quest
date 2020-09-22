@@ -22,6 +22,8 @@ namespace QuizSystem
         public delegate void QuestionAnswered(bool correct);
         public event QuestionAnswered OnQuestionAnswered;
 
+        private bool isAnswered = false;
+
 
         private void Awake()
         {
@@ -38,8 +40,7 @@ namespace QuizSystem
         // Start is called before the first frame update
         void Start()
         {
-            SetNewQuestions(sheet);
-
+            
         }
 
 
@@ -65,9 +66,13 @@ namespace QuizSystem
         {
             bool correct = currentQuestion.CheckAnswer(answer);
 
-            OnQuestionAnswered?.Invoke(correct);
-            GetNextQuestion();
-
+            if (!isAnswered)
+            {
+                OnQuestionAnswered?.Invoke(correct);
+                GetNextQuestion();
+                isAnswered = true;
+            }
+            
             return correct;
         }
 
@@ -75,6 +80,13 @@ namespace QuizSystem
         {
             Question question = GetCurrentQuestion();
             OnQuestionAsked?.Invoke(question);
+            isAnswered = false;
+            Debug.Log("Asked Question");
+        }
+
+        public bool QuestionIsAnswered()
+        {
+            return isAnswered;
         }
 
 

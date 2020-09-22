@@ -24,21 +24,12 @@ namespace CombatSystem
 
         private void Start()
         {
-            anim = transform.GetComponent<Animator>();
             SetupCharacter();
-        }
-
-        private void OnDestroy()
-        {
-            if (isPlayer)
-            {
-                data.currentHealth = currentHealth;
-            }
         }
         
 
 
-
+        
 
 
         public void Attack(Fighter target)
@@ -112,6 +103,7 @@ namespace CombatSystem
             SetupData();
             CreateChild();
             SetupStats();
+            anim = transform.GetComponentInChildren<Animator>();
         }
 
         private void SetupData()

@@ -1,0 +1,756 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe722fac7aa8cd4a8f1a22f4df8de29, type: 3}
+  m_Name: Element Names
+  m_EditorClassIdentifier: 
+  filename: Assets/Quizlet Cards/PeriodicTable.txt
+  defaultQuestionType: 1
+  addQuestionsFromFile: 0
+  setQuestionsFromFile: 0
+  reverse: 1
+  questions:
+  - question: Hydrogen
+    type: 1
+    answer: H
+    wrongChoices:
+    - Tc
+    - S
+    - Fe
+    includesAllOfTheAbove: 0
+  - question: Helium
+    type: 1
+    answer: He
+    wrongChoices:
+    - Se
+    - Kr
+    - B
+    includesAllOfTheAbove: 0
+  - question: Lithium
+    type: 1
+    answer: Li
+    wrongChoices:
+    - Cl
+    - Bi
+    - Be
+    includesAllOfTheAbove: 0
+  - question: Beryllium
+    type: 1
+    answer: Be
+    wrongChoices:
+    - Tm
+    - Ne
+    - Cs
+    includesAllOfTheAbove: 0
+  - question: Boron
+    type: 1
+    answer: B
+    wrongChoices:
+    - Os
+    - Tl
+    - Ta
+    includesAllOfTheAbove: 0
+  - question: Carbon
+    type: 1
+    answer: C
+    wrongChoices:
+    - Pr
+    - Ho
+    - Os
+    includesAllOfTheAbove: 0
+  - question: Nitrogen
+    type: 1
+    answer: N
+    wrongChoices:
+    - Ru
+    - Hf
+    - Au
+    includesAllOfTheAbove: 0
+  - question: Oxygen
+    type: 1
+    answer: O
+    wrongChoices:
+    - I
+    - B
+    - Zn
+    includesAllOfTheAbove: 0
+  - question: Fluorine
+    type: 1
+    answer: F
+    wrongChoices:
+    - Ar
+    - Br
+    - Nd
+    includesAllOfTheAbove: 0
+  - question: Neon
+    type: 1
+    answer: Ne
+    wrongChoices:
+    - Ra
+    - Gd
+    - Tl
+    includesAllOfTheAbove: 0
+  - question: Sodium
+    type: 1
+    answer: Na
+    wrongChoices:
+    - Sm
+    - Mo
+    - Mn
+    includesAllOfTheAbove: 0
+  - question: Magnesium
+    type: 1
+    answer: Mg
+    wrongChoices:
+    - Ac
+    - Pr
+    - Ru
+    includesAllOfTheAbove: 0
+  - question: Aluminum
+    type: 1
+    answer: Al
+    wrongChoices:
+    - Ru
+    - Au
+    - Dy
+    includesAllOfTheAbove: 0
+  - question: Silicon
+    type: 1
+    answer: Si
+    wrongChoices:
+    - Nb
+    - Be
+    - Al
+    includesAllOfTheAbove: 0
+  - question: Phosphorus
+    type: 1
+    answer: P
+    wrongChoices:
+    - Nd
+    - Pr
+    - Yb
+    includesAllOfTheAbove: 0
+  - question: Sulfur
+    type: 1
+    answer: S
+    wrongChoices:
+    - Hg
+    - Ge
+    - Y
+    includesAllOfTheAbove: 0
+  - question: Chlorine
+    type: 1
+    answer: Cl
+    wrongChoices:
+    - Mn
+    - Te
+    - U
+    includesAllOfTheAbove: 0
+  - question: Argon
+    type: 1
+    answer: Ar
+    wrongChoices:
+    - Fr
+    - Ho
+    - Cu
+    includesAllOfTheAbove: 0
+  - question: Potassium
+    type: 1
+    answer: K
+    wrongChoices:
+    - Ga
+    - Kr
+    - Se
+    includesAllOfTheAbove: 0
+  - question: Calcium
+    type: 1
+    answer: Ca
+    wrongChoices:
+    - Ni
+    - Pr
+    - Sr
+    includesAllOfTheAbove: 0
+  - question: Scandium
+    type: 1
+    answer: Sc
+    wrongChoices:
+    - Au
+    - Si
+    - Nd
+    includesAllOfTheAbove: 0
+  - question: Titanium
+    type: 1
+    answer: Ti
+    wrongChoices:
+    - Fr
+    - Fe
+    - Po
+    includesAllOfTheAbove: 0
+  - question: Vanadium
+    type: 1
+    answer: V
+    wrongChoices:
+    - Ag
+    - Th
+    - Mg
+    includesAllOfTheAbove: 0
+  - question: Chromium
+    type: 1
+    answer: Cr
+    wrongChoices:
+    - Cu
+    - Lu
+    - Ge
+    includesAllOfTheAbove: 0
+  - question: Manganese
+    type: 1
+    answer: Mn
+    wrongChoices:
+    - Tc
+    - Pa
+    - Ru
+    includesAllOfTheAbove: 0
+  - question: Iron
+    type: 1
+    answer: Fe
+    wrongChoices:
+    - Ir
+    - Cl
+    - Ga
+    includesAllOfTheAbove: 0
+  - question: Cobalt
+    type: 1
+    answer: Co
+    wrongChoices:
+    - Ti
+    - Pb
+    - Cs
+    includesAllOfTheAbove: 0
+  - question: Nickel
+    type: 1
+    answer: Ni
+    wrongChoices:
+    - Nb
+    - Po
+    - K
+    includesAllOfTheAbove: 0
+  - question: Copper
+    type: 1
+    answer: Cu
+    wrongChoices:
+    - Sc
+    - La
+    - B
+    includesAllOfTheAbove: 0
+  - question: Zinc
+    type: 1
+    answer: Zn
+    wrongChoices:
+    - Lu
+    - Ac
+    - Fr
+    includesAllOfTheAbove: 0
+  - question: Gallium
+    type: 1
+    answer: Ga
+    wrongChoices:
+    - Ti
+    - Ag
+    - Lu
+    includesAllOfTheAbove: 0
+  - question: Germanium
+    type: 1
+    answer: Ge
+    wrongChoices:
+    - In
+    - Re
+    - Mg
+    includesAllOfTheAbove: 0
+  - question: Arsenic
+    type: 1
+    answer: As
+    wrongChoices:
+    - Al
+    - Te
+    - Hf
+    includesAllOfTheAbove: 0
+  - question: Selenium
+    type: 1
+    answer: Se
+    wrongChoices:
+    - Ti
+    - Rn
+    - Po
+    includesAllOfTheAbove: 0
+  - question: Bromine
+    type: 1
+    answer: Br
+    wrongChoices:
+    - Gd
+    - Th
+    - Tc
+    includesAllOfTheAbove: 0
+  - question: Krypton
+    type: 1
+    answer: Kr
+    wrongChoices:
+    - Ca
+    - C
+    - Br
+    includesAllOfTheAbove: 0
+  - question: Rubidium
+    type: 1
+    answer: Rb
+    wrongChoices:
+    - Hg
+    - As
+    - Se
+    includesAllOfTheAbove: 0
+  - question: Strontium
+    type: 1
+    answer: Sr
+    wrongChoices:
+    - Ca
+    - La
+    - Tc
+    includesAllOfTheAbove: 0
+  - question: Yttrium
+    type: 1
+    answer: Y
+    wrongChoices:
+    - Zn
+    - Rn
+    - Ba
+    includesAllOfTheAbove: 0
+  - question: Zirconium
+    type: 1
+    answer: Zr
+    wrongChoices:
+    - Tb
+    - Co
+    - Si
+    includesAllOfTheAbove: 0
+  - question: Niobium
+    type: 1
+    answer: Nb
+    wrongChoices:
+    - Pm
+    - W
+    - Yb
+    includesAllOfTheAbove: 0
+  - question: Molybdenum
+    type: 1
+    answer: Mo
+    wrongChoices:
+    - Tl
+    - Ga
+    - Hf
+    includesAllOfTheAbove: 0
+  - question: Technetium
+    type: 1
+    answer: Tc
+    wrongChoices:
+    - Mg
+    - Ar
+    - W
+    includesAllOfTheAbove: 0
+  - question: Ruthenium
+    type: 1
+    answer: Ru
+    wrongChoices:
+    - Pa
+    - Ac
+    - Po
+    includesAllOfTheAbove: 0
+  - question: Rhodium
+    type: 1
+    answer: Rh
+    wrongChoices:
+    - Ag
+    - Ru
+    - Hg
+    includesAllOfTheAbove: 0
+  - question: Palladium
+    type: 1
+    answer: Pd
+    wrongChoices:
+    - Ru
+    - Y
+    - Ti
+    includesAllOfTheAbove: 0
+  - question: Silver
+    type: 1
+    answer: Ag
+    wrongChoices:
+    - Re
+    - Pa
+    - Nd
+    includesAllOfTheAbove: 0
+  - question: Cadmium
+    type: 1
+    answer: Cd
+    wrongChoices:
+    - Os
+    - Er
+    - Eu
+    includesAllOfTheAbove: 0
+  - question: Indium
+    type: 1
+    answer: In
+    wrongChoices:
+    - He
+    - Nd
+    - Rb
+    includesAllOfTheAbove: 0
+  - question: Tin
+    type: 1
+    answer: Sn
+    wrongChoices:
+    - Ac
+    - B
+    - I
+    includesAllOfTheAbove: 0
+  - question: Antimony
+    type: 1
+    answer: Sb
+    wrongChoices:
+    - Cu
+    - H
+    - I
+    includesAllOfTheAbove: 0
+  - question: Tellurium
+    type: 1
+    answer: Te
+    wrongChoices:
+    - Y
+    - Ac
+    - At
+    includesAllOfTheAbove: 0
+  - question: Iodine
+    type: 1
+    answer: I
+    wrongChoices:
+    - Nb
+    - Be
+    - Pt
+    includesAllOfTheAbove: 0
+  - question: Xenon
+    type: 1
+    answer: Xe
+    wrongChoices:
+    - Re
+    - Ir
+    - Fr
+    includesAllOfTheAbove: 0
+  - question: Cesium
+    type: 1
+    answer: Cs
+    wrongChoices:
+    - Cd
+    - H
+    - Rn
+    includesAllOfTheAbove: 0
+  - question: Barium
+    type: 1
+    answer: Ba
+    wrongChoices:
+    - Sb
+    - F
+    - Ag
+    includesAllOfTheAbove: 0
+  - question: Lanthanum
+    type: 1
+    answer: La
+    wrongChoices:
+    - Lu
+    - Bi
+    - Yb
+    includesAllOfTheAbove: 0
+  - question: Cerium
+    type: 1
+    answer: Ce
+    wrongChoices:
+    - O
+    - Nd
+    - N
+    includesAllOfTheAbove: 0
+  - question: Praseodymium
+    type: 1
+    answer: Pr
+    wrongChoices:
+    - B
+    - Pd
+    - W
+    includesAllOfTheAbove: 0
+  - question: Neodymium
+    type: 1
+    answer: Nd
+    wrongChoices:
+    - Os
+    - B
+    - Na
+    includesAllOfTheAbove: 0
+  - question: Promethium
+    type: 1
+    answer: Pm
+    wrongChoices:
+    - Fr
+    - Bi
+    - Pr
+    includesAllOfTheAbove: 0
+  - question: Samarium
+    type: 1
+    answer: Sm
+    wrongChoices:
+    - Sc
+    - Be
+    - Rh
+    includesAllOfTheAbove: 0
+  - question: Europium
+    type: 1
+    answer: Eu
+    wrongChoices:
+    - Au
+    - Ba
+    - At
+    includesAllOfTheAbove: 0
+  - question: Gadolinium
+    type: 1
+    answer: Gd
+    wrongChoices:
+    - Ge
+    - Nd
+    - Rn
+    includesAllOfTheAbove: 0
+  - question: Terbium
+    type: 1
+    answer: Tb
+    wrongChoices:
+    - Nd
+    - Cr
+    - Si
+    includesAllOfTheAbove: 0
+  - question: Dysprosium
+    type: 1
+    answer: Dy
+    wrongChoices:
+    - I
+    - Ra
+    - Ne
+    includesAllOfTheAbove: 0
+  - question: Holmium
+    type: 1
+    answer: Ho
+    wrongChoices:
+    - Pt
+    - Cs
+    - In
+    includesAllOfTheAbove: 0
+  - question: Erbium
+    type: 1
+    answer: Er
+    wrongChoices:
+    - Ca
+    - Tl
+    - B
+    includesAllOfTheAbove: 0
+  - question: Thulium
+    type: 1
+    answer: Tm
+    wrongChoices:
+    - I
+    - W
+    - Ca
+    includesAllOfTheAbove: 0
+  - question: Ytterbium
+    type: 1
+    answer: Yb
+    wrongChoices:
+    - Ge
+    - Ni
+    - O
+    includesAllOfTheAbove: 0
+  - question: Lutetium
+    type: 1
+    answer: Lu
+    wrongChoices:
+    - I
+    - S
+    - He
+    includesAllOfTheAbove: 0
+  - question: Hafnium
+    type: 1
+    answer: Hf
+    wrongChoices:
+    - Nb
+    - Ar
+    - Tc
+    includesAllOfTheAbove: 0
+  - question: Tantalum
+    type: 1
+    answer: Ta
+    wrongChoices:
+    - Tl
+    - As
+    - Ag
+    includesAllOfTheAbove: 0
+  - question: Tungsten
+    type: 1
+    answer: W
+    wrongChoices:
+    - Fe
+    - V
+    - In
+    includesAllOfTheAbove: 0
+  - question: Rhenium
+    type: 1
+    answer: Re
+    wrongChoices:
+    - Ag
+    - Pb
+    - Fe
+    includesAllOfTheAbove: 0
+  - question: Osmium
+    type: 1
+    answer: Os
+    wrongChoices:
+    - Rn
+    - Cr
+    - Mg
+    includesAllOfTheAbove: 0
+  - question: Iridium
+    type: 1
+    answer: Ir
+    wrongChoices:
+    - Er
+    - N
+    - Rh
+    includesAllOfTheAbove: 0
+  - question: Platinum
+    type: 1
+    answer: Pt
+    wrongChoices:
+    - Zr
+    - Th
+    - Cl
+    includesAllOfTheAbove: 0
+  - question: Gold
+    type: 1
+    answer: Au
+    wrongChoices:
+    - Th
+    - H
+    - Zn
+    includesAllOfTheAbove: 0
+  - question: Mercury
+    type: 1
+    answer: Hg
+    wrongChoices:
+    - Tb
+    - Os
+    - As
+    includesAllOfTheAbove: 0
+  - question: Thallium
+    type: 1
+    answer: Tl
+    wrongChoices:
+    - Au
+    - Ir
+    - Se
+    includesAllOfTheAbove: 0
+  - question: Lead
+    type: 1
+    answer: Pb
+    wrongChoices:
+    - Pd
+    - Hg
+    - Pr
+    includesAllOfTheAbove: 0
+  - question: Bismuth
+    type: 1
+    answer: Bi
+    wrongChoices:
+    - Ta
+    - Nd
+    - Gd
+    includesAllOfTheAbove: 0
+  - question: Polonium
+    type: 1
+    answer: Po
+    wrongChoices:
+    - Cu
+    - Tc
+    - Co
+    includesAllOfTheAbove: 0
+  - question: Astatine
+    type: 1
+    answer: At
+    wrongChoices:
+    - F
+    - Tm
+    - Eu
+    includesAllOfTheAbove: 0
+  - question: Radon
+    type: 1
+    answer: Rn
+    wrongChoices:
+    - Y
+    - Ca
+    - Cl
+    includesAllOfTheAbove: 0
+  - question: Francium
+    type: 1
+    answer: Fr
+    wrongChoices:
+    - Zr
+    - Po
+    - As
+    includesAllOfTheAbove: 0
+  - question: Radium
+    type: 1
+    answer: Ra
+    wrongChoices:
+    - Al
+    - Kr
+    - Ba
+    includesAllOfTheAbove: 0
+  - question: Actinium
+    type: 1
+    answer: Ac
+    wrongChoices:
+    - Lu
+    - Ru
+    - Hf
+    includesAllOfTheAbove: 0
+  - question: Thorium
+    type: 1
+    answer: Th
+    wrongChoices:
+    - Sb
+    - Re
+    - Si
+    includesAllOfTheAbove: 0
+  - question: Protactinium
+    type: 1
+    answer: Pa
+    wrongChoices:
+    - Eu
+    - Tm
+    - Co
+    includesAllOfTheAbove: 0
+  - question: Uranium
+    type: 1
+    answer: U
+    wrongChoices:
+    - Zr
+    - Eu
+    - Pr
+    includesAllOfTheAbove: 0

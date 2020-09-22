@@ -1,29 +1,19 @@
-﻿using System.Collections;
+﻿using DungeonSystem;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TestScript : MonoBehaviour
 {
 
-    public string levelName;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Text text;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            SceneManager.UnloadSceneAsync(levelName);
-        }
+        DungeonManager dungeon = FindObjectOfType<DungeonManager>();
+        string dungeonName = dungeon.data.floors.Count.ToString();
+        text.text = dungeonName;
     }
 }

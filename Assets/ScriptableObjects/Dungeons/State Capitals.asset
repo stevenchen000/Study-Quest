@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09c4b9ea29c61f44a9324e01211ff50e, type: 3}
+  m_Name: State Capitals
+  m_EditorClassIdentifier: 
+  dungeonName: States and Capitals
+  floors:
+  - {fileID: 11400000, guid: 251c38eba0422484baf0a44f2e4d63f1, type: 2}
+  - {fileID: 11400000, guid: 251c38eba0422484baf0a44f2e4d63f1, type: 2}
+  - {fileID: 11400000, guid: 251c38eba0422484baf0a44f2e4d63f1, type: 2}
+  - {fileID: 11400000, guid: 251c38eba0422484baf0a44f2e4d63f1, type: 2}
+  - {fileID: 11400000, guid: 251c38eba0422484baf0a44f2e4d63f1, type: 2}
+  - {fileID: 11400000, guid: 251c38eba0422484baf0a44f2e4d63f1, type: 2}
+  easyQuestions: {fileID: 11400000, guid: 351c896b28e7b91409b486e4960de6b2, type: 2}
+  mediumQuestions: {fileID: 11400000, guid: d5ffe17fab6d78b4a9c73c3df279d9d5, type: 2}
+  hardQuestions: {fileID: 11400000, guid: 51d2b2f62cbda02468ddd632b60a96ae, type: 2}

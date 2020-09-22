@@ -340,8 +340,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7790108728291991065}
   - component: {fileID: 7874052095282795935}
+  - component: {fileID: 1154894574879073161}
   m_Layer: 0
-  m_Name: sword_man
+  m_Name: Player Swordsman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -383,6 +384,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1154894574879073161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7788525197325948855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cfed108606b28c4c8ce2a836bdde2e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7788590411323210505
 GameObject:
   m_ObjectHideFlags: 0

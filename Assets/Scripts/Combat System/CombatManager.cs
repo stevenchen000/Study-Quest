@@ -1,4 +1,5 @@
-﻿using QuizSystem;
+﻿using DungeonSystem;
+using QuizSystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -120,6 +121,11 @@ namespace CombatSystem
 
         private void _TransitionIn()
         {
+            
+        }
+
+        public void InitializeEvent()
+        {
             ChangeState(StateEnum.SelectAction);
         }
 
@@ -153,7 +159,7 @@ namespace CombatSystem
         {
             if(currStateDuration == 0)
             {
-                ActivateQuizUI();
+                quiz.AskQuestion();
             }
 
             if (hasAnswered)
@@ -173,10 +179,12 @@ namespace CombatSystem
                     {
                         case CharacterAction.Attack:
                             enemy.TakeDamage(1);
+                            player.PlayAnimation("Attack");
                             Debug.Log("Player attacked");
                             break;
                         case CharacterAction.Ability:
                             enemy.TakeDamage(2);
+                            player.PlayAnimation("Attack");
                             Debug.Log("Player counterattacked");
                             break;
                         case CharacterAction.Flee:
@@ -192,17 +200,25 @@ namespace CombatSystem
                     {
                         case CharacterAction.Ability:
                             player.TakeDamage(2);
+                            enemy.PlayAnimation("Attack");
                             Debug.Log("Enemy used a strong attack");
                             break;
                         default:
                             player.TakeDamage(1);
+                            enemy.PlayAnimation("Attack");
                             Debug.Log("Enemy attacked");
                             break;
                     }
                 }
                 
             }
+        }
 
+        /// <summary>
+        /// Called at end of attack animation
+        /// </summary>
+        public void CheckBattleState()
+        {
             hasAnswered = false;
             answeredCorrectly = false;
 
@@ -232,28 +248,25 @@ namespace CombatSystem
                 {
                     Debug.Log("You win!");
                 }
+
+                SavePlayerHealth();
+                StartCoroutine(_BattleOverTimer());
             }
-            else
-            {
-                if (Input.GetKeyDown(KeyCode.Return))
-                {
-                    ChangeState(StateEnum.TransitionOut);
-                }
-            }
+        }
+
+        private IEnumerator _BattleOverTimer()
+        {
+            WaitForSeconds timer = new WaitForSeconds(2);
+
+            yield return timer;
+
+            ChangeState(StateEnum.TransitionOut);
         }
 
         private void _TransitionOut()
         {
-            if (!player.IsDead())
-            {
-                string dungeonName = WorldState.GetDungeonName();
-                UnityUtilities.LoadLevel(dungeonName);
-            }
-            else
-            {
-                string hubName = WorldState.GetHubName();
-                UnityUtilities.LoadLevel(hubName);
-            }
+            DungeonManager manager = FindObjectOfType<DungeonManager>();
+            manager.FinishFloor();
         }
 
         private void ChangeState(StateEnum state)
@@ -319,5 +332,10 @@ namespace CombatSystem
             currState.StartState(this);
         }*/
 
+
+        private void SavePlayerHealth()
+        {
+            player.data.currentHealth = player.currentHealth;
+        }
     }
 }

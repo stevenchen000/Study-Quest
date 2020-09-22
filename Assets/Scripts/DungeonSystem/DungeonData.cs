@@ -1,28 +1,51 @@
-﻿using System;
+﻿using QuizSystem;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
-[Serializable]
-public class DungeonFloorData
-{
-    public string floorName;
-    public Vector3 startingPosition;
-}
 
-[CreateAssetMenu(menuName = "Dungeon Data")]
-public class DungeonData : ScriptableObject
+namespace DungeonSystem
 {
-    public List<string> floorNames = new List<string>();
-
-    public bool IsLastFloor(int currentFloor)
+    public enum DungeonDifficulty
     {
-        return currentFloor == (floorNames.Count - 1);
+        Easy,
+        Medium,
+        Hard
     }
-
-    public Vector3 GetStartingPoint(int currentFloor)
+    [CreateAssetMenu(menuName = "Dungeon Data")]
+    public class DungeonData : ScriptableObject
     {
-        return new Vector3();
+        public string dungeonName;
+        public List<DungeonFloorData> floors = new List<DungeonFloorData>();
+        public QuestionSheet easyQuestions;
+        public QuestionSheet mediumQuestions;
+        public QuestionSheet hardQuestions;
+
+        public QuestionSheet GetQuestionSheet(DungeonDifficulty difficulty)
+        {
+            QuestionSheet result = easyQuestions;
+
+            switch (difficulty)
+            {
+                case DungeonDifficulty.Easy:
+                    result = easyQuestions;
+                    break;
+                case DungeonDifficulty.Medium:
+                    result = mediumQuestions;
+                    break;
+                case DungeonDifficulty.Hard:
+                    result = hardQuestions;
+                    break;
+            }
+
+            return result;
+        }
+
+        public string GetDungeonName()
+        {
+            return dungeonName;
+        }
     }
 }

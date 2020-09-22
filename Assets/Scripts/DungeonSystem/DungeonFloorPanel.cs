@@ -2,20 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DungeonFloorPanel : MonoBehaviour
+namespace DungeonSystem
 {
-
-    public bool floorIsCleared = false;
-
-    // Start is called before the first frame update
-    void Start()
+    public class DungeonFloorPanel : MonoBehaviour
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public bool floorIsCleared = false;
+        public DungeonFloorData data;
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+
+        public void SetData(DungeonFloorData newData)
+        {
+            data = newData;
+            GameObject symbol = Instantiate(data.symbol);
+            symbol.transform.SetParent(transform);
+
+            transform.GetComponent<SpriteRenderer>().color = data.color;
+            symbol.transform.localPosition = new Vector3();
+        }
+
+        public void LoadLevel()
+        {
+            data.LoadLevel();
+        }
+
+        public void UnloadLevel()
+        {
+            data.UnloadLevel();
+        }
     }
 }

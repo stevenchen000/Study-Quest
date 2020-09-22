@@ -10,10 +10,15 @@ namespace LoadScreen
         public List<LevelData> levels;
         public LoadScreenButton loadScreenButtonPrefab;
 
+        public GameObject stageSelectUI;
+        public GameObject difficultySelectUI;
+
         // Start is called before the first frame update
         void Start()
         {
             LoadLevelButtons();
+            DisableDifficultySelectUI();
+            EnableStageSelectUI();
         }
 
         // Update is called once per frame
@@ -30,8 +35,34 @@ namespace LoadScreen
             {
                 LoadScreenButton newButton = Instantiate(loadScreenButtonPrefab);
                 newButton.SetData(levels[i]);
-                newButton.transform.parent = transform;
+                newButton.transform.parent = stageSelectUI.transform;
             }
+        }
+
+        public void EnableStageSelectUI()
+        {
+            stageSelectUI.SetActive(true);
+        }
+
+        public void DisableStageSelectUI()
+        {
+            stageSelectUI.SetActive(false);
+        }
+
+        public void EnableDifficultySelectUI()
+        {
+            difficultySelectUI.SetActive(true);
+        }
+
+        public void DisableDifficultySelectUI()
+        {
+            difficultySelectUI.SetActive(false);
+        }
+
+        public void LoadLevel()
+        {
+            string levelName = WorldState.GetDungeonName();
+            UnityUtilities.LoadLevel(levelName);
         }
     }
 }

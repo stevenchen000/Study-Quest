@@ -1,4 +1,5 @@
-﻿using QuizSystem;
+﻿using DungeonSystem;
+using QuizSystem;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,7 @@ namespace LoadScreen
     [System.Serializable]
     public class LevelData
     {
-        public string name;
-        public string levelName;
-        public QuestionSheet sheet;
+        public string levelName = "Test_Dungeon_Board";
+        public DungeonData dungeon;
     }
 }

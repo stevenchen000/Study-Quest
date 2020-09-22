@@ -13,25 +13,30 @@ namespace LoadScreen
     public class LoadScreenButton : MonoBehaviour
     {
 
-        public string levelName;
-        public QuestionSheet questions;
+        public LevelData data;
         public Button button;
         public Text text;
 
+        private void Start()
+        {
+            button = transform.GetComponent<Button>();
+            button.onClick.AddListener(SetDungeonData);
+            LoadScreenUI ui = FindObjectOfType<LoadScreenUI>();
+            button.onClick.AddListener(ui.DisableStageSelectUI);
+            button.onClick.AddListener(ui.EnableDifficultySelectUI);
+        }
+
         public void SetData(LevelData data)
         {
-            levelName = data.levelName;
-            questions = data.sheet;
+            this.data = data;
             button = transform.GetComponent<Button>();
-            button.onClick.AddListener(LoadLevel);
             text = button.GetComponentInChildren<Text>();
-            text.text = data.name;
+            text.text = data.dungeon.GetDungeonName();
         }
-
-        private void LoadLevel() {
-            QuizManager.quiz.SetNewQuestions(questions);
-            SceneManager.LoadScene(levelName);
+        
+        public void SetDungeonData()
+        {
+            WorldState.SetDungeonData(data.dungeon);
         }
-
     }
 }

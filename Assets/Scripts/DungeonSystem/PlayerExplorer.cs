@@ -16,18 +16,16 @@ namespace DungeonSystem
         public Collider2D collider;
         public bool defaultIsLeft = true;
         public bool useHubPosition;
+        public Animator anim;
+
+
+        private Vector3 movePosition;
+        private bool isMoving = false;
+        public float speed = 3;
 
         // Start is called before the first frame update
         void Start()
         {
-            if (!useHubPosition)
-            {
-                transform.position = WorldState.GetDungeonPosition();
-            }
-            else
-            {
-                transform.position = WorldState.GetHubPosition();
-            }
             data = WorldState.GetPlayerData();
             SetupModel();
 
@@ -35,6 +33,10 @@ namespace DungeonSystem
             interactables.AddRange(tempInteracts);
 
             collider = transform.GetComponent<Collider2D>();
+
+            anim = transform.GetComponentInChildren<Animator>();
+
+            movePosition = transform.position;
         }
 
         // Update is called once per frame
@@ -53,8 +55,42 @@ namespace DungeonSystem
                     }
                 }
             }
+
+            if (Vector3.Distance(movePosition, transform.position) >= 0.1f)
+            {
+                isMoving = true;
+                Move();
+            }
+            else
+            {
+                isMoving = false;
+            }
+
+
+            anim.SetBool("isMoving", isMoving);
         }
 
+        public void MoveToPosition(Vector3 position)
+        {
+            isMoving = true;
+            movePosition = position;
+        }
+
+        private void Move()
+        {
+            //Vector3 direction = movePosition - transform.position;
+            //transform.position = transform.position + direction.normalized * speed * Time.deltaTime;
+
+            transform.position = Vector3.Lerp(transform.position, movePosition, Time.deltaTime * movementSpeed);
+
+            
+        }
+
+
+        public bool IsMoving()
+        {
+            return isMoving;
+        }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
@@ -67,7 +103,10 @@ namespace DungeonSystem
             }
         }
 
-
+        public void HealCharacter()
+        {
+            data.HealCharacter();
+        }
 
 
 
@@ -141,5 +180,9 @@ namespace DungeonSystem
             child.transform.localPosition = new Vector3();
         }
 
+        public void SetAnimationBool(string boolName, bool value)
+        {
+            anim.SetBool(boolName, value);
+        }
     }
 }

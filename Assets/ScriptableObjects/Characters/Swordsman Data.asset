@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Swordsman Data
   m_EditorClassIdentifier: 
   model: {fileID: 8867815828356360857, guid: 9792d416eda8c1b458598b6270520be5, type: 3}
-  currentHealth: 10
-  maxHealth: 10
+  currentHealth: 5
+  maxHealth: 5

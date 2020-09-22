@@ -12,5 +12,13 @@ public class CharacterData : ScriptableObject
     public GameObject model;
     public int currentHealth = 10;
     public int maxHealth = 10;
+
+    /// <summary>
+    /// Fully heals the character
+    /// </summary>
+    public void HealCharacter()
+    {
+        currentHealth = maxHealth;
+    }
 }
 
