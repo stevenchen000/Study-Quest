@@ -25,6 +25,7 @@ namespace DungeonSystem
         public PlayerExplorer player;
         public int currentFloor = 0;
 
+        public static DungeonManager dungeon;
         public DungeonData data;
         public DungeonDifficulty difficulty;
         public Vector3 playerOffset;
@@ -45,7 +46,18 @@ namespace DungeonSystem
 
         public GameObject victoryPanel;
         public GameObject gameoverPanel;
-        
+
+        private void Awake()
+        {
+            if(dungeon == null)
+            {
+                dungeon = this;
+            }
+            else
+            {
+                Destroy(this);
+            }
+        }
 
         public void Start()
         {
@@ -140,8 +152,8 @@ namespace DungeonSystem
         /// </summary>
         public void InitializeDungeonEvent()
         {
-            CombatManager combat = FindObjectOfType<CombatManager>();
-            combat.InitializeEvent();
+            FloorManager floor = FindObjectOfType<FloorManager>();
+            floor.Initialize();
         }
 
         private void WaitForFloorState()

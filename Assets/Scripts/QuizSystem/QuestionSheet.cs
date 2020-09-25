@@ -12,7 +12,8 @@ namespace QuizSystem
     [CreateAssetMenu(menuName = "Question Sheet", fileName = "Question Sheet")]
     public class QuestionSheet : ScriptableObject, ISerializationCallbackReceiver
     {
-        [Tooltip("Name and paht for file to get questions from")]
+        public string sheetName = "New Sheet";
+        [Tooltip("Name and path for file to get questions from")]
         public string filename;
         public QuestionType defaultQuestionType;
         [Tooltip("Click to add questions from file")]

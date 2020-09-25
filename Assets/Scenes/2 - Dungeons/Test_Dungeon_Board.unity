@@ -1659,7 +1659,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &888389871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1676,14 +1676,14 @@ MonoBehaviour:
   dungeonPosition: {x: 0, y: 0, z: 0}
   hubName: LoadScreen
   hubPosition: {x: 0, y: 0, z: 0}
-  combatName: Test_Solo_Combat
+  combatName: Combat_Floor
   currentFloor: 0
   newFloor: 0
   enemyData: {fileID: 11400000, guid: b9c8dd07a414b594bb0d3746955de732, type: 2}
   playerData: {fileID: 11400000, guid: 64711c30dc68bf746a54f59e6596580f, type: 2}
-  dungeonData: {fileID: 11400000, guid: 9eaaef23a440a9a41a23f5e73cd8c31b, type: 2}
+  dungeonData: {fileID: 11400000, guid: 1b56e4790c354b84488b5101c5400900, type: 2}
   dungeonDifficulty: 0
-  questions: {fileID: 0}
+  questions: {fileID: 11400000, guid: 6c3a80893becd4f42a418c88a4a59651, type: 2}
 --- !u!4 &888389872
 Transform:
   m_ObjectHideFlags: 0

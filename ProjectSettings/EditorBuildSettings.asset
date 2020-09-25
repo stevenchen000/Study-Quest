@@ -11,13 +11,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/1 - Hub Worlds/Test_Hub_World.unity
     guid: 627ce8f95c0906a499eb0d14f5a23859
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/2 - Dungeons/Test_Dungeon.unity
     guid: 6338fce6dfe12464791fca71361d3c3a
   - enabled: 1
-    path: Assets/Scenes/3 - Combat/Test_Solo_Combat.unity
+    path: Assets/Scenes/3 - Floors/Combat_Floor.unity
     guid: 42e5a8e49ee484646b349977b4912bdf
   - enabled: 1
     path: Assets/Scenes/2 - Dungeons/Test_Dungeon_Board.unity
     guid: 370bdc7fd9be2fe4095fe3e43893613e
+  - enabled: 1
+    path: Assets/Scenes/3 - Floors/Chest_Floor.unity
+    guid: 8bf39ead577ad8345992bd6e175c884c
   m_configObjects: {}

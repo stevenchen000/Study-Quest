@@ -50,7 +50,7 @@ namespace QuizSystem
         {
             bool correct = QuizManager.quiz.AnswerQuestion(text);
             Debug.Log("Answered question: " + text);
-            CombatManager.combat.QuestionAnswered(correct);
+            //CombatManager.combat.QuestionAnswered(correct);
             
             if (correct)
             {

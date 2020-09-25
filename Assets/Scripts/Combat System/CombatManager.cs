@@ -26,7 +26,7 @@ namespace CombatSystem
         None
     }
 
-    public class CombatManager : MonoBehaviour
+    public class CombatManager : FloorManager
     {
         public static CombatManager combat;
         public QuizUI quizUi;
@@ -90,6 +90,15 @@ namespace CombatSystem
 
 
 
+
+        public override void Initialize()
+        {
+            ChangeState(StateEnum.SelectAction);
+        }
+
+
+
+
         #region States
 
         /* States */
@@ -122,11 +131,6 @@ namespace CombatSystem
         private void _TransitionIn()
         {
             
-        }
-
-        public void InitializeEvent()
-        {
-            ChangeState(StateEnum.SelectAction);
         }
 
         private void _SelectAction()
@@ -311,26 +315,7 @@ namespace CombatSystem
             quiz.AskQuestion();
         }
 
-        /*public void ChangeState(int index)
-        {
-            
-            if (currState != null)
-            {
-                currState.EndState(this);
-            }
-            currState = states.states[index];
-            currState.StartState(this);
-        }
 
-        public void ChangeState(CombatState state)
-        {
-            if (currState != null)
-            {
-                currState.EndState(this);
-            }
-            currState = state;
-            currState.StartState(this);
-        }*/
 
 
         private void SavePlayerHealth()
