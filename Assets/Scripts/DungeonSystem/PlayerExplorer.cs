@@ -7,7 +7,7 @@ using CombatSystem;
 
 namespace DungeonSystem
 {
-    public class PlayerExplorer : MonoBehaviour, IInteractor
+    public class PlayerExplorer : MonoBehaviour
     {
 
         public float movementSpeed = 5;
@@ -46,14 +46,14 @@ namespace DungeonSystem
 
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                foreach(IInteractable i in interactables)
+                /*foreach(IInteractable i in interactables)
                 {
                     if (i.IsColliding(collider))
                     {
                         i.Interact(this);
                         break;
                     }
-                }
+                }*/
             }
 
             if (Vector3.Distance(movePosition, transform.position) >= 0.1f)

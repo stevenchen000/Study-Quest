@@ -35,6 +35,7 @@ public class LockPanel : MonoBehaviour
 
     public void AnswerIncorrectly()
     {
+        locks[currLock].MarkIncorrect();
         currLock++;
     }
 
@@ -44,7 +45,7 @@ public class LockPanel : MonoBehaviour
 
         for (int i = 0; i < locks.Count; i++)
         {
-            if (locks[i].isLocked)
+            if (!locks[i].isCorrect)
             {
                 wrong++;
             }

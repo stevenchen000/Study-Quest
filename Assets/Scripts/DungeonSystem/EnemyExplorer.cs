@@ -29,7 +29,7 @@ namespace DungeonSystem
         }
 
 
-        private void OnCollisionEnter(Collision collision)
+        /*private void OnCollisionEnter(Collision collision)
         {
             if (collision.transform.tag == "Player")
             {
@@ -38,7 +38,7 @@ namespace DungeonSystem
                 WorldState.SetDungeonPosition(playerPosition);
                 UnityUtilities.LoadLevel(combatName);
             }
-        }
+        }*/
 
 
 

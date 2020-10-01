@@ -5,14 +5,15 @@ using UnityEngine.UI;
 
 public class LockUI : MonoBehaviour
 {
-    public GameObject lockedIcon;
-    public GameObject unlockedIcon;
-    public bool isLocked = true;
+    public GameObject incorrectIcon;
+    public GameObject correctIcon;
+    public bool isCorrect = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        unlockedIcon.SetActive(false);
+        correctIcon.SetActive(false);
+        incorrectIcon.SetActive(false);
     }
 
     // Update is called once per frame
@@ -23,13 +24,14 @@ public class LockUI : MonoBehaviour
 
     public void MarkCorrect()
     {
-        isLocked = false;
-        unlockedIcon.SetActive(true);
-        lockedIcon.SetActive(false);
+        isCorrect = true;
+        correctIcon.SetActive(true);
     }
 
     public void MarkIncorrect()
     {
-        isLocked = true;
+        isCorrect = false;
+        incorrectIcon.SetActive(true);
     }
+    
 }

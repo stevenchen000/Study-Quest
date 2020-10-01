@@ -15,8 +15,7 @@ public class WorldState : MonoBehaviour
 
     public string hubName = "LoadScreen";
     public Vector3 hubPosition;
-
-    public string combatName = "Test_Solo_Combat";
+    
     public int currentFloor = 1;
     public int newFloor = 1;
     public CharacterData enemyData;
@@ -60,7 +59,7 @@ public class WorldState : MonoBehaviour
     public static Vector3 GetHubPosition() { return world.hubPosition; }
     public static void SetHubPosition(Vector3 position) { world.hubPosition = position; }
 
-    public static string GetCombatName() { return world.combatName; }
+    //public static string GetCombatName() { return world.combatName; }
 
     public static CharacterData GetCharacterData() { return world.enemyData; }
     public static void SetCharacterData(CharacterData newData) { world.enemyData = newData; }
