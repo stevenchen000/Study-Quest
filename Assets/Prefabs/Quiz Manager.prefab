@@ -43,19 +43,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15e4c35a3e0c5e041a52b14eab9b902e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questions: {fileID: 11400000, guid: 29d46c0705feb2547aaab6eea946d316, type: 2}
-  currentIndex: 0
+  sheet: {fileID: 0}
+  questions:
+  - question: 
+    type: 0
+    answer: 
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 
+    type: 0
+    answer: 
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 
+    type: 0
+    answer: 
+    wrongChoices: []
+    includesAllOfTheAbove: 0
   currentQuestion:
     question: 
     type: 0
+    answer: 
     wrongChoices:
     - 
     - 
     - 
-    solution:
-      type: 0
-      solution: 
-      isTrue: 0
     includesAllOfTheAbove: 0
-  questionUI: {fileID: 0}
-  targets: []
+  currentIndex: 0
+  OnQuestionAskedSO: {fileID: 11400000, guid: aca839006c2c73d4e8679d873b795d8c, type: 2}
+  OnQuestionAnsweredSO: {fileID: 11400000, guid: dbf73e8b47970cd43926cf9936d2fd9a,
+    type: 2}

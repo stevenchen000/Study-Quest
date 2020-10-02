@@ -34,17 +34,20 @@ namespace DungeonSystem
         public Vector3 playerOffset;
         //list of monsters in area
 
+        public DungeonFloorPanel startPanel;
+        public DungeonFloorPanel endPanel;
         public List<DungeonFloorPanel> floors = new List<DungeonFloorPanel>();
         private bool floorReached = false;
         public DungeonState state;
 
         private bool floorIsRunning = false;
 
+        public EventSO OnActivateFloor;
         public EventSO OnFloorStart;
         public EventSO OnFloorEnd;
 
-        private FloorProjection floorProjection;
-        private QuizUI quizUi;
+        //private FloorProjection floorProjection;
+        //private QuizUI quizUi;
 
         public GameObject victoryPanel;
         public GameObject gameoverPanel;
@@ -66,11 +69,9 @@ namespace DungeonSystem
             player = FindObjectOfType<PlayerExplorer>();
             player.HealCharacter();
 
-            floorProjection = FindObjectOfType<FloorProjection>();
-            quizUi = FindObjectOfType<QuizUI>();
-            quizUi.gameObject.SetActive(false);
+            //floorProjection = FindObjectOfType<FloorProjection>();
+            
 
-            //player.transform.position = WorldState.GetDungeonPosition();
             data = WorldState.GetDungeonData();
             difficulty = WorldState.GetDungeonDifficulty();
             
@@ -79,6 +80,7 @@ namespace DungeonSystem
 
             floors.AddRange(transform.GetComponentsInChildren<DungeonFloorPanel>());
             SetupFloors();
+            player.transform.position = startPanel.GetMarkerPosition();
         }
 
 
@@ -92,6 +94,56 @@ namespace DungeonSystem
         {
             player.HealCharacter();
         }
+
+
+
+
+
+
+
+        //Public State Changing Functions
+            //Use these outside of the class for changing the state
+
+        public void StartDungeon()
+        {
+            state = DungeonState.SetPlayerPosition;
+        }
+
+
+        /// <summary>
+        /// Call this at the end of transition in animation to initialize the event
+        /// </summary>
+        public void InitializeDungeonEvent()
+        {
+            OnFloorStart.CallEvent();
+        }
+
+
+
+        /// <summary>
+        /// Call this after transition out animation to move character to next floor
+        /// </summary>
+        public void ProgressFloor()
+        {
+
+            if (PlayerIsDead())
+            {
+                Debug.Log("Player is dead");
+                state = DungeonState.GameOver;
+                player.SetAnimationBool("isDead", true);
+            }
+            else
+            {
+                Debug.Log("Player is not dead");
+                floors[currentFloor].UnloadLevel();
+                currentFloor++;
+                state = DungeonState.SetPlayerPosition;
+            }
+        }
+
+
+
+
 
 
 
@@ -132,22 +184,33 @@ namespace DungeonSystem
 
         }
 
-        public void StartDungeon()
-        {
-            state = DungeonState.SetPlayerPosition;
-        }
 
         private void PlayerPositionState()
         {
-            player.MoveToPosition(GetFloorPosition());
-            state = DungeonState.WaitForPlayer;
+            if (DungeonIsFinished())
+            {
+                player.MoveToPosition(endPanel.GetMarkerPosition());
+                state = DungeonState.WaitForPlayer;
+            }
+            else
+            {
+                player.MoveToPosition(GetFloorPosition());
+                state = DungeonState.WaitForPlayer;
+            }
         }
 
         private void WaitForPlayerState()
         {
             if (!player.IsMoving())
             {
-                state = DungeonState.ActivateFloor;
+                if (!DungeonIsFinished())
+                {
+                    state = DungeonState.ActivateFloor;
+                }
+                else
+                {
+                    state = DungeonState.DungeonComplete;
+                }
             }
         }
 
@@ -155,22 +218,11 @@ namespace DungeonSystem
         {
             floors[currentFloor].LoadLevel();
             floorIsRunning = true;
-            OnFloorStart.CallEvent();
+            OnActivateFloor.CallEvent();
             state = DungeonState.WaitForFloor;
-
-            floorProjection.gameObject.SetActive(true);
-            floorProjection.ActivateProjection();
         }
 
 
-        /// <summary>
-        /// Call this at the end of transition in animation to initialize the event
-        /// </summary>
-        public void InitializeDungeonEvent()
-        {
-            FloorManager floor = FindObjectOfType<FloorManager>();
-            floor.Initialize();
-        }
 
         private void WaitForFloorState()
         {
@@ -180,41 +232,12 @@ namespace DungeonSystem
             }
         }
 
-        /// <summary>
-        /// Call this after transition out animation to move character to next floor
-        /// </summary>
-        public void ProgressFloor()
-        {
-
-            if (PlayerIsDead())
-            {
-                Debug.Log("Player is dead");
-                state = DungeonState.GameOver;
-                player.SetAnimationBool("isDead", true);
-            }
-            else
-            {
-                Debug.Log("Player is not dead");
-                floorProjection.gameObject.SetActive(false);
-                quizUi.gameObject.SetActive(false);
-                floors[currentFloor].UnloadLevel();
-                currentFloor++;
-
-                if (DungeonIsFinished())
-                {
-                    state = DungeonState.DungeonComplete;
-                }
-                else
-                {
-                    state = DungeonState.SetPlayerPosition;
-                }
-            }
-        }
-
         private void DungeonCompleteState()
         {
-            victoryPanel.SetActive(true);
-
+            if (!player.IsMoving())
+            {
+                victoryPanel.SetActive(true);
+            }
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))
             {
                 string loadScreen = WorldState.GetHubName();
@@ -238,24 +261,16 @@ namespace DungeonSystem
 
         private void SetupFloors()
         {
-            List<DungeonFloorData> floorData = data.floors;
-
             for(int i = 0; i < floors.Count; i++)
             {
-                if (i < floorData.Count)
-                {
-                    floors[i].SetData(floorData[i]);
-                }
-                else
-                {
-                    floors[i].gameObject.SetActive(false);
-                }
+                DungeonFloorData newFloor = data.GetRandomFloor();
+                floors[i].SetData(newFloor);
             }
         }
 
-        public bool DungeonIsFinished()
+        private bool DungeonIsFinished()
         {
-            return currentFloor == data.floors.Count;
+            return currentFloor == floors.Count;
         }
 
         private void IncrementFloor()
@@ -273,7 +288,7 @@ namespace DungeonSystem
         private Vector3 GetFloorPosition()
         {
             DungeonFloorPanel panel = floors[currentFloor];
-            return panel.transform.position + playerOffset;
+            return panel.GetMarkerPosition();
         }
 
         public void FinishFloor()

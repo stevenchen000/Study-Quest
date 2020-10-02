@@ -32,6 +32,7 @@ namespace QuizSystem
         private CombatManager combat;
 
         private QuizUIState state;
+        private bool waitFirstFrame = false;
 
         public void Start()
         {
@@ -39,8 +40,6 @@ namespace QuizSystem
             ui = transform.GetComponentInChildren<QuizTextUI>();
             choices.AddRange(transform.GetComponentsInChildren<QuizChoiceUi>());
             combat = FindObjectOfType<CombatManager>();
-            
-            quiz.SubscribeToOnQuestionAsked(AskQuestion);
         }
 
         private void Update()
@@ -50,7 +49,7 @@ namespace QuizSystem
 
         private void OnDestroy()
         {
-            quiz.UnsubscribeFromOnQuestionAsked(AskQuestion);
+            
         }
 
         #region States
@@ -88,7 +87,7 @@ namespace QuizSystem
 
 
 
-        public void AskQuestion(Question question)
+        public void ActivateUI(Question question)
         {
             currentQuestion = question;
             gameObject.SetActive(true);

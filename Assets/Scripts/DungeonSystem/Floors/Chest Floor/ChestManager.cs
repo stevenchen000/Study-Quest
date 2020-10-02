@@ -1,4 +1,5 @@
 ﻿using QuizSystem;
+using SOEventSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ namespace DungeonSystem
 {
     public class ChestManager : FloorManager
     {
+        public EventSO OnFloorFinished;
+
         public LockPanel locks;
         public float waitTime = 2f;
         private float waitTimer = 0;
@@ -20,13 +23,8 @@ namespace DungeonSystem
         {
             anim = transform.GetComponentInChildren<Animator>();
             quiz = QuizManager.quiz;
-            quiz.SubscribeToOnQuestionAnswered(Unlock);
         }
-
-        private void OnDestroy()
-        {
-            quiz.UnsubscribeFromOnQuestionAnswered(Unlock);
-        }
+        
 
 
 
@@ -44,7 +42,7 @@ namespace DungeonSystem
 
                     if (locks.IsFinished())
                     {
-                        DungeonManager.dungeon.FinishFloor();
+                        OnFloorFinished.CallEvent();
                     }
                     else
                     {
@@ -60,7 +58,7 @@ namespace DungeonSystem
             quiz.AskQuestion();
         }
 
-        private void Unlock(bool correct)
+        public void Unlock(bool correct)
         {
             if (correct)
             {

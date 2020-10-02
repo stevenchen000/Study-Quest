@@ -11,11 +11,7 @@ namespace DungeonSystem
     {
 
         public float movementSpeed = 5;
-        List<IInteractable> interactables = new List<IInteractable>();
         public CharacterData data;
-        public Collider2D collider;
-        public bool defaultIsLeft = true;
-        public bool useHubPosition;
         public Animator anim;
 
         private Rigidbody2D rb;
@@ -31,11 +27,6 @@ namespace DungeonSystem
             data = WorldState.GetPlayerData();
             SetupModel();
 
-            var tempInteracts = FindObjectsOfType<MonoBehaviour>().OfType<IInteractable>();
-            interactables.AddRange(tempInteracts);
-
-            collider = transform.GetComponent<Collider2D>();
-
             anim = transform.GetComponentInChildren<Animator>();
 
             movePosition = transform.position;
@@ -44,68 +35,53 @@ namespace DungeonSystem
         // Update is called once per frame
         void Update()
         {
-            GetMovementInput();
-
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (isMoving)
             {
-                /*foreach(IInteractable i in interactables)
+                if (Vector3.Distance(movePosition, transform.position) >= 0.1f)
                 {
-                    if (i.IsColliding(collider))
-                    {
-                        i.Interact(this);
-                        break;
-                    }
-                }*/
+                    Move();
+                }
+                else
+                {
+                    ChangeMovementState(false);
+                    rb.velocity = new Vector3();
+                }
             }
-
-            if (Vector3.Distance(movePosition, transform.position) >= 0.1f)
-            {
-                isMoving = true;
-                Move();
-            }
-            else
-            {
-                isMoving = false;
-            }
-
-
-            anim.SetBool("isMoving", isMoving);
         }
+
+
+
+        private void ChangeMovementState(bool movement)
+        {
+            if (movement != isMoving)
+            {
+                isMoving = movement;
+                anim.SetBool("isMoving", isMoving);
+
+                if (isMoving)
+                {
+                    anim.CrossFade("Run", 0.2f);
+                }
+                else
+                {
+                    anim.CrossFade("Idle", 0.2f);
+                }
+            }
+        }
+
+
 
         public void MoveToPosition(Vector3 position)
         {
-            isMoving = true;
+            ChangeMovementState(true);
             movePosition = position;
         }
-
-        private void Move()
-        {
-            Vector3 direction = movePosition - transform.position;
-            direction = direction.magnitude > 1 ? direction.normalized : direction;
-            //transform.position = transform.position + direction.normalized * speed * Time.deltaTime;
-
-            //transform.position = Vector3.Lerp(transform.position, movePosition, Time.deltaTime * movementSpeed);
-            rb.velocity = direction * movementSpeed;
-            
-        }
-
-
+        
         public bool IsMoving()
         {
             return isMoving;
         }
-
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            EnemyExplorer enemy = collision.transform.GetComponent<EnemyExplorer>();
-
-            if(enemy != null)
-            {
-                WorldState.SetDungeonPosition(transform.position);
-                SceneLoader.LoadCombat();
-            }
-        }
-
+        
         public void HealCharacter()
         {
             data.HealCharacter();
@@ -113,30 +89,19 @@ namespace DungeonSystem
 
 
 
-        private void GetMovementInput()
+
+
+
+        //Movement
+
+        private void Move()
         {
-            Vector3 direction = Input.GetAxis("Horizontal") * transform.right;
-            direction += Input.GetAxis("Vertical") * transform.up;
+            Vector3 direction = movePosition - transform.position;
+            direction = direction.magnitude > 1 ? direction.normalized : direction;
+            FaceDirection(direction);
 
-            Move(direction, movementSpeed);
+            rb.velocity = direction * movementSpeed;
         }
-
-
-
-
-        public void Move(Vector3 direction, float speed)
-        {
-            Vector3 clampedDirection = direction;
-
-            if(direction.magnitude > 1)
-            {
-                clampedDirection = direction / direction.magnitude;
-            }
-
-            transform.position += clampedDirection * speed * Time.deltaTime;
-            FaceDirection(clampedDirection);
-        }
-
 
         private void FaceDirection(Vector3 direction)
         {
@@ -152,24 +117,13 @@ namespace DungeonSystem
 
         private bool IsFacingRightDirection(Vector3 direction)
         {
-            bool result = false;
-
-            if (defaultIsLeft)
-            {
-                result = !SameSign(direction.x, transform.localScale.x);
-            }
-            else
-            {
-                result = SameSign(direction.x, transform.localScale.x);
-            }
-
-            return result;
+            float x = direction.x;
+            float scaleX = transform.localScale.x;
+            return (x > 0 && scaleX > 0) || (x < 0 && scaleX < 0);
         }
 
-        private bool SameSign(float num1, float num2)
-        {
-            return (num1 <= 0 && num2 <= 0) || (num1 >= 0 && num2 >= 0);
-        }
+
+
 
 
 

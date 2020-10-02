@@ -13,13 +13,11 @@ MonoBehaviour:
   m_Name: Periodic Table
   m_EditorClassIdentifier: 
   dungeonName: Periodic Table
-  floors:
-  - {fileID: 11400000, guid: b867c0f6f4a1fe94ebc3e3cd42438194, type: 2}
-  - {fileID: 11400000, guid: 251c38eba0422484baf0a44f2e4d63f1, type: 2}
-  - {fileID: 11400000, guid: 251c38eba0422484baf0a44f2e4d63f1, type: 2}
-  - {fileID: 11400000, guid: 251c38eba0422484baf0a44f2e4d63f1, type: 2}
-  - {fileID: 11400000, guid: 251c38eba0422484baf0a44f2e4d63f1, type: 2}
-  - {fileID: 11400000, guid: 251c38eba0422484baf0a44f2e4d63f1, type: 2}
+  chances:
+  - data: {fileID: 11400000, guid: 251c38eba0422484baf0a44f2e4d63f1, type: 2}
+    chance: 0.6
+  - data: {fileID: 11400000, guid: b867c0f6f4a1fe94ebc3e3cd42438194, type: 2}
+    chance: 0.64
   easyQuestions: {fileID: 11400000, guid: a90254b549e0fa74ebe2a73aad4f9399, type: 2}
   mediumQuestions: {fileID: 11400000, guid: 6c3a80893becd4f42a418c88a4a59651, type: 2}
   hardQuestions: {fileID: 11400000, guid: cbc0be2d35767f143ab2b830902b26f1, type: 2}

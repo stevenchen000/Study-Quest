@@ -9,6 +9,7 @@ namespace DungeonSystem
 
         public bool floorIsCleared = false;
         public DungeonFloorData data;
+        public GameObject positionMarker;
 
         // Start is called before the first frame update
         void Start()
@@ -40,6 +41,11 @@ namespace DungeonSystem
         public void UnloadLevel()
         {
             data.UnloadLevel();
+        }
+
+        public Vector3 GetMarkerPosition()
+        {
+            return positionMarker.transform.position;
         }
     }
 }

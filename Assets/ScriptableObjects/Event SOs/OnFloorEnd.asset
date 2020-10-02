@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 987a95d201037074f98ee12abc3c28c5, type: 3}
   m_Name: OnFloorEnd
   m_EditorClassIdentifier: 
-  description: 
+  description: Called when floor stops running before deactivation

@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 987a95d201037074f98ee12abc3c28c5, type: 3}
-  m_Name: OnFloorStart
+  m_Name: OnFloorDeactivate
   m_EditorClassIdentifier: 
-  description: Called when floor starts running after activation
+  description: Called when floor is deactivated

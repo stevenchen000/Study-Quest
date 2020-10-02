@@ -1,5 +1,6 @@
 ﻿using DungeonSystem;
 using QuizSystem;
+using SOEventSystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -31,6 +32,7 @@ namespace CombatSystem
         public static CombatManager combat;
         public QuizUI quizUi;
 
+        public EventSO OnFloorEnd;
         public StateEnum currentState;
         public StateEnum newState;
         public float currStateDuration = 0;
@@ -63,8 +65,7 @@ namespace CombatSystem
 
         private void Start()
         {
-            //DeactivateQuizUI();
-            quiz.SubscribeToOnQuestionAnswered(QuestionAnswered);
+            
         }
 
         // Update is called once per frame
@@ -81,11 +82,6 @@ namespace CombatSystem
                 currentState = newState;
                 currStateDuration = 0;
             }
-        }
-
-        private void OnDestroy()
-        {
-            quiz.UnsubscribeFromOnQuestionAnswered(QuestionAnswered);
         }
 
 
@@ -263,14 +259,13 @@ namespace CombatSystem
             WaitForSeconds timer = new WaitForSeconds(2);
 
             yield return timer;
-
+            OnFloorEnd.CallEvent();
             ChangeState(StateEnum.TransitionOut);
         }
 
         private void _TransitionOut()
         {
-            DungeonManager manager = FindObjectOfType<DungeonManager>();
-            manager.FinishFloor();
+            
         }
 
         private void ChangeState(StateEnum state)
@@ -295,27 +290,7 @@ namespace CombatSystem
             answeredCorrectly = correct;
         }
 
-
-
-
-
-
-
-
-
-
-        private void DeactivateQuizUI()
-        {
-            quizUi.gameObject.SetActive(false);
-        }
-
-        public void ActivateQuizUI()
-        {
-            //quizUi.gameObject.SetActive(true);
-            quiz.AskQuestion();
-        }
-
-
+        
 
 
         private void SavePlayerHealth()

@@ -8,8 +8,8 @@ namespace FlashcardSystem
     [System.Serializable]
     public class Flashcard
     {
-        private string frontText;
-        private string backText;
+        public string frontText;
+        public string backText;
 
         public Flashcard(string newFrontText, string newBackText)
         {

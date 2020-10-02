@@ -1,4 +1,5 @@
 ﻿using DungeonSystem;
+using SOEventSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class FloorProjection : MonoBehaviour
 {
     private Animator anim;
     private DungeonManager dungeon;
+    public EventSO OnDeactivateFloor;
 
     private void Start()
     {
@@ -23,6 +25,11 @@ public class FloorProjection : MonoBehaviour
     {
         anim.SetBool("isActive", false);
     }
+
+    
+
+
+
 
     public void ProgressDungeonFloor()
     {

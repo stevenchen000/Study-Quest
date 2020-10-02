@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -73,5 +74,20 @@ public class UnityUtilities
         }
 
         return child;
+    }
+
+
+    public static string ReadFile(string filename)
+    {
+        FileStream file = File.OpenRead(filename);
+        StreamReader reader = new StreamReader(file);
+        string result = "";
+
+        string line;
+        while((line = reader.ReadLine()) != null){
+            result += $"{line}\n";
+        }
+
+        return result.Trim();
     }
 }

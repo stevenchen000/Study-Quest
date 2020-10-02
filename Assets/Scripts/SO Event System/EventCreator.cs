@@ -48,12 +48,12 @@ namespace SOEventSystem
             string listenerFileName = $"{newPath}/{CapitalizeFirstLetter(varType)}EventListener.cs";
             string listenerFormat = $"namespace SOEventSystem \n{{ \n\tpublic class {capitalizedVarType}EventListener : VarEventListener<{varType}> \n\t{{ \n\t}} \n}}";
 
-            string callerFileName = $"{newPath}/{CapitalizeFirstLetter(varType)}EventCaller.cs";
-            string callerFormat = $"namespace SOEventSystem \n{{ \n\tpublic class {capitalizedVarType}EventCaller : VarEventCaller<{varType}> \n\t{{ \n\t}} \n}}";
+            //string callerFileName = $"{newPath}/{CapitalizeFirstLetter(varType)}EventCaller.cs";
+            //string callerFormat = $"namespace SOEventSystem \n{{ \n\tpublic class {capitalizedVarType}EventCaller : VarEventCaller<{varType}> \n\t{{ \n\t}} \n}}";
 
             CreateFile(soFileName, soFormat);
             CreateFile(listenerFileName, listenerFormat);
-            CreateFile(callerFileName, callerFormat);
+            //CreateFile(callerFileName, callerFormat);
         }
 
         private void CreateFile(string filename, string contents)

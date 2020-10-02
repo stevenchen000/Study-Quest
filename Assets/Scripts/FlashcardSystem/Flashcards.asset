@@ -1,0 +1,203 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2be0017ba4c221a40ae2daf73a37efd7, type: 3}
+  m_Name: Flashcards
+  m_EditorClassIdentifier: 
+  filename: Assets/Quizlet Cards/PeriodicTable.txt
+  reverse: 0
+  addCards: 0
+  setCards: 0
+  flashcards:
+  - frontText: H
+    backText: Hydrogen
+  - frontText: He
+    backText: Helium
+  - frontText: Li
+    backText: Lithium
+  - frontText: Be
+    backText: Beryllium
+  - frontText: B
+    backText: Boron
+  - frontText: C
+    backText: Carbon
+  - frontText: N
+    backText: Nitrogen
+  - frontText: O
+    backText: Oxygen
+  - frontText: F
+    backText: Fluorine
+  - frontText: Ne
+    backText: Neon
+  - frontText: Na
+    backText: Sodium
+  - frontText: Mg
+    backText: Magnesium
+  - frontText: Al
+    backText: Aluminum
+  - frontText: Si
+    backText: Silicon
+  - frontText: P
+    backText: Phosphorus
+  - frontText: S
+    backText: Sulfur
+  - frontText: Cl
+    backText: Chlorine
+  - frontText: Ar
+    backText: Argon
+  - frontText: K
+    backText: Potassium
+  - frontText: Ca
+    backText: Calcium
+  - frontText: Sc
+    backText: Scandium
+  - frontText: Ti
+    backText: Titanium
+  - frontText: V
+    backText: Vanadium
+  - frontText: Cr
+    backText: Chromium
+  - frontText: Mn
+    backText: Manganese
+  - frontText: Fe
+    backText: Iron
+  - frontText: Co
+    backText: Cobalt
+  - frontText: Ni
+    backText: Nickel
+  - frontText: Cu
+    backText: Copper
+  - frontText: Zn
+    backText: Zinc
+  - frontText: Ga
+    backText: Gallium
+  - frontText: Ge
+    backText: Germanium
+  - frontText: As
+    backText: Arsenic
+  - frontText: Se
+    backText: Selenium
+  - frontText: Br
+    backText: Bromine
+  - frontText: Kr
+    backText: Krypton
+  - frontText: Rb
+    backText: Rubidium
+  - frontText: Sr
+    backText: Strontium
+  - frontText: Y
+    backText: Yttrium
+  - frontText: Zr
+    backText: Zirconium
+  - frontText: Nb
+    backText: Niobium
+  - frontText: Mo
+    backText: Molybdenum
+  - frontText: Tc
+    backText: Technetium
+  - frontText: Ru
+    backText: Ruthenium
+  - frontText: Rh
+    backText: Rhodium
+  - frontText: Pd
+    backText: Palladium
+  - frontText: Ag
+    backText: Silver
+  - frontText: Cd
+    backText: Cadmium
+  - frontText: In
+    backText: Indium
+  - frontText: Sn
+    backText: Tin
+  - frontText: Sb
+    backText: Antimony
+  - frontText: Te
+    backText: Tellurium
+  - frontText: I
+    backText: Iodine
+  - frontText: Xe
+    backText: Xenon
+  - frontText: Cs
+    backText: Cesium
+  - frontText: Ba
+    backText: Barium
+  - frontText: La
+    backText: Lanthanum
+  - frontText: Ce
+    backText: Cerium
+  - frontText: Pr
+    backText: Praseodymium
+  - frontText: Nd
+    backText: Neodymium
+  - frontText: Pm
+    backText: Promethium
+  - frontText: Sm
+    backText: Samarium
+  - frontText: Eu
+    backText: Europium
+  - frontText: Gd
+    backText: Gadolinium
+  - frontText: Tb
+    backText: Terbium
+  - frontText: Dy
+    backText: Dysprosium
+  - frontText: Ho
+    backText: Holmium
+  - frontText: Er
+    backText: Erbium
+  - frontText: Tm
+    backText: Thulium
+  - frontText: Yb
+    backText: Ytterbium
+  - frontText: Lu
+    backText: Lutetium
+  - frontText: Hf
+    backText: Hafnium
+  - frontText: Ta
+    backText: Tantalum
+  - frontText: W
+    backText: Tungsten
+  - frontText: Re
+    backText: Rhenium
+  - frontText: Os
+    backText: Osmium
+  - frontText: Ir
+    backText: Iridium
+  - frontText: Pt
+    backText: Platinum
+  - frontText: Au
+    backText: Gold
+  - frontText: Hg
+    backText: Mercury
+  - frontText: Tl
+    backText: Thallium
+  - frontText: Pb
+    backText: Lead
+  - frontText: Bi
+    backText: Bismuth
+  - frontText: Po
+    backText: Polonium
+  - frontText: At
+    backText: Astatine
+  - frontText: Rn
+    backText: Radon
+  - frontText: Fr
+    backText: Francium
+  - frontText: Ra
+    backText: Radium
+  - frontText: Ac
+    backText: Actinium
+  - frontText: Th
+    backText: Thorium
+  - frontText: Pa
+    backText: Protactinium
+  - frontText: U
+    backText: Uranium

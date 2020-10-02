@@ -9,9 +9,42 @@ namespace FlashcardSystem
 {
 
     [CreateAssetMenu(menuName = "Flashcards", fileName = "Flashcards")]
-    public class FlashcardDeck : ScriptableObject
+    public class FlashcardDeck : ScriptableObject, ISerializationCallbackReceiver
     {
-        public List<Flashcard> flashcards;
+        public string filename;
+        public bool reverse;
+        public bool addCards;
+        public bool setCards;
+        public List<Flashcard> flashcards = new List<Flashcard>();
+
+        
+        public void OnBeforeSerialize()
+        {
+            if (addCards)
+            {
+                string contents = UnityUtilities.ReadFile(filename);
+                AddCards(contents);
+                addCards = false;
+            }
+
+            if (setCards)
+            {
+                flashcards = new List<Flashcard>();
+                string contents = UnityUtilities.ReadFile(filename);
+                AddCards(contents);
+                setCards = false;
+            }
+        }
+
+        public void OnAfterDeserialize()
+        {
+
+        }
+
+
+
+
+
 
         //public functions
 
@@ -47,6 +80,30 @@ namespace FlashcardSystem
 
             return result;
         }
+
+        public void AddCards(string lines)
+        {
+            string[] splitLines = lines.Split('\n');
+
+            for(int i = 0; i < splitLines.Length; i++)
+            {
+                string front = splitLines[i].Split('\t')[0];
+                string back = splitLines[i].Split('\t')[1];
+
+                if (reverse)
+                {
+                    string temp = front;
+                    front = back;
+                    back = temp;
+                }
+
+                Flashcard card = new Flashcard(front, back);
+                AddCard(card);
+            }
+        }
+
+
+
 
         public void SetCards(List<Flashcard> cards)
         {
@@ -158,5 +215,6 @@ namespace FlashcardSystem
 
             return result;
         }
+
     }
 }
