@@ -1,8 +1,10 @@
 ﻿using CombatSystem;
 using QuizSystem;
+using SOEventSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace DungeonSystem
@@ -10,6 +12,7 @@ namespace DungeonSystem
 
     public enum DungeonState
     {
+        AwaitingDungeon,
         SetPlayerPosition,
         WaitForPlayer,
         ActivateFloor,
@@ -37,9 +40,8 @@ namespace DungeonSystem
 
         private bool floorIsRunning = false;
 
-        public delegate void FloorState();
-        public event FloorState OnFloorStart;
-        public event FloorState OnFloorEnd;
+        public EventSO OnFloorStart;
+        public EventSO OnFloorEnd;
 
         private FloorProjection floorProjection;
         private QuizUI quizUi;
@@ -101,6 +103,9 @@ namespace DungeonSystem
         {
             switch (state)
             {
+                case DungeonState.AwaitingDungeon:
+                    AwaitingDungeonState();
+                    break;
                 case DungeonState.SetPlayerPosition:
                     PlayerPositionState();
                     break;
@@ -122,6 +127,16 @@ namespace DungeonSystem
             }
         }
 
+        private void AwaitingDungeonState()
+        {
+
+        }
+
+        public void StartDungeon()
+        {
+            state = DungeonState.SetPlayerPosition;
+        }
+
         private void PlayerPositionState()
         {
             player.MoveToPosition(GetFloorPosition());
@@ -140,6 +155,7 @@ namespace DungeonSystem
         {
             floors[currentFloor].LoadLevel();
             floorIsRunning = true;
+            OnFloorStart.CallEvent();
             state = DungeonState.WaitForFloor;
 
             floorProjection.gameObject.SetActive(true);
@@ -160,7 +176,7 @@ namespace DungeonSystem
         {
             if (!floorIsRunning)
             {
-                floorProjection.DeactivateProjection();
+                OnFloorEnd.CallEvent();
             }
         }
 

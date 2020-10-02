@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SOEventSystem;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,15 +13,20 @@ namespace QuizSystem
         public List<Question> questions = new List<Question>();
 
         public static QuizManager quiz;
+        //public EventSO OnQuestionAsked;
+        //public EventSO OnQuestionAnswered;
 
         public Question currentQuestion;
         public int currentIndex = 0;
 
         public delegate void QuestionAsked(Question question);
         public event QuestionAsked OnQuestionAsked;
+        public QuestionEventSO OnQuestionAskedSO;
+
 
         public delegate void QuestionAnswered(bool correct);
         public event QuestionAnswered OnQuestionAnswered;
+        public BoolEventSO OnQuestionAnsweredSO;
 
         private bool isAnswered = false;
 
@@ -68,7 +74,8 @@ namespace QuizSystem
 
             if (!isAnswered)
             {
-                OnQuestionAnswered?.Invoke(correct);
+                //OnQuestionAnswered?.Invoke(correct);
+                OnQuestionAnsweredSO.CallEvent(correct);
                 GetNextQuestion();
                 isAnswered = true;
             }
@@ -79,7 +86,8 @@ namespace QuizSystem
         public void AskQuestion()
         {
             Question question = GetCurrentQuestion();
-            OnQuestionAsked?.Invoke(question);
+            //OnQuestionAsked?.Invoke(question);
+            OnQuestionAskedSO.CallEvent(question);
             isAnswered = false;
             Debug.Log("Asked Question");
         }

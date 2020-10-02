@@ -18,14 +18,16 @@ namespace DungeonSystem
         public bool useHubPosition;
         public Animator anim;
 
+        private Rigidbody2D rb;
 
         private Vector3 movePosition;
         private bool isMoving = false;
-        public float speed = 3;
 
         // Start is called before the first frame update
         void Start()
         {
+            rb = transform.GetComponent<Rigidbody2D>();
+
             data = WorldState.GetPlayerData();
             SetupModel();
 
@@ -78,11 +80,12 @@ namespace DungeonSystem
 
         private void Move()
         {
-            //Vector3 direction = movePosition - transform.position;
+            Vector3 direction = movePosition - transform.position;
+            direction = direction.magnitude > 1 ? direction.normalized : direction;
             //transform.position = transform.position + direction.normalized * speed * Time.deltaTime;
 
-            transform.position = Vector3.Lerp(transform.position, movePosition, Time.deltaTime * movementSpeed);
-
+            //transform.position = Vector3.Lerp(transform.position, movePosition, Time.deltaTime * movementSpeed);
+            rb.velocity = direction * movementSpeed;
             
         }
 
