@@ -66,7 +66,8 @@ public class WorldState : MonoBehaviour
     public static CharacterData GetPlayerData() { return world.playerData; }
     public static void SetPlayerData(CharacterData newData) { world.playerData = newData; }
 
-    public static QuestionSheet GetQuestionSheet() { return world.dungeonData.GetQuestionSheet(world.dungeonDifficulty); }
+    public static void SetQuestionSheet(QuestionSheet newQuestions) { world.questions = newQuestions; }
+    public static QuestionSheet GetQuestionSheet() { return world.questions; }
 
     public static int GetCurrentFloorNumber() { return world.currentFloor; }
     public static void SetCurrentFloorNumber(int floor) { world.currentFloor = floor; }

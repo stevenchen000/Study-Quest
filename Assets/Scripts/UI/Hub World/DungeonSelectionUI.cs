@@ -1,10 +1,13 @@
 ﻿using DungeonSystem;
+using SOEventSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DungeonSelectionUI : MonoBehaviour
 {
+    public DungeonSelectionButton buttonPrefab;
+    public GameObject content;
     public List<DungeonData> dungeonsList = new List<DungeonData>();
 
     private void Awake()
@@ -15,12 +18,11 @@ public class DungeonSelectionUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        for(int i = 0; i < dungeonsList.Count; i++)
+        {
+            DungeonSelectionButton button = Instantiate(buttonPrefab);
+            button.SetDungeonData(dungeonsList[i]);
+            button.transform.SetParent(content.transform);
+        }
     }
 }

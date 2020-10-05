@@ -1,0 +1,746 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe722fac7aa8cd4a8f1a22f4df8de29, type: 3}
+  m_Name: Multiplication Typed
+  m_EditorClassIdentifier: 
+  sheetName: New Sheet
+  filename: Assets/Quizlet Cards/Multiplication1-12.txt
+  defaultQuestionType: 2
+  addQuestionsFromFile: 0
+  setQuestionsFromFile: 0
+  reverse: 0
+  questions:
+  - question: 1x1=
+    type: 2
+    answer: 1
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 1x2=
+    type: 2
+    answer: 2
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 1x3=
+    type: 2
+    answer: 3
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 1x4=
+    type: 2
+    answer: 4
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 1x5=
+    type: 2
+    answer: 5
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 1x6=
+    type: 2
+    answer: 6
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 1x7=
+    type: 2
+    answer: 7
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 1x8=
+    type: 2
+    answer: 8
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 1x9=
+    type: 2
+    answer: 9
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 1x10=
+    type: 2
+    answer: 10
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 1x11=
+    type: 2
+    answer: 11
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 1x12=
+    type: 2
+    answer: 12
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 2x1=
+    type: 2
+    answer: 2
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 2x2=
+    type: 2
+    answer: 4
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 2x3=
+    type: 2
+    answer: 6
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 2x4=
+    type: 2
+    answer: 8
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 2x5=
+    type: 2
+    answer: 10
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 2x6=
+    type: 2
+    answer: 12
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 2x7=
+    type: 2
+    answer: 14
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 2x8=
+    type: 2
+    answer: 16
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 2x9=
+    type: 2
+    answer: 18
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 2x10=
+    type: 2
+    answer: 20
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 2x11=
+    type: 2
+    answer: 22
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 2x12=
+    type: 2
+    answer: 24
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 3x1=
+    type: 2
+    answer: 3
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 3x2=
+    type: 2
+    answer: 6
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 3x3=
+    type: 2
+    answer: 9
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 3x4=
+    type: 2
+    answer: 12
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 3x5=
+    type: 2
+    answer: 15
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 3x6=
+    type: 2
+    answer: 18
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 3x7=
+    type: 2
+    answer: 21
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 3x8=
+    type: 2
+    answer: 24
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 3x9=
+    type: 2
+    answer: 27
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 3x10=
+    type: 2
+    answer: 30
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 3x11=
+    type: 2
+    answer: 33
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 3x12=
+    type: 2
+    answer: 36
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 4x1=
+    type: 2
+    answer: 4
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 4x2=
+    type: 2
+    answer: 8
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 4x3=
+    type: 2
+    answer: 12
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 4x4=
+    type: 2
+    answer: 16
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 4x5=
+    type: 2
+    answer: 20
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 4x6=
+    type: 2
+    answer: 24
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 4x7=
+    type: 2
+    answer: 28
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 4x8=
+    type: 2
+    answer: 32
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 4x9=
+    type: 2
+    answer: 36
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 4x10=
+    type: 2
+    answer: 40
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 4x11=
+    type: 2
+    answer: 44
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 4x12=
+    type: 2
+    answer: 48
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 5x1=
+    type: 2
+    answer: 5
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 5x2=
+    type: 2
+    answer: 10
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 5x3=
+    type: 2
+    answer: 15
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 5x4=
+    type: 2
+    answer: 20
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 5x5=
+    type: 2
+    answer: 25
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 5x6=
+    type: 2
+    answer: 30
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 5x7=
+    type: 2
+    answer: 35
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 5x8=
+    type: 2
+    answer: 40
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 5x9=
+    type: 2
+    answer: 45
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 5x10=
+    type: 2
+    answer: 50
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 5x11=
+    type: 2
+    answer: 55
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 5x12=
+    type: 2
+    answer: 60
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 6x1=
+    type: 2
+    answer: 6
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 6x2=
+    type: 2
+    answer: 12
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 6x3=
+    type: 2
+    answer: 18
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 6x4=
+    type: 2
+    answer: 24
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 6x5=
+    type: 2
+    answer: 30
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 6x6=
+    type: 2
+    answer: 36
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 6x7=
+    type: 2
+    answer: 42
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 6x8=
+    type: 2
+    answer: 48
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 6x9=
+    type: 2
+    answer: 54
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 6x10=
+    type: 2
+    answer: 60
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 6x11=
+    type: 2
+    answer: 66
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 6x12=
+    type: 2
+    answer: 72
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 7x1=
+    type: 2
+    answer: 7
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 7x2=
+    type: 2
+    answer: 14
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 7x3=
+    type: 2
+    answer: 21
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 7x4=
+    type: 2
+    answer: 28
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 7x5=
+    type: 2
+    answer: 35
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 7x6=
+    type: 2
+    answer: 42
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 7x7=
+    type: 2
+    answer: 49
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 7x8=
+    type: 2
+    answer: 56
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 7x9=
+    type: 2
+    answer: 63
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 7x10=
+    type: 2
+    answer: 70
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 7x11=
+    type: 2
+    answer: 77
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 7x12=
+    type: 2
+    answer: 84
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 8x1=
+    type: 2
+    answer: 8
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 8x2=
+    type: 2
+    answer: 16
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 8x3=
+    type: 2
+    answer: 24
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 8x4=
+    type: 2
+    answer: 32
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 8x5=
+    type: 2
+    answer: 40
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 8x6=
+    type: 2
+    answer: 48
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 8x6=
+    type: 2
+    answer: 48
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 8x7=
+    type: 2
+    answer: 56
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 8x8=
+    type: 2
+    answer: 64
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 8x9=
+    type: 2
+    answer: 72
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 8x10=
+    type: 2
+    answer: 80
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 8x11=
+    type: 2
+    answer: 88
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 8x12=
+    type: 2
+    answer: 96
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 9x1=
+    type: 2
+    answer: 9
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 9x2=
+    type: 2
+    answer: 18
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 9x3=
+    type: 2
+    answer: 27
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 9x4=
+    type: 2
+    answer: 36
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 9x5=
+    type: 2
+    answer: 45
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 9x6=
+    type: 2
+    answer: 54
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 9x7=
+    type: 2
+    answer: 63
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 9x8=
+    type: 2
+    answer: 72
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 9x9=
+    type: 2
+    answer: 81
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 9x10=
+    type: 2
+    answer: 90
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 9x11=
+    type: 2
+    answer: 99
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 9x12=
+    type: 2
+    answer: 108
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 10x1=
+    type: 2
+    answer: 10
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 10x2=
+    type: 2
+    answer: 20
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 10x3=
+    type: 2
+    answer: 30
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 10x4=
+    type: 2
+    answer: 40
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 10x5=
+    type: 2
+    answer: 50
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 10x6=
+    type: 2
+    answer: 60
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 10x7=
+    type: 2
+    answer: 70
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 10x8=
+    type: 2
+    answer: 80
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 10x9=
+    type: 2
+    answer: 90
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 10x10=
+    type: 2
+    answer: 100
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 10x11=
+    type: 2
+    answer: 110
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 10x12=
+    type: 2
+    answer: 120
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 11x1=
+    type: 2
+    answer: 11
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 11x2=
+    type: 2
+    answer: 22
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 11x3=
+    type: 2
+    answer: 33
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 11x4=
+    type: 2
+    answer: 44
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 11x5=
+    type: 2
+    answer: 55
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 11x6=
+    type: 2
+    answer: 66
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 11x7=
+    type: 2
+    answer: 77
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 11x8=
+    type: 2
+    answer: 88
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 11x9=
+    type: 2
+    answer: 99
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 11x10=
+    type: 2
+    answer: 110
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 11x11=
+    type: 2
+    answer: 121
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 11x12=
+    type: 2
+    answer: 132
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 12x1=
+    type: 2
+    answer: 12
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 12x2=
+    type: 2
+    answer: 24
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 12x3=
+    type: 2
+    answer: 36
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 12x4=
+    type: 2
+    answer: 48
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 12x5=
+    type: 2
+    answer: 60
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 12x6=
+    type: 2
+    answer: 72
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 12x7=
+    type: 2
+    answer: 84
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 12x8=
+    type: 2
+    answer: 96
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 12x9=
+    type: 2
+    answer: 108
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 12x10=
+    type: 2
+    answer: 120
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 12x11=
+    type: 2
+    answer: 132
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: 12x12=
+    type: 2
+    answer: 144
+    wrongChoices: []
+    includesAllOfTheAbove: 0

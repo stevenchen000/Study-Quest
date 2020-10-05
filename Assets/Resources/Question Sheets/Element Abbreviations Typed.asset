@@ -1,0 +1,481 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe722fac7aa8cd4a8f1a22f4df8de29, type: 3}
+  m_Name: Element Abbreviations Typed
+  m_EditorClassIdentifier: 
+  sheetName: New Sheet
+  filename: Assets/Quizlet Cards/PeriodicTable.txt
+  defaultQuestionType: 2
+  addQuestionsFromFile: 0
+  setQuestionsFromFile: 0
+  reverse: 1
+  questions:
+  - question: Hydrogen
+    type: 2
+    answer: H
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Helium
+    type: 2
+    answer: He
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Lithium
+    type: 2
+    answer: Li
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Beryllium
+    type: 2
+    answer: Be
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Boron
+    type: 2
+    answer: B
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Carbon
+    type: 2
+    answer: C
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Nitrogen
+    type: 2
+    answer: N
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Oxygen
+    type: 2
+    answer: O
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Fluorine
+    type: 2
+    answer: F
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Neon
+    type: 2
+    answer: Ne
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Sodium
+    type: 2
+    answer: Na
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Magnesium
+    type: 2
+    answer: Mg
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Aluminum
+    type: 2
+    answer: Al
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Silicon
+    type: 2
+    answer: Si
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Phosphorus
+    type: 2
+    answer: P
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Sulfur
+    type: 2
+    answer: S
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Chlorine
+    type: 2
+    answer: Cl
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Argon
+    type: 2
+    answer: Ar
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Potassium
+    type: 2
+    answer: K
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Calcium
+    type: 2
+    answer: Ca
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Scandium
+    type: 2
+    answer: Sc
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Titanium
+    type: 2
+    answer: Ti
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Vanadium
+    type: 2
+    answer: V
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Chromium
+    type: 2
+    answer: Cr
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Manganese
+    type: 2
+    answer: Mn
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Iron
+    type: 2
+    answer: Fe
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Cobalt
+    type: 2
+    answer: Co
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Nickel
+    type: 2
+    answer: Ni
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Copper
+    type: 2
+    answer: Cu
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Zinc
+    type: 2
+    answer: Zn
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Gallium
+    type: 2
+    answer: Ga
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Germanium
+    type: 2
+    answer: Ge
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Arsenic
+    type: 2
+    answer: As
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Selenium
+    type: 2
+    answer: Se
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Bromine
+    type: 2
+    answer: Br
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Krypton
+    type: 2
+    answer: Kr
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Rubidium
+    type: 2
+    answer: Rb
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Strontium
+    type: 2
+    answer: Sr
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Yttrium
+    type: 2
+    answer: Y
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Zirconium
+    type: 2
+    answer: Zr
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Niobium
+    type: 2
+    answer: Nb
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Molybdenum
+    type: 2
+    answer: Mo
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Technetium
+    type: 2
+    answer: Tc
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Ruthenium
+    type: 2
+    answer: Ru
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Rhodium
+    type: 2
+    answer: Rh
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Palladium
+    type: 2
+    answer: Pd
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Silver
+    type: 2
+    answer: Ag
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Cadmium
+    type: 2
+    answer: Cd
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Indium
+    type: 2
+    answer: In
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Tin
+    type: 2
+    answer: Sn
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Antimony
+    type: 2
+    answer: Sb
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Tellurium
+    type: 2
+    answer: Te
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Iodine
+    type: 2
+    answer: I
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Xenon
+    type: 2
+    answer: Xe
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Cesium
+    type: 2
+    answer: Cs
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Barium
+    type: 2
+    answer: Ba
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Lanthanum
+    type: 2
+    answer: La
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Cerium
+    type: 2
+    answer: Ce
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Praseodymium
+    type: 2
+    answer: Pr
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Neodymium
+    type: 2
+    answer: Nd
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Promethium
+    type: 2
+    answer: Pm
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Samarium
+    type: 2
+    answer: Sm
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Europium
+    type: 2
+    answer: Eu
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Gadolinium
+    type: 2
+    answer: Gd
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Terbium
+    type: 2
+    answer: Tb
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Dysprosium
+    type: 2
+    answer: Dy
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Holmium
+    type: 2
+    answer: Ho
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Erbium
+    type: 2
+    answer: Er
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Thulium
+    type: 2
+    answer: Tm
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Ytterbium
+    type: 2
+    answer: Yb
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Lutetium
+    type: 2
+    answer: Lu
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Hafnium
+    type: 2
+    answer: Hf
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Tantalum
+    type: 2
+    answer: Ta
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Tungsten
+    type: 2
+    answer: W
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Rhenium
+    type: 2
+    answer: Re
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Osmium
+    type: 2
+    answer: Os
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Iridium
+    type: 2
+    answer: Ir
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Platinum
+    type: 2
+    answer: Pt
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Gold
+    type: 2
+    answer: Au
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Mercury
+    type: 2
+    answer: Hg
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Thallium
+    type: 2
+    answer: Tl
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Lead
+    type: 2
+    answer: Pb
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Bismuth
+    type: 2
+    answer: Bi
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Polonium
+    type: 2
+    answer: Po
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Astatine
+    type: 2
+    answer: At
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Radon
+    type: 2
+    answer: Rn
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Francium
+    type: 2
+    answer: Fr
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Radium
+    type: 2
+    answer: Ra
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Actinium
+    type: 2
+    answer: Ac
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Thorium
+    type: 2
+    answer: Th
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Protactinium
+    type: 2
+    answer: Pa
+    wrongChoices: []
+    includesAllOfTheAbove: 0
+  - question: Uranium
+    type: 2
+    answer: U
+    wrongChoices: []
+    includesAllOfTheAbove: 0

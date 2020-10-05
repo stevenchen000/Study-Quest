@@ -7,6 +7,7 @@ public class HubNPC : MonoBehaviour, IInteractable
 {
 
     public UnityEvent interactEvent;
+    public UnityEvent endInteractionEvent;
     private IInteractor currentInteractor;
 
     // Start is called before the first frame update
@@ -29,7 +30,7 @@ public class HubNPC : MonoBehaviour, IInteractable
     public void Interact(IInteractor interactor)
     {
         interactor.LockInteractor();
-        currentInteractor = null;
+        currentInteractor = interactor;
         interactEvent?.Invoke();
     }
 
@@ -37,6 +38,7 @@ public class HubNPC : MonoBehaviour, IInteractable
     {
         currentInteractor.UnlockInteractor();
         currentInteractor = null;
+        endInteractionEvent?.Invoke();
     }
     
 }

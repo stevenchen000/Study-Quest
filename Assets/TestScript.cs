@@ -9,19 +9,15 @@ using UnityEngine.UI;
 public class TestScript : MonoBehaviour
 {
 
-    public Text text;
+    public InfinInt value;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            EventCaller caller = transform.GetComponent<EventCaller>();
-            caller.CallEvent();
-        }
+        
     }
 
     public void Test()
     {
-        Debug.Log("Testing");
+        
     }
 }

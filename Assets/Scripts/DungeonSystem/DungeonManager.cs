@@ -76,7 +76,7 @@ namespace DungeonSystem
             difficulty = WorldState.GetDungeonDifficulty();
             
 
-            QuizManager.quiz.SetNewQuestions(data.GetQuestionSheet(difficulty));
+            QuizManager.quiz.SetNewQuestions(WorldState.GetQuestionSheet());
 
             floors.AddRange(transform.GetComponentsInChildren<DungeonFloorPanel>());
             SetupFloors();
@@ -141,9 +141,17 @@ namespace DungeonSystem
             }
         }
 
+        /// <summary>
+        /// Sets the background music in the AudioManager to the one for the dungeon
+        /// </summary>
+        public void ChangeBackgroundMusic(){
+            AudioClip backgroundMusic = data.GetBackgroundMusic();
+            AudioManager.ChangeBackgroundMusic(backgroundMusic);
+        }
 
-
-
+        public AudioClip GetCombatMusic(){
+            return data.GetCombatMusic();
+        }
 
 
 

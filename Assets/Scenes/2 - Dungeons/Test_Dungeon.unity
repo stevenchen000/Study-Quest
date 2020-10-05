@@ -1322,7 +1322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1577465617}
   currentFloor: 0
-  data: {fileID: 11400000, guid: 1b56e4790c354b84488b5101c5400900, type: 2}
+  data: {fileID: 0}
   difficulty: 0
   playerOffset: {x: 0, y: 0.97, z: 0}
   startPanel: {fileID: 720057425}
@@ -1353,6 +1353,18 @@ MonoBehaviour:
       - m_Target: {fileID: 418017750}
         m_TargetAssemblyTypeName: DungeonSystem.DungeonManager, Assembly-CSharp
         m_MethodName: StartDungeon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 418017750}
+        m_TargetAssemblyTypeName: DungeonSystem.DungeonManager, Assembly-CSharp
+        m_MethodName: ChangeBackgroundMusic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2155,7 +2167,7 @@ MonoBehaviour:
   newFloor: 0
   enemyData: {fileID: 11400000, guid: b9c8dd07a414b594bb0d3746955de732, type: 2}
   playerData: {fileID: 11400000, guid: 64711c30dc68bf746a54f59e6596580f, type: 2}
-  dungeonData: {fileID: 11400000, guid: 1b56e4790c354b84488b5101c5400900, type: 2}
+  dungeonData: {fileID: 0}
   dungeonDifficulty: 0
   questions: {fileID: 11400000, guid: 6c3a80893becd4f42a418c88a4a59651, type: 2}
 --- !u!4 &888389872
@@ -27594,6 +27606,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2116977337}
   - component: {fileID: 2116977336}
+  - component: {fileID: 2116977338}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -27628,6 +27641,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2116977338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116977335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5351bcc5e4bbab249bc9d80746354924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1489134137123575524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27694,7 +27719,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: ceb5e78582a3efd4fb9a6b33f2d35618, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8391883494433437887, guid: bf3ef3c5efce18e4f81e7a4516ef21ef,
         type: 3}
       propertyPath: m_Name
@@ -27702,6 +27727,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf3ef3c5efce18e4f81e7a4516ef21ef, type: 3}
+--- !u!1 &1489134137123575525 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8391883494433437887, guid: bf3ef3c5efce18e4f81e7a4516ef21ef,
+    type: 3}
+  m_PrefabInstance: {fileID: 1489134137123575524}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1489134137123575526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489134137123575525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bc7ec007f9d3b74baed7a212bca7a6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundMusic: {fileID: 8300000, guid: ceb5e78582a3efd4fb9a6b33f2d35618, type: 3}
 --- !u!114 &2886325236119425612
 MonoBehaviour:
   m_ObjectHideFlags: 0

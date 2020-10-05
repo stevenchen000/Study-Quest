@@ -28,36 +28,26 @@ namespace DungeonSystem
     public class DungeonData : ScriptableObject
     {
         public string dungeonName;
+        public string levelName;
+        public AudioClip backgroundMusic;
+        public AudioClip combatMusic;
         public List<DungeonFloorChance> chances = new List<DungeonFloorChance>();
-        public QuestionSheet easyQuestions;
-        public QuestionSheet mediumQuestions;
-        public QuestionSheet hardQuestions;
 
-        public QuestionSheet GetQuestionSheet(DungeonDifficulty difficulty)
-        {
-            QuestionSheet result = easyQuestions;
-
-            switch (difficulty)
-            {
-                case DungeonDifficulty.Easy:
-                    result = easyQuestions;
-                    break;
-                case DungeonDifficulty.Medium:
-                    result = mediumQuestions;
-                    break;
-                case DungeonDifficulty.Hard:
-                    result = hardQuestions;
-                    break;
-            }
-
-            return result;
-        }
 
         public string GetDungeonName()
         {
             return dungeonName;
         }
 
+        public string GetLevelName(){ return levelName; }
+
+        public AudioClip GetBackgroundMusic(){
+            return backgroundMusic;
+        }
+
+        public AudioClip GetCombatMusic(){
+            return combatMusic;
+        }
 
         public DungeonFloorData GetRandomFloor()
         {
