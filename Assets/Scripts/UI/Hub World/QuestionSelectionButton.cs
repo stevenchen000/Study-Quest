@@ -18,12 +18,6 @@ public class QuestionSelectionButton : MonoBehaviour
         button.onClick.AddListener(LoadLevel);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SetupButton(QuestionSheet newSheet)
     {
         sheet = newSheet;
@@ -32,12 +26,14 @@ public class QuestionSelectionButton : MonoBehaviour
 
     private void SetQuestionSheet()
     {
-        WorldState.SetQuestionSheet(sheet);
+        //WorldState.SetQuestionSheet(sheet);
+        QuizManager.quiz.SetNewQuestions(sheet);
     }
 
     private void LoadLevel()
     {
         string level = WorldState.GetDungeonData().GetLevelName();
         UnityUtilities.LoadLevel(level);
+        
     }
 }
