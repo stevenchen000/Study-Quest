@@ -8,6 +8,8 @@ public class PlayerHubController : MonoBehaviour
     private Animator anim;
     public float speed = 5;
     private bool isLocked = false;
+    private bool movingToPosition = false;
+    private Vector3 moveToPosition;
 
     private void Awake()
     {
@@ -36,6 +38,13 @@ public class PlayerHubController : MonoBehaviour
         anim.SetFloat("Speed", rb.velocity.magnitude);
     }
 
+    private void OnMouseDown() {
+        MoveToPosition();
+    }
+
+    private void MoveToPosition(){
+        
+    }
 
     private void Move()
     {
