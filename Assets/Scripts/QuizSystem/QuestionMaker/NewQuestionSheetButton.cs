@@ -30,8 +30,8 @@ namespace QuizSystem
             Debug.Log($"New sheet created");
             QuestionSheet asset = ScriptableObject.CreateInstance<QuestionSheet>();
 
-            AssetDatabase.CreateAsset(asset, $"{assetPath}/{assetName}.{assetExtension}");
-            AssetDatabase.SaveAssets();
+            //AssetDatabase.CreateAsset(asset, $"{assetPath}/{assetName}.{assetExtension}");
+            //AssetDatabase.SaveAssets();
 
             CreateButton(asset);
         }

@@ -54,10 +54,12 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     /// <param name="song"></param>
     public static void ChangeBackgroundMusic(AudioClip song){
-        audio.source.clip = song;
-        audio.backgroundMusic = song;
-        audio.backgroundMusicCurrentTime = 0;
-        audio.source.Play();
+        if(audio.source.clip != song){
+            audio.source.clip = song;
+            audio.backgroundMusic = song;
+            audio.backgroundMusicCurrentTime = 0;
+            audio.source.Play();
+        }
     }
 
     /// <summary>

@@ -26,8 +26,8 @@ public class QuestionSelectionButton : MonoBehaviour
 
     private void SetQuestionSheet()
     {
-        //WorldState.SetQuestionSheet(sheet);
-        QuizManager.quiz.SetNewQuestions(sheet);
+        WorldState.SetQuestionSheet(sheet);
+        //QuizManager.quiz.SetNewQuestions(sheet);
     }
 
     private void LoadLevel()
