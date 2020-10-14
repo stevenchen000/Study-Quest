@@ -91,7 +91,12 @@ public class UnityUtilities
         return result.Trim();
     }
 
-    public Vector3 GetVectorBetween(Vector3 from, Vector3 to){
+    public static Vector3 GetVectorBetween(Vector3 from, Vector3 to){
+        return to - from;
+    }
+
+    public static Vector2 GetVectorBetween(Vector2 from, Vector2 to)
+    {
         return to - from;
     }
 }
