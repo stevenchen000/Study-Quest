@@ -1,4 +1,5 @@
-﻿using DungeonSystem;
+﻿using DialogueSystem;
+using DungeonSystem;
 using SOEventSystem;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,12 +9,20 @@ using UnityEngine.UI;
 
 public class TestScript : MonoBehaviour
 {
+    public DialogueTree tree;
+    public DialogueUI ui;
 
-    public InfinInt value;
-
-    private void Update()
+    private void Start()
     {
-        
+        ui = FindObjectOfType<DialogueUI>();
+    }
+
+    private void LateUpdate()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            ui.SetDialogue(tree);
+        }
     }
 
     public void Test()

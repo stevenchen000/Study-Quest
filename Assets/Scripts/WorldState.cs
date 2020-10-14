@@ -1,4 +1,5 @@
-﻿using DungeonSystem;
+﻿using DialogueSystem;
+using DungeonSystem;
 using QuizSystem;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,6 +27,8 @@ public class WorldState : MonoBehaviour
 
     public QuestionSheet questions;
 
+    private DialogueUI dialogueUI;
+
     private void Awake()
     {
         if(world == null)
@@ -40,7 +43,7 @@ public class WorldState : MonoBehaviour
 
     private void Start()
     {
-
+        dialogueUI = FindObjectOfType<DialogueUI>();
         DontDestroyOnLoad(this);
     }
 
@@ -78,4 +81,6 @@ public class WorldState : MonoBehaviour
     public static void SetDungeonData(DungeonData newDungeonData) { world.dungeonData = newDungeonData; }
     public static DungeonDifficulty GetDungeonDifficulty() { return world.dungeonDifficulty; }
     public static void SetDungeonDifficulty(DungeonDifficulty difficulty) { world.dungeonDifficulty = difficulty; }
+
+    public static void SetDialogue(DialogueTree dialogue) { world.dialogueUI.SetDialogue(dialogue); }
 }
