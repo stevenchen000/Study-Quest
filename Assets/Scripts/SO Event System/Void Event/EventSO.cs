@@ -8,6 +8,7 @@ namespace SOEventSystem
     [CreateAssetMenu(menuName = "Events/Void Event")]
     public class EventSO : ScriptableObject
     {
+        [TextArea(4,10)]
         public string description;
         public delegate void VoidEvent();
         private event VoidEvent _event;
@@ -25,6 +26,7 @@ namespace SOEventSystem
 
         public void CallEvent()
         {
+            Debug.Log($"Called event {name}");
             _event?.Invoke();
         }
     }

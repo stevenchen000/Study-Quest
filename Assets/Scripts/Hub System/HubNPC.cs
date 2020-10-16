@@ -37,8 +37,7 @@ public class HubNPC : MonoBehaviour, IInteractable
         currentInteractor = interactor;
         AddInteractEvent();
 
-        DialogueUI ui = FindObjectOfType<DialogueUI>();
-        ui.SetDialogue(dialogue);
+        WorldState.PlayDialogue(dialogue);
     }
 
     public void EndInteraction()

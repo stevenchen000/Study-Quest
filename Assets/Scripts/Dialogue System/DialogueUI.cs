@@ -27,6 +27,8 @@ namespace DialogueSystem{
         private float currentTextIndex = 0;
         public int textSpeed = 5;
 
+        public List<KeyCode> progressTextKeys = new List<KeyCode>();
+
         private DialogueState state;
         private void Awake()
         {
@@ -60,7 +62,7 @@ namespace DialogueSystem{
                 ChangeState(DialogueState.AwaitingInput);
             }
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) || ProgressTextKeyClicked())
             {
                 currentText = fullText;
                 ChangeState(DialogueState.AwaitingInput);
@@ -71,7 +73,7 @@ namespace DialogueSystem{
 
         private void AwaitInputState()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) || ProgressTextKeyClicked())
             {
                 InitializeNode();
                 if (currentNode != null)
@@ -140,6 +142,22 @@ namespace DialogueSystem{
                 onDialogueStartEvent.CallEvent();
                 ChangeState(DialogueState.WritingText);
             }
+        }
+
+        private bool ProgressTextKeyClicked()
+        {
+            bool result = false;
+
+            for(int i = 0; i < progressTextKeys.Count; i++)
+            {
+                if (Input.GetKeyDown(progressTextKeys[i]))
+                {
+                    result = true;
+                    break;
+                }
+            }
+
+            return result;
         }
     }
 }

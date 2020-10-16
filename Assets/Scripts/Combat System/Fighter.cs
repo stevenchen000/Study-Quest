@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,9 +16,12 @@ namespace CombatSystem
         public float attackTime = 2;
 
         public string attackAnim = "Attack";
+        public List<Skill> skills = new List<Skill>();
+        private Skill currentSkill;
 
         public bool isAttacking = false;
         private Animator anim;
+        private Vector3 defaultPosition;
 
         public CharacterData data;
         public bool isPlayer = false;
@@ -25,6 +29,7 @@ namespace CombatSystem
         private void Start()
         {
             SetupCharacter();
+            defaultPosition = transform.position;
         }
         
 
@@ -36,8 +41,8 @@ namespace CombatSystem
         {
             if (!isAttacking)
             {
+                SelectRandomSkill();
                 StartCoroutine(_Attack(target));
-                PlayAnimation("Attack");
             }
         }
 
@@ -45,11 +50,16 @@ namespace CombatSystem
         {
             isAttacking = true;
 
-            PlayAnimation(attackAnim);
+            SkillCastData castData = new SkillCastData(this, target);
+            currentSkill.StartSkill(castData);
 
-            yield return new WaitForSeconds(attackTime);
-            target.TakeDamage(1);
-            yield return new WaitForSeconds(attackTime);
+            while (currentSkill.IsRunning(castData))
+            {
+                yield return null;
+                currentSkill.RunSkill(castData);
+            }
+
+            transform.position = defaultPosition;
 
             isAttacking = false;
         }
@@ -97,6 +107,8 @@ namespace CombatSystem
             return currentHealth == 0;
         }
 
+        public bool IsAttacking() { return isAttacking; }
+
         private void SetupCharacter()
         {
             UnityUtilities.RemoveChildren(transform);
@@ -143,6 +155,14 @@ namespace CombatSystem
             {
                 this.currentHealth = maxHealth;
             }
+        }
+
+        private void SelectRandomSkill()
+        {
+            int numOfSkills = skills.Count;
+            int rand = UnityEngine.Random.Range(0, numOfSkills);
+
+            currentSkill = skills[rand];
         }
     }
 }

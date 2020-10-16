@@ -82,5 +82,5 @@ public class WorldState : MonoBehaviour
     public static DungeonDifficulty GetDungeonDifficulty() { return world.dungeonDifficulty; }
     public static void SetDungeonDifficulty(DungeonDifficulty difficulty) { world.dungeonDifficulty = difficulty; }
 
-    public static void SetDialogue(DialogueTree dialogue) { world.dialogueUI.SetDialogue(dialogue); }
+    public static void PlayDialogue(DialogueTree dialogue) { world.dialogueUI.SetDialogue(dialogue); }
 }

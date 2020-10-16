@@ -34,7 +34,7 @@ public class PlayerHubController : MonoBehaviour
     {
         if (!isLocked)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButton(0))
             {
                 Vector3 mousePosition = Input.mousePosition;
                 Vector2 clickPosition = cam.ScreenToWorldPoint(mousePosition);
@@ -63,13 +63,15 @@ public class PlayerHubController : MonoBehaviour
         anim.SetFloat("Speed", rb.velocity.magnitude);
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerStay2D(Collider2D collider)
     {
         IInteractable interaction = collider.transform.GetComponent<IInteractable>();
 
-        if(interaction == interactTarget)
+        if(autoInteract && interaction == interactTarget)
         {
             AutomaticallyInteract();
+            ResetInteraction();
+            autoMove = false;
         }
     }
 
@@ -93,13 +95,27 @@ public class PlayerHubController : MonoBehaviour
             interactTarget = targetTransform.GetComponent<IInteractable>();
             autoInteract = true;
         }
+        else
+        {
+            ResetInteraction();
+        }
     }
 
+    /// <summary>
+    /// Automatically interacts with the target
+    /// </summary>
     private void AutomaticallyInteract()
     {
-        autoInteract = false;
-        autoMove = false;
         interactTarget.Interact(playerInteractor);
+    }
+
+    /// <summary>
+    /// Resets the interaction
+    /// </summary>
+    private void ResetInteraction()
+    {
+        interactTarget = null;
+        autoInteract = false;
     }
 
     private void MoveToPosition(Vector2 position)

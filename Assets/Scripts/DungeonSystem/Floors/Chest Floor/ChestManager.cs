@@ -8,8 +8,6 @@ namespace DungeonSystem
 {
     public class ChestManager : FloorManager
     {
-        public EventSO OnFloorFinished;
-
         public LockPanel locks;
         public float waitTime = 2f;
         private float waitTimer = 0;
@@ -17,12 +15,14 @@ namespace DungeonSystem
         private Animator anim;
 
         private QuizManager quiz;
+        private FloorProjectionManager projection;
 
         // Start is called before the first frame update
         void Start()
         {
             anim = transform.GetComponentInChildren<Animator>();
             quiz = QuizManager.quiz;
+            projection = FindObjectOfType<FloorProjectionManager>();
         }
         
 
@@ -42,7 +42,7 @@ namespace DungeonSystem
 
                     if (locks.IsFinished())
                     {
-                        OnFloorFinished.CallEvent();
+                        projection.EndDungeonEvent();
                     }
                     else
                     {

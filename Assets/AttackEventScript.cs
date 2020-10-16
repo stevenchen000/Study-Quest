@@ -8,6 +8,6 @@ public class AttackEventScript : MonoBehaviour
     public void CheckEventState()
     {
         CombatManager combat = FindObjectOfType<CombatManager>();
-        combat.CheckBattleState();
+        //combat.CheckBattleState();
     }
 }

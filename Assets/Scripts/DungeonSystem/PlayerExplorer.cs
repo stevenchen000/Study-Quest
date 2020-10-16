@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
 using CombatSystem;
+using SOEventSystem;
 
 namespace DungeonSystem
 {
@@ -13,6 +14,9 @@ namespace DungeonSystem
         public float movementSpeed = 5;
         public CharacterData data;
         public Animator anim;
+
+        [SerializeField]
+        private EventSO OnPlayerReachedPosition;
 
         private Rigidbody2D rb;
 
@@ -44,6 +48,7 @@ namespace DungeonSystem
                 else
                 {
                     ChangeMovementState(false);
+                    OnPlayerReachedPosition?.CallEvent();
                     rb.velocity = new Vector3();
                 }
             }

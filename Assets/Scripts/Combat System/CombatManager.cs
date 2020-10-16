@@ -13,8 +13,10 @@ namespace CombatSystem
     {
         TransitionIn,
         SelectAction,
+        AskQuestion,
         AnswerQuestion,
         CharacterAttack,
+        AwaitAttack,
         BattleOver,
         TransitionOut
     }
@@ -32,9 +34,8 @@ namespace CombatSystem
         public static CombatManager combat;
         public QuizUI quizUi;
 
-        public EventSO OnFloorEnd;
+        
         public StateEnum currentState;
-        public StateEnum newState;
         public float currStateDuration = 0;
 
         public Fighter player;
@@ -48,6 +49,7 @@ namespace CombatSystem
         public bool answeredCorrectly = false;
 
         private QuizManager quiz;
+        private FloorProjectionManager projection;
 
         // Start is called before the first frame update
         void Awake()
@@ -65,23 +67,13 @@ namespace CombatSystem
 
         private void Start()
         {
-            
+            projection = FindObjectOfType<FloorProjectionManager>();
         }
 
         // Update is called once per frame
         void Update()
         {
             RunState();
-
-            if(currentState == newState)
-            {
-                currStateDuration += Time.deltaTime;
-            }
-            else
-            {
-                currentState = newState;
-                currStateDuration = 0;
-            }
         }
 
 
@@ -109,11 +101,17 @@ namespace CombatSystem
                 case StateEnum.SelectAction:
                     _SelectAction();
                     break;
+                case StateEnum.AskQuestion:
+                    _AskQuestion();
+                    break;
                 case StateEnum.AnswerQuestion:
                     _AnswerQuestion();
                     break;
                 case StateEnum.CharacterAttack:
                     _CharacterAttack();
+                    break;
+                case StateEnum.AwaitAttack:
+                    _AwaitAttack();
                     break;
                 case StateEnum.BattleOver:
                     _BattleOver();
@@ -122,6 +120,7 @@ namespace CombatSystem
                     _TransitionOut();
                     break;
             }
+            currStateDuration += Time.deltaTime;
         }
 
         private void _TransitionIn()
@@ -131,37 +130,28 @@ namespace CombatSystem
 
         private void _SelectAction()
         {
-            if (currStateDuration == 0)
-            {
-                float rand = UnityEngine.Random.Range(0,1);
+            float rand = UnityEngine.Random.Range(0,1);
 
-                if(rand < enemyAttackChance)
-                {
-                    currentAction = CharacterAction.Ability;
-                }
-                else
-                {
-                    currentAction = CharacterAction.Attack;
-                }
+            if(rand < enemyAttackChance)
+            {
+                currentAction = CharacterAction.Ability;
             }
             else
             {
-                //await action
+                currentAction = CharacterAction.Attack;
             }
 
-            if(currentAction != CharacterAction.None)
-            {
-                ChangeState(StateEnum.AnswerQuestion);
-            }
+            ChangeState(StateEnum.AskQuestion);
+        }
+
+        private void _AskQuestion()
+        {
+            quiz.AskQuestion();
+            ChangeState(StateEnum.AnswerQuestion);
         }
 
         private void _AnswerQuestion()
         {
-            if(currStateDuration == 0)
-            {
-                quiz.AskQuestion();
-            }
-
             if (hasAnswered)
             {
                 ChangeState(StateEnum.CharacterAttack);
@@ -170,54 +160,56 @@ namespace CombatSystem
 
         private void _CharacterAttack()
         {
-            if (currStateDuration == 0)
+            if (answeredCorrectly)
             {
-                if (answeredCorrectly)
+                //player attack
+                switch (currentAction)
                 {
-                    //player attack
-                    switch (currentAction)
-                    {
-                        case CharacterAction.Attack:
-                            enemy.TakeDamage(1);
-                            player.PlayAnimation("Attack");
-                            Debug.Log("Player attacked");
-                            break;
-                        case CharacterAction.Ability:
-                            enemy.TakeDamage(2);
-                            player.PlayAnimation("Attack");
-                            Debug.Log("Player counterattacked");
-                            break;
-                        case CharacterAction.Flee:
-                            break;
-                        case CharacterAction.None:
-                            break;
-                    }
+                    case CharacterAction.Attack:
+                        player.Attack(enemy);
+                        Debug.Log("Player attacked");
+                        break;
+                    case CharacterAction.Ability:
+                        player.Attack(enemy);
+                        Debug.Log("Player counterattacked");
+                        break;
+                    case CharacterAction.Flee:
+                        break;
+                    case CharacterAction.None:
+                        break;
                 }
-                else
+            }
+            else
+            {
+                //enemy attack
+                switch (currentAction)
                 {
-                    //enemy attack
-                    switch (currentAction)
-                    {
-                        case CharacterAction.Ability:
-                            player.TakeDamage(2);
-                            enemy.PlayAnimation("Attack");
-                            Debug.Log("Enemy used a strong attack");
-                            break;
-                        default:
-                            player.TakeDamage(1);
-                            enemy.PlayAnimation("Attack");
-                            Debug.Log("Enemy attacked");
-                            break;
-                    }
+                    case CharacterAction.Ability:
+                        enemy.Attack(player);
+                        Debug.Log("Enemy used a strong attack");
+                        break;
+                    default:
+                        enemy.Attack(player);
+                        Debug.Log("Enemy attacked");
+                        break;
                 }
-                
+            }
+
+            ChangeState(StateEnum.AwaitAttack);
+        }
+
+        private void _AwaitAttack()
+        {
+            if (!enemy.isAttacking && !player.isAttacking)
+            {
+                CheckBattleState();
             }
         }
 
         /// <summary>
         /// Called at end of attack animation
         /// </summary>
-        public void CheckBattleState()
+        private void CheckBattleState()
         {
             hasAnswered = false;
             answeredCorrectly = false;
@@ -238,20 +230,18 @@ namespace CombatSystem
 
         private void _BattleOver()
         {
-            if (currStateDuration == 0)
+            if (player.IsDead())
             {
-                if (player.IsDead())
-                {
-                    Debug.Log("Game over. Press Enter to return");
-                }
-                else
-                {
-                    Debug.Log("You win!");
-                }
-
-                SavePlayerHealth();
-                StartCoroutine(_BattleOverTimer());
+                Debug.Log("Game over. Press Enter to return");
             }
+            else
+            {
+                Debug.Log("You win!");
+            }
+
+            SavePlayerHealth();
+            StartCoroutine(_BattleOverTimer());
+            ChangeState(StateEnum.TransitionOut);
         }
 
         private IEnumerator _BattleOverTimer()
@@ -259,7 +249,7 @@ namespace CombatSystem
             WaitForSeconds timer = new WaitForSeconds(2);
 
             yield return timer;
-            OnFloorEnd.CallEvent();
+            projection.EndDungeonEvent();
             ChangeState(StateEnum.TransitionOut);
         }
 
@@ -268,9 +258,43 @@ namespace CombatSystem
             
         }
 
-        private void ChangeState(StateEnum state)
+        private void ChangeState(StateEnum newState)
         {
-            newState = state;
+            switch (currentState)
+            {
+                case StateEnum.TransitionIn:
+                    break;
+                case StateEnum.SelectAction:
+                    break;
+                case StateEnum.AnswerQuestion:
+                    break;
+                case StateEnum.CharacterAttack:
+                    hasAnswered = false;
+                    answeredCorrectly = false;
+                    break;
+                case StateEnum.BattleOver:
+                    break;
+                case StateEnum.TransitionOut:
+                    break;
+            }
+
+            switch (newState)
+            {
+                case StateEnum.TransitionIn:
+                    break;
+                case StateEnum.SelectAction:
+                    break;
+                case StateEnum.AnswerQuestion:
+                    break;
+                case StateEnum.CharacterAttack:
+                    break;
+                case StateEnum.BattleOver:
+                    break;
+                case StateEnum.TransitionOut:
+                    break;
+            }
+            currentState = newState;
+            currStateDuration = 0;
         }
 
 
