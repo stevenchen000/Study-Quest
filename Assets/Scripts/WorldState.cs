@@ -4,6 +4,7 @@ using QuizSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class WorldState : MonoBehaviour
@@ -25,9 +26,11 @@ public class WorldState : MonoBehaviour
     public DungeonData dungeonData;
     public DungeonDifficulty dungeonDifficulty;
 
+    public QuizManager quiz;
     public QuestionSheet questions;
 
     private DialogueUI dialogueUI;
+    private LoadScreenPanel load;
 
     private void Awake()
     {
@@ -45,11 +48,27 @@ public class WorldState : MonoBehaviour
     {
         dialogueUI = FindObjectOfType<DialogueUI>();
         DontDestroyOnLoad(this);
+        FindObjectsInScene();
+        SceneManager.activeSceneChanged += FindObjectsInSceneEvent;
     }
 
     private void Update()
     {
         
+    }
+
+    private void FindObjectsInSceneEvent(Scene scene1, Scene scene2)
+    {
+        if(dialogueUI == null) dialogueUI = FindObjectOfType<DialogueUI>();
+        if(quiz == null) quiz = FindObjectOfType<QuizManager>();
+        if (load == null) load = FindObjectOfType<LoadScreenPanel>();
+    }
+    
+    private void FindObjectsInScene()
+    {
+        if(dialogueUI == null) dialogueUI = FindObjectOfType<DialogueUI>();
+        if(quiz == null) quiz = FindObjectOfType<QuizManager>();
+        if (load == null) load = FindObjectOfType<LoadScreenPanel>();
     }
     
 
@@ -83,4 +102,6 @@ public class WorldState : MonoBehaviour
     public static void SetDungeonDifficulty(DungeonDifficulty difficulty) { world.dungeonDifficulty = difficulty; }
 
     public static void PlayDialogue(DialogueTree dialogue) { world.dialogueUI.SetDialogue(dialogue); }
+
+    public static void LoadLevel(string levelName) { world.load.StartFadeOut(levelName); }
 }

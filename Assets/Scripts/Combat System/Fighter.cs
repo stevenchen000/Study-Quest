@@ -89,11 +89,18 @@ namespace CombatSystem
         {
             currentHealth -= damage;
             currentHealth = Mathf.Max(currentHealth, 0);
+            anim.Play("Stagger", 1);
+            
+        }
 
-            if(currentHealth == 0)
+        public bool CheckIfDead()
+        {
+            if (currentHealth == 0)
             {
                 SetAnimationBool("isDead", true);
             }
+
+            return currentHealth == 0;
         }
 
         public void HealHealth(int healing)

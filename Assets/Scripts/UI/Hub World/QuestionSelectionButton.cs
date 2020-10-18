@@ -33,7 +33,7 @@ public class QuestionSelectionButton : MonoBehaviour
     private void LoadLevel()
     {
         string level = WorldState.GetDungeonData().GetLevelName();
-        UnityUtilities.LoadLevel(level);
+        WorldState.LoadLevel(level);
         
     }
 }

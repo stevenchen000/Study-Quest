@@ -6,6 +6,6 @@ public class LevelLoader : MonoBehaviour
 {
     // Start is called before the first frame update
     public void LoadLevel(string level){
-        UnityUtilities.LoadLevel(level);
+        WorldState.LoadLevel(level);
     }
 }

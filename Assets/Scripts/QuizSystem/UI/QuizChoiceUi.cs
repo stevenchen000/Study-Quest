@@ -25,6 +25,7 @@ namespace QuizSystem
         private void Start()
         {
             ui = transform.GetComponentInParent<QuizUI>();
+            ChangeButtonColor(defaultColor);
         }
 
         private void Update()
@@ -86,6 +87,7 @@ namespace QuizSystem
             block.highlightedColor = color;
             block.pressedColor = color;
             block.selectedColor = color;
+            block.disabledColor = color;
             button.colors = block;
         }
     }

@@ -13,11 +13,22 @@ public class HubNPC : MonoBehaviour, IInteractable
     private IInteractor currentInteractor;
     public DialogueTree dialogue;
     public EventSO onDialogueEndEvent;
+    [SerializeField]
+    private bool canInteract;
+    [SerializeField]
+    private GameObject speechBubble;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (canInteract)
+        {
+            ShowSpeechBubble();
+        }
+        else
+        {
+            HideSpeechBubble();
+        }
     }
 
     // Update is called once per frame
@@ -28,25 +39,49 @@ public class HubNPC : MonoBehaviour, IInteractable
 
     public void LoadScene(string sceneName)
     {
-        UnityUtilities.LoadLevel(sceneName);
+        WorldState.LoadLevel(sceneName);
     }
 
     public void Interact(IInteractor interactor)
     {
-        interactor.LockInteractor();
-        currentInteractor = interactor;
-        AddInteractEvent();
+        if (canInteract)
+        {
+            interactor.LockInteractor();
+            currentInteractor = interactor;
+            HideSpeechBubble();
+            AddInteractEvent();
 
-        WorldState.PlayDialogue(dialogue);
+            WorldState.PlayDialogue(dialogue);
+        }
     }
 
     public void EndInteraction()
     {
         currentInteractor.UnlockInteractor();
         currentInteractor = null;
+        ShowSpeechBubble();
         endInteractionEvent?.Invoke();
     }
     
+    public void ShowSpeechBubble()
+    {
+        if (speechBubble != null)
+        {
+            speechBubble.SetActive(true);
+        }
+    }
+
+    public void HideSpeechBubble()
+    {
+        if (speechBubble != null)
+        {
+            speechBubble.SetActive(false);
+        }
+    }
+
+
+
+
 
     private void AddInteractEvent()
     {

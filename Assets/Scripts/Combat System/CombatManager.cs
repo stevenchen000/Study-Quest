@@ -214,6 +214,9 @@ namespace CombatSystem
             hasAnswered = false;
             answeredCorrectly = false;
 
+            enemy.CheckIfDead();
+            player.CheckIfDead();
+
             if (!player.isAttacking && !enemy.isAttacking)
             {
                 if (player.IsDead() || enemy.IsDead())

@@ -25,8 +25,8 @@ namespace DungeonSystem
         {
             if (IsLastFloor())
             {
-                string hubWorld = WorldState.GetHubName();
-                UnityUtilities.LoadLevel(hubWorld);
+                string hubName = WorldState.GetHubName();
+                WorldState.LoadLevel(hubName);
             }
             else
             {

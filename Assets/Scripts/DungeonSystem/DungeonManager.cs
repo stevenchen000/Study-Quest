@@ -249,15 +249,16 @@ namespace DungeonSystem
         {
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))
             {
-                string loadScreen = WorldState.GetHubName();
-                UnityUtilities.LoadLevel(loadScreen);
+                string hubName = WorldState.GetHubName();
+                WorldState.LoadLevel(hubName);
             }
         }
 
         private void GameOverState()
         {
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0)){
-                UnityUtilities.LoadLevel(WorldState.GetHubName());
+                string hubName = WorldState.GetHubName();
+                WorldState.LoadLevel(hubName);
             }
         }
         #endregion

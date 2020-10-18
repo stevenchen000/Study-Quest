@@ -89,7 +89,7 @@ public class Skill : ScriptableObject
         }
 
         float directionScale = targetTrans.localScale.x > 0 ? 1 : -1;
-        Vector3 correctedOffset = new Vector3(-offset.x * directionScale, 
+        Vector3 correctedOffset = new Vector3(offset.x * directionScale, 
                                               offset.y, 
                                               0);
         finalPosition = targetTrans.position + correctedOffset;

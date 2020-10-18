@@ -193,7 +193,7 @@ PrefabInstance:
     - target: {fileID: 6165034121839949310, guid: a47f6a27fa5e8b94f96014ada66a24e5,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 3.5
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 6165034121839949310, guid: a47f6a27fa5e8b94f96014ada66a24e5,
         type: 3}
@@ -218,15 +218,14 @@ PrefabInstance:
     - target: {fileID: 6187703173179213499, guid: a47f6a27fa5e8b94f96014ada66a24e5,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6187703173179213499, guid: a47f6a27fa5e8b94f96014ada66a24e5,
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6165034121839948801, guid: a47f6a27fa5e8b94f96014ada66a24e5, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a47f6a27fa5e8b94f96014ada66a24e5, type: 3}
 --- !u!1 &33029674
 GameObject:
@@ -261,7 +260,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quizUi: {fileID: 1969238038}
   currentState: 0
-  newState: 0
   currStateDuration: 0
   player: {fileID: 1207421955}
   enemy: {fileID: 1198155291}
@@ -1269,7 +1267,7 @@ PrefabInstance:
     - target: {fileID: 2438647840415650933, guid: ed0323100f5440f4ea42d36f5617f3c9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.33
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5396642968412270622, guid: ed0323100f5440f4ea42d36f5617f3c9,
         type: 3}

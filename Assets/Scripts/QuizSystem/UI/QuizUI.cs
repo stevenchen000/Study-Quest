@@ -28,23 +28,18 @@ namespace QuizSystem
         public GameObject inputPanel;
         public TMP_InputField inputField;
 
-        private QuizManager quiz;
-        private CombatManager combat;
-
-        private QuizUIState state;
-        private bool waitFirstFrame = false;
+        private QuizUIState state = QuizUIState.Deactivated;
+        private CanvasGroup cgroup;
 
         public void Start()
         {
-            quiz = QuizManager.quiz;
-            ui = transform.GetComponentInChildren<QuizTextUI>();
-            choices.AddRange(transform.GetComponentsInChildren<QuizChoiceUi>());
-            combat = FindObjectOfType<CombatManager>();
+            cgroup = GetComponent<CanvasGroup>();
+            ChangeState(QuizUIState.Deactivated);
         }
 
         private void Update()
         {
-            
+            RunState();
         }
 
         private void OnDestroy()
@@ -59,11 +54,13 @@ namespace QuizSystem
             switch (state)
             {
                 case QuizUIState.AwaitingAnswer:
-
+                    AwaitingAnswerState();
                     break;
                 case QuizUIState.DisplayingCorrectAnswer:
+                    DisplayCorrectAnswerState();
                     break;
                 case QuizUIState.Deactivated:
+                    DeactivatedState();
                     break;
             }
         }
@@ -80,8 +77,39 @@ namespace QuizSystem
 
         private void DeactivatedState()
         {
-
+            cgroup.alpha -= Time.deltaTime;
         }
+
+
+        private void ChangeState(QuizUIState newState)
+        {
+            switch (state)
+            {
+                case QuizUIState.AwaitingAnswer:
+                    break;
+                case QuizUIState.DisplayingCorrectAnswer:
+                    break;
+                case QuizUIState.Deactivated:
+                    break;
+            }
+            switch (newState)
+            {
+                case QuizUIState.AwaitingAnswer:
+                    cgroup.alpha = 1;
+                    cgroup.interactable = true;
+                    cgroup.blocksRaycasts = true;
+                    break;
+                case QuizUIState.DisplayingCorrectAnswer:
+                    cgroup.interactable = false;
+                    break;
+                case QuizUIState.Deactivated:
+                    cgroup.interactable = false;
+                    cgroup.blocksRaycasts = false;
+                    break;
+            }
+            state = newState;
+        }
+
 
         #endregion
 
@@ -90,7 +118,7 @@ namespace QuizSystem
         public void ActivateUI(Question question)
         {
             currentQuestion = question;
-            gameObject.SetActive(true);
+            ChangeState(QuizUIState.AwaitingAnswer);
             SetupTextUI();
             HideUIs();
             switch (currentQuestion.type)
@@ -109,10 +137,13 @@ namespace QuizSystem
 
         public void AnswerQuestion(bool correct)
         {
-            combat.QuestionAnswered(correct);
+            ChangeState(QuizUIState.DisplayingCorrectAnswer);
         }
 
-
+        public void DeactivateUI()
+        {
+            ChangeState(QuizUIState.Deactivated);
+        }
 
 
 
@@ -144,5 +175,6 @@ namespace QuizSystem
             choicesPanel.SetActive(false);
             inputPanel.SetActive(false);
         }
+
     }
 }

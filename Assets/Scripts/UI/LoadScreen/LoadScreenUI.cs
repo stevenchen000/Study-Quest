@@ -62,7 +62,7 @@ namespace LoadScreen
         public void LoadLevel()
         {
             string levelName = WorldState.GetDungeonName();
-            UnityUtilities.LoadLevel(levelName);
+            WorldState.LoadLevel(levelName);
         }
     }
 }

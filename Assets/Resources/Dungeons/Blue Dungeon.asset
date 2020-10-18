@@ -18,6 +18,6 @@ MonoBehaviour:
   combatMusic: {fileID: 8300000, guid: c7bd3f612533f8d44bcf1fbec5300b13, type: 3}
   chances:
   - data: {fileID: 11400000, guid: b867c0f6f4a1fe94ebc3e3cd42438194, type: 2}
-    chance: 0.22
+    chance: 0
   - data: {fileID: 11400000, guid: 251c38eba0422484baf0a44f2e4d63f1, type: 2}
     chance: 1
