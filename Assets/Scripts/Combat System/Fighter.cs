@@ -37,11 +37,11 @@ namespace CombatSystem
         
 
 
-        public void Attack(Fighter target)
+        public void Attack(Fighter target, int skillNumber = 0)
         {
             if (!isAttacking)
             {
-                SelectRandomSkill();
+                currentSkill = GetSkill(skillNumber);
                 StartCoroutine(_Attack(target));
             }
         }
@@ -89,7 +89,7 @@ namespace CombatSystem
         {
             currentHealth -= damage;
             currentHealth = Mathf.Max(currentHealth, 0);
-            anim.Play("Stagger", 1);
+            anim.Play("Stagger");
             
         }
 
@@ -170,6 +170,11 @@ namespace CombatSystem
             int rand = UnityEngine.Random.Range(0, numOfSkills);
 
             currentSkill = skills[rand];
+        }
+
+        private Skill GetSkill(int index)
+        {
+            return skills[index];
         }
     }
 }

@@ -15,13 +15,14 @@ namespace StateSystem
         // Start is called before the first frame update
         void Start()
         {
-
+            ChangeState(defaultState);
         }
 
         // Update is called once per frame
         void Update()
         {
-
+            RunState();
+            CheckTransitions();
         }
 
         private void CheckTransitions()

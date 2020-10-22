@@ -10,8 +10,10 @@ public class PlayerHubController : MonoBehaviour
     private Animator anim;
     public float speed = 5;
     private bool isLocked = false;
+
     private bool autoMove = false;
     private Vector2 autoMovePosition;
+    private bool clicked;
     public float autoStopDistance = 0.2f;
     public int backgroundLayerMask = 10;
     private Camera cam;
@@ -34,7 +36,16 @@ public class PlayerHubController : MonoBehaviour
     {
         if (!isLocked)
         {
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(0) && Time.timeScale != 0)
+            {
+                clicked = true;
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                clicked = false;
+            }
+
+            if (clicked && Input.GetMouseButton(0))
             {
                 Vector3 mousePosition = Input.mousePosition;
                 Vector2 clickPosition = cam.ScreenToWorldPoint(mousePosition);
@@ -53,6 +64,10 @@ public class PlayerHubController : MonoBehaviour
             else if (autoMove)
             {
                 MoveToPosition(autoMovePosition);
+            }
+            else
+            {
+                DampenMovement();
             }
         }
         else
@@ -157,7 +172,14 @@ public class PlayerHubController : MonoBehaviour
 
     private void DampenMovement()
     {
-        rb.velocity /= 2;
+        if (rb.velocity.magnitude > 0.1f)
+        {
+            rb.velocity /= 2;
+        }
+        else
+        {
+            rb.velocity = new Vector3();
+        }
     }
 
     private Vector2 GetInputVector()

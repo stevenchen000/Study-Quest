@@ -71,7 +71,7 @@ public class SpriteOrderBasedOnY : MonoBehaviour
         while(index < renderers.Count)
         {
             SpriteRenderer rend = renderers[index].renderer;
-            if(rend == null || rends.Contains(rend))
+            if(rend == null || !rends.Contains(rend))
             {
                 renderers.RemoveAt(index);
                 continue;

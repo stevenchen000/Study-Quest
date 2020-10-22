@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationName: Multi-Jab
   crossfade: 0.2
-  potency: 2
+  potency: 1
   attackHitTime: 0.3
   offsetFromTarget: 1
   offset: {x: 4, y: 0, z: 0}

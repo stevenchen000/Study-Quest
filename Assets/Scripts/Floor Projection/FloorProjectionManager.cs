@@ -1,4 +1,5 @@
-﻿using DungeonSystem;
+﻿using DG.Tweening;
+using DungeonSystem;
 using SOEventSystem;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +8,14 @@ using UnityEngine;
 public class FloorProjectionManager : MonoBehaviour
 {
     private Animator anim;
+
+    [SerializeField]
+    [Space(20)]
+    private RectTransform projTransform;
+    [SerializeField]
+    private Ease ease;
+    [SerializeField]
+    private float animTime = 1.5f;
 
     [Space(20)]
     [SerializeField]
@@ -21,6 +30,7 @@ public class FloorProjectionManager : MonoBehaviour
     [Space(20)]
     [SerializeField]
     private Camera projCam;
+
 
     private void Start()
     {
@@ -41,8 +51,8 @@ public class FloorProjectionManager : MonoBehaviour
     /// </summary>
     public void ActivateProjection()
     {
-        onActivateFloor.CallEvent();
-        anim.SetBool("isActive", true);
+        TweenIn();
+        //anim.SetBool("isActive", true);
     }
 
 
@@ -52,8 +62,9 @@ public class FloorProjectionManager : MonoBehaviour
     /// </summary>
     public void EndDungeonEvent()
     {
-        onFloorEnd.CallEvent();
-        anim.SetBool("isActive", false);
+        TweenOut();
+        //onFloorEnd.CallEvent();
+        //anim.SetBool("isActive", false);
     }
 
     public Vector3 GetCameraOffset()
@@ -62,4 +73,22 @@ public class FloorProjectionManager : MonoBehaviour
         result = new Vector3(result.x, result.y, 0);
         return result;
     }
+
+
+    private void TweenIn()
+    {
+        onActivateFloor?.CallEvent();
+        var tweener = projTransform.DOScale(new Vector3(1, 1, 1), animTime);
+        tweener.OnComplete(() => onFloorStart.CallEvent());
+        tweener.SetEase(ease);
+    }
+
+    private void TweenOut()
+    {
+        onFloorEnd?.CallEvent();
+        var tweener = projTransform.DOScale(new Vector3(0, 0, 0), animTime);
+        tweener.OnComplete(() => onDeactivateFloor?.CallEvent());
+        tweener.SetEase(ease);
+    }
+    
 }

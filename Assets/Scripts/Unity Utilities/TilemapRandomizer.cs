@@ -98,7 +98,9 @@ public class TileData : ISerializationCallbackReceiver
 public class TilemapRandomizer : MonoBehaviour
 {
     [SerializeField]
-    private bool randomize = false;
+    private bool randomizeNow = false;
+    [SerializeField]
+    private bool randomizeOnLoad = false;
     private Tilemap tilemap;
     public List<TileData> replacementTiles = new List<TileData>();
 
@@ -106,13 +108,14 @@ public class TilemapRandomizer : MonoBehaviour
     void Start()
     {
         tilemap = transform.GetComponentInChildren<Tilemap>();
+        if (randomizeOnLoad) RandomizeTiles();
     }
 
     private void Update()
     {
-        if (randomize)
+        if (Application.isEditor && !Application.isPlaying && randomizeNow)
         {
-            randomize = false;
+            randomizeNow = false;
             RandomizeTiles();
         }
     }

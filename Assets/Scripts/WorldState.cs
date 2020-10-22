@@ -104,4 +104,7 @@ public class WorldState : MonoBehaviour
     public static void PlayDialogue(DialogueTree dialogue) { world.dialogueUI.SetDialogue(dialogue); }
 
     public static void LoadLevel(string levelName) { world.load.StartFadeOut(levelName); }
+
+    public static void StopTime() { Time.timeScale = 0; }
+    public static void ContinueTime() { Time.timeScale = 1; }
 }

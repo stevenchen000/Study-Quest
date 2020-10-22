@@ -12,21 +12,13 @@ namespace CombatSystem
     public enum StateEnum
     {
         TransitionIn,
-        SelectAction,
         AskQuestion,
         AnswerQuestion,
         CharacterAttack,
+        AwaitTime,
         AwaitAttack,
         BattleOver,
         TransitionOut
-    }
-
-    public enum CharacterAction
-    {
-        Attack,
-        Ability,
-        Flee,
-        None
     }
 
     public class CombatManager : FloorManager
@@ -42,7 +34,6 @@ namespace CombatSystem
         public Fighter enemy;
 
         public float enemyAttackChance = 0;
-        public CharacterAction currentAction = CharacterAction.None;
         public Fighter currentAttacker;
         
         public bool hasAnswered = false;
@@ -50,6 +41,14 @@ namespace CombatSystem
 
         private QuizManager quiz;
         private FloorProjectionManager projection;
+
+        private bool answerTimeSet = false;
+        private float answerTime;
+
+        [SerializeField]
+        private float strongSkillThreshold;
+        [SerializeField]
+        private float midSkillThreshold;
 
         // Start is called before the first frame update
         void Awake()
@@ -81,7 +80,7 @@ namespace CombatSystem
 
         public override void Initialize()
         {
-            ChangeState(StateEnum.SelectAction);
+            ChangeState(StateEnum.AskQuestion);
         }
 
 
@@ -97,9 +96,6 @@ namespace CombatSystem
             {
                 case StateEnum.TransitionIn:
                     _TransitionIn();
-                    break;
-                case StateEnum.SelectAction:
-                    _SelectAction();
                     break;
                 case StateEnum.AskQuestion:
                     _AskQuestion();
@@ -128,22 +124,6 @@ namespace CombatSystem
             
         }
 
-        private void _SelectAction()
-        {
-            float rand = UnityEngine.Random.Range(0,1);
-
-            if(rand < enemyAttackChance)
-            {
-                currentAction = CharacterAction.Ability;
-            }
-            else
-            {
-                currentAction = CharacterAction.Attack;
-            }
-
-            ChangeState(StateEnum.AskQuestion);
-        }
-
         private void _AskQuestion()
         {
             quiz.AskQuestion();
@@ -154,6 +134,15 @@ namespace CombatSystem
         {
             if (hasAnswered)
             {
+                ChangeState(StateEnum.AwaitTime);
+            }
+        }
+
+        private void _AwaitTime()
+        {
+            if (answerTimeSet)
+            {
+                answerTimeSet = false;
                 ChangeState(StateEnum.CharacterAttack);
             }
         }
@@ -162,37 +151,13 @@ namespace CombatSystem
         {
             if (answeredCorrectly)
             {
-                //player attack
-                switch (currentAction)
-                {
-                    case CharacterAction.Attack:
-                        player.Attack(enemy);
-                        Debug.Log("Player attacked");
-                        break;
-                    case CharacterAction.Ability:
-                        player.Attack(enemy);
-                        Debug.Log("Player counterattacked");
-                        break;
-                    case CharacterAction.Flee:
-                        break;
-                    case CharacterAction.None:
-                        break;
-                }
+                player.Attack(enemy, TimeToSkillNumber());
+                Debug.Log("Player attacked");
             }
             else
             {
-                //enemy attack
-                switch (currentAction)
-                {
-                    case CharacterAction.Ability:
-                        enemy.Attack(player);
-                        Debug.Log("Enemy used a strong attack");
-                        break;
-                    default:
-                        enemy.Attack(player);
-                        Debug.Log("Enemy attacked");
-                        break;
-                }
+                enemy.Attack(player);
+                Debug.Log("Enemy attacked");
             }
 
             ChangeState(StateEnum.AwaitAttack);
@@ -225,7 +190,7 @@ namespace CombatSystem
                 }
                 else
                 {
-                    ChangeState(StateEnum.SelectAction);
+                    ChangeState(StateEnum.AskQuestion);
                 }
             }
         }
@@ -267,8 +232,6 @@ namespace CombatSystem
             {
                 case StateEnum.TransitionIn:
                     break;
-                case StateEnum.SelectAction:
-                    break;
                 case StateEnum.AnswerQuestion:
                     break;
                 case StateEnum.CharacterAttack:
@@ -285,8 +248,6 @@ namespace CombatSystem
             {
                 case StateEnum.TransitionIn:
                     break;
-                case StateEnum.SelectAction:
-                    break;
                 case StateEnum.AnswerQuestion:
                     break;
                 case StateEnum.CharacterAttack:
@@ -301,10 +262,6 @@ namespace CombatSystem
         }
 
 
-        public void SelectAction(CharacterAction action)
-        {
-            currentAction = action;
-        }
 
         #endregion
 
@@ -323,6 +280,32 @@ namespace CombatSystem
         private void SavePlayerHealth()
         {
             player.data.currentHealth = player.currentHealth;
+        }
+
+        public void SetAnswerTime(float time)
+        {
+            answerTimeSet = true;
+            answerTime = time;
+            ChangeState(StateEnum.CharacterAttack);
+        }
+
+        private int TimeToSkillNumber()
+        {
+            int result = 0;
+            
+            if(answerTime < strongSkillThreshold)
+            {
+                result = 0;
+            }else if(answerTime < midSkillThreshold)
+            {
+                result = 1;
+            }
+            else
+            {
+                result = 2;
+            }
+
+            return result;
         }
     }
 }

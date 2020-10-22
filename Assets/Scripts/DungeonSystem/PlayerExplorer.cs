@@ -61,15 +61,14 @@ namespace DungeonSystem
             if (movement != isMoving)
             {
                 isMoving = movement;
-                anim.SetBool("isMoving", isMoving);
 
                 if (isMoving)
                 {
-                    anim.CrossFade("Run", 0.2f);
+                    anim.SetFloat("Speed", 2);
                 }
                 else
                 {
-                    anim.CrossFade("Idle", 0.2f);
+                    anim.SetFloat("Speed", 0);
                 }
             }
         }
