@@ -13,7 +13,9 @@ public class FloorProjectionManager : MonoBehaviour
     [Space(20)]
     private RectTransform projTransform;
     [SerializeField]
-    private Ease ease;
+    private Ease easeIn;
+    [SerializeField]
+    private Ease easeOut;
     [SerializeField]
     private float animTime = 1.5f;
 
@@ -80,7 +82,7 @@ public class FloorProjectionManager : MonoBehaviour
         onActivateFloor?.CallEvent();
         var tweener = projTransform.DOScale(new Vector3(1, 1, 1), animTime);
         tweener.OnComplete(() => onFloorStart.CallEvent());
-        tweener.SetEase(ease);
+        tweener.SetEase(easeIn);
     }
 
     private void TweenOut()
@@ -88,7 +90,7 @@ public class FloorProjectionManager : MonoBehaviour
         onFloorEnd?.CallEvent();
         var tweener = projTransform.DOScale(new Vector3(0, 0, 0), animTime);
         tweener.OnComplete(() => onDeactivateFloor?.CallEvent());
-        tweener.SetEase(ease);
+        tweener.SetEase(easeOut);
     }
     
 }
